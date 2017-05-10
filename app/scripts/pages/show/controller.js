@@ -13,8 +13,10 @@
   ) {
     var ps = this;
     ps.mapStyle = MAP_STYLE;
+    ps.selectedCity = "Bengaluru";
 
     $scope.$on('mapInitialized', function (event, map) {
+      google.maps.event.trigger(map, 'resize');
       angular.forEach(All_POLYGONS, function (p) {
         var path = google.maps.geometry.encoding.decodePath(p.polygon)
         new PolygonModel({path: path}, map);

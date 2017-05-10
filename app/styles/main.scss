@@ -21,6 +21,23 @@ body {
   }
 };
 
+.page-show {
+  md-card {
+    position: absolute;
+    max-width: 360px;
+    z-index: 20;
+    .logo {
+      top: 12px;
+    }
+    md-select {
+      min-width: 100px;
+    }
+  }
+  md-card.md-dark-grey-theme {
+    background-color: rgba(0, 0, 0, 0.6) !important;
+  }
+}
+
 
 .md-large {
   font-size: 20px;
@@ -46,6 +63,16 @@ body {
     padding: 35px;
     border-radius: 300px;
   }
+}
+
+.logo {
+  background-image: url('https://www.polymer-project.org/images/logos/p-logo.png');
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: relative;
 }
 
 .footer {

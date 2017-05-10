@@ -1,0 +1,40 @@
+<md-card md-theme="dark-grey">
+  <md-card-title>
+    <md-card-title-text>
+      <span class="md-headline">
+        <a href="/"><span class="logo"></span></a>
+        <span>Localitics</span>
+      </span>
+    </md-card-title-text>
+  </md-card-title>
+  <md-card-content>
+    <md-input-container>
+      <label>Select City</label>
+      <md-select name="favoriteColor" ng-model="favoriteColor" required md-no-float>
+        <md-option>Bengaluru</md-option>
+        <md-option>Delhi</md-option>
+        <md-option>Ghaziabad</md-option>
+        <md-option>Hyderabad</md-option>
+        <md-option>Mumbai</md-option>
+        <md-option>Pune</md-option>
+        <md-option>Chennai</md-option>
+        <md-option>Faridabad</md-option>
+        <md-option>Gurgaon</md-option>
+        <md-option>Noida</md-option>
+        <md-option>Kolkata</md-option>
+      </md-select>
+    </md-input-container>
+    &nbsp;&nbsp;
+    <md-input-container>
+      <label>Select Type</label>
+      <md-select name="favoriteColor" ng-model="type" required>
+        <md-option>Rent</md-option>
+        <md-option>Search</md-option>
+        <md-option>SAV</md-option>
+      </md-select>
+    </md-input-container>
+  </md-card-content>
+  <md-card-actions layout="row" layout-align="start center">
+    <md-button class="md-raised">Go</md-button>
+  </md-card-actions>
+</md-card>
