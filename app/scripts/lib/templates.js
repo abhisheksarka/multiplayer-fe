@@ -19,12 +19,33 @@ angular.module('app').run(['$templateCache', function($templateCache) {
     "  </div>\n" +
     "  <br><br>\n" +
     "  <section layout=\"row\" layout-sm=\"column\" layout-align=\"center center\" layout-wrap>\n" +
-    "    <md-button class=\"md-raised md-accent md-large md-round\" ng-click=\"pi.openCreatorDialog($event)\">Go</md-button>\n" +
+    "    <md-button class=\"md-raised md-accent md-large md-round\" ng-click=\"pi.show($event)\">Go</md-button>\n" +
     "  </section>\n" +
     "  <div layout=\"row\" class=\"footer\" layout-align=\"center\">\n" +
     "    <small>\n" +
     "      © 2017 Nestaway Technologies Pvt Ltd. All rights reserved.\n" +
     "    </small>\n" +
+    "  </div>\n" +
+    "</div>\n"
+  );
+
+
+  $templateCache.put('app/scripts/pages/show/template.html',
+    "<div class=\"page-show\">\n" +
+    "  <div layout=\"row\" layout-sm=\"column\" layout-align=\"space-around\" ng-if=\"ps.state.isStart\">\n" +
+    "    <md-progress-linear md-mode=\"indeterminate\" class=\"md-accent\"></md-progress-linear>\n" +
+    "  </div>\n" +
+    "\n" +
+    "  <div layout=\"column\" style=\"height:100%;z-index:10;\" ng-cloak>\n" +
+    "    <section layout=\"row\" flex>\n" +
+    "      <md-content flex>\n" +
+    "        <div id=\"map-holder\" style=\"height:100%\">\n" +
+    "          <ng-map zoom=\"13\" keyboard-shortcuts=\"false\" center=\"12.9716, 77.5946\" map-type-id=\"ROADMAP\" street-view-control-options=\"{position: 'LEFT_CENTER'}\">\n" +
+    "\n" +
+    "          </ng-map>\n" +
+    "        </div>\n" +
+    "      </md-content>\n" +
+    "    </section>\n" +
     "  </div>\n" +
     "</div>\n"
   );

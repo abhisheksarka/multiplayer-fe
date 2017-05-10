@@ -22,7 +22,8 @@ angular
     'angularMoment',
     'ngLocationUpdate',
 
-    'pageIndex'
+    'pageIndex',
+    'pageShow'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -30,6 +31,11 @@ angular
         templateUrl: 'app/scripts/pages/index/template.html',
         controller: 'PageIndexController',
         controllerAs: 'pi'
+      })
+      .when('/show', {
+        templateUrl: 'app/scripts/pages/show/template.html',
+        controller: 'PageShowController',
+        controllerAs: 'ps'
       })
       .otherwise({
         redirectTo: '/'
