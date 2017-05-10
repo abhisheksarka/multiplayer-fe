@@ -224,7 +224,7 @@ module.exports = function (grunt) {
         src: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
         ignorePath: /(\.\.\/){1,2}bower_components\//
       }
-    }, 
+    },
 
     // Compiles Sass to CSS and generates necessary files if requested
     compass: {
@@ -398,6 +398,13 @@ module.exports = function (grunt) {
     cdnify: {
       dist: {
         html: ['<%= yeoman.dist %>/*.html']
+      }
+    },
+
+    ngtemplates:  {
+      app: {
+        src: ['app/scripts/components/{,*/}{,*/}*.html', 'app/scripts/pages/{,*/}*.html'],
+        dest: 'app/scripts/lib/templates.js'
       }
     },
 
