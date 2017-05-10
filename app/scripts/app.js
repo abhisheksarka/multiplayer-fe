@@ -22,8 +22,9 @@ angular
     'angularMoment',
     'ngLocationUpdate',
 
-    'pageIndex',
-    'pageShow'
+    'app.lib',
+    'app.components',
+    'app.pages'
   ])
   .config(function ($routeProvider) {
     $routeProvider

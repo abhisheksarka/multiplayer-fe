@@ -402,7 +402,7 @@ module.exports = function (grunt) {
     },
 
     ngtemplates:  {
-      app: {
+      "app.lib": {
         src: ['app/scripts/components/{,*/}{,*/}*.html', 'app/scripts/pages/{,*/}*.html'],
         dest: 'app/scripts/lib/templates.js'
       }

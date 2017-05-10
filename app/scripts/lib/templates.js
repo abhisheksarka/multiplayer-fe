@@ -1,4 +1,4 @@
-angular.module('app').run(['$templateCache', function($templateCache) {
+angular.module('app.lib').run(['$templateCache', function($templateCache) {
   'use strict';
 
   $templateCache.put('app/scripts/pages/index/template.html',
@@ -40,7 +40,14 @@ angular.module('app').run(['$templateCache', function($templateCache) {
     "    <section layout=\"row\" flex>\n" +
     "      <md-content flex>\n" +
     "        <div id=\"map-holder\" style=\"height:100%\">\n" +
-    "          <ng-map styles=\"{{ps.mapStyle}}\" zoom=\"13\" keyboard-shortcuts=\"false\" center=\"12.9716, 77.5946\" map-type-id=\"ROADMAP\" street-view-control-options=\"{position: 'LEFT_CENTER'}\">\n" +
+    "          <ng-map\n" +
+    "            styles=\"{{ps.mapStyle}}\"\n" +
+    "            zoom=\"11\"\n" +
+    "            keyboard-shortcuts=\"false\"\n" +
+    "            center=\"12.9716, 77.5946\"\n" +
+    "            map-type-id=\"ROADMAP\"\n" +
+    "            map-type-control=\"false\"\n" +
+    "            street-view-control=\"false\">\n" +
     "          </ng-map>\n" +
     "        </div>\n" +
     "      </md-content>\n" +

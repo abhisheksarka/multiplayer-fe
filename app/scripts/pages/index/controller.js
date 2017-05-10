@@ -16,7 +16,7 @@
   }
 
   angular
-  .module('pageIndex')
+  .module('app.pages.index')
   .controller('PageIndexController', [
     '$scope',
     '$location',

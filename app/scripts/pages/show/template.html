@@ -7,7 +7,14 @@
     <section layout="row" flex>
       <md-content flex>
         <div id="map-holder" style="height:100%">
-          <ng-map styles="{{ps.mapStyle}}" zoom="13" keyboard-shortcuts="false" center="12.9716, 77.5946" map-type-id="ROADMAP" street-view-control-options="{position: 'LEFT_CENTER'}">
+          <ng-map
+            styles="{{ps.mapStyle}}"
+            zoom="11"
+            keyboard-shortcuts="false"
+            center="12.9716, 77.5946"
+            map-type-id="ROADMAP"
+            map-type-control="false"
+            street-view-control="false">
           </ng-map>
         </div>
       </md-content>
