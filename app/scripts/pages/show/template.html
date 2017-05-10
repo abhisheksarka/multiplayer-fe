@@ -1,5 +1,5 @@
 <div class="page-show">
-  <div layout="row" layout-sm="column" layout-align="space-around" ng-if="ps.state.isStart">
+  <div layout="row" layout-sm="column" layout-align="space-around">
     <md-progress-linear md-mode="indeterminate" class="md-accent"></md-progress-linear>
   </div>
 
@@ -7,8 +7,7 @@
     <section layout="row" flex>
       <md-content flex>
         <div id="map-holder" style="height:100%">
-          <ng-map zoom="13" keyboard-shortcuts="false" center="12.9716, 77.5946" map-type-id="ROADMAP" street-view-control-options="{position: 'LEFT_CENTER'}">
-
+          <ng-map styles="{{ps.mapStyle}}" zoom="13" keyboard-shortcuts="false" center="12.9716, 77.5946" map-type-id="ROADMAP" street-view-control-options="{position: 'LEFT_CENTER'}">
           </ng-map>
         </div>
       </md-content>

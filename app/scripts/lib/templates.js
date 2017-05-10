@@ -32,7 +32,7 @@ angular.module('app').run(['$templateCache', function($templateCache) {
 
   $templateCache.put('app/scripts/pages/show/template.html',
     "<div class=\"page-show\">\n" +
-    "  <div layout=\"row\" layout-sm=\"column\" layout-align=\"space-around\" ng-if=\"ps.state.isStart\">\n" +
+    "  <div layout=\"row\" layout-sm=\"column\" layout-align=\"space-around\">\n" +
     "    <md-progress-linear md-mode=\"indeterminate\" class=\"md-accent\"></md-progress-linear>\n" +
     "  </div>\n" +
     "\n" +
@@ -40,8 +40,7 @@ angular.module('app').run(['$templateCache', function($templateCache) {
     "    <section layout=\"row\" flex>\n" +
     "      <md-content flex>\n" +
     "        <div id=\"map-holder\" style=\"height:100%\">\n" +
-    "          <ng-map zoom=\"13\" keyboard-shortcuts=\"false\" center=\"12.9716, 77.5946\" map-type-id=\"ROADMAP\" street-view-control-options=\"{position: 'LEFT_CENTER'}\">\n" +
-    "\n" +
+    "          <ng-map styles=\"{{ps.mapStyle}}\" zoom=\"13\" keyboard-shortcuts=\"false\" center=\"12.9716, 77.5946\" map-type-id=\"ROADMAP\" street-view-control-options=\"{position: 'LEFT_CENTER'}\">\n" +
     "          </ng-map>\n" +
     "        </div>\n" +
     "      </md-content>\n" +
