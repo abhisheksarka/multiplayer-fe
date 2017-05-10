@@ -12,12 +12,20 @@ body {
   height: 100%;
 }
 .page-index {
-  background-image: url('https://stamplay.com/images/exagon-pattern.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url('http://chronograf.production.k8s.nestaway.xyz:30318/2bb64b4255c3d298ecae22d2053b77c2.svg');
   color: whitesmoke;
-  background-color: #222;
+  background-color: #111;
   border-top: 5px solid rgba(255,64,129, 0.5);
   h1 {
     text-align: center;
+    font-weight: 100;
+  }
+  .tag-line {
+    margin-top: -20px;
+    text-align: center;
+    opacity: 0.3;
   }
 };
 
@@ -52,7 +60,7 @@ body {
 .logo-container {
   text-align: center;
   img {
-    width: 60%;
+    width: 40%;
   }
   .material-icons {
     font-size: 70px;

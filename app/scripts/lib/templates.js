@@ -72,11 +72,12 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
     "      <div class=\"logo-container\">\n" +
     "        <img src=\"https://www.polymer-project.org/images/logos/p-logo.png\"/>\n" +
     "      </div>\n" +
-    "      <h1 class=\"md-display-3\">\n" +
+    "      <h1 class=\"md-display-2\">\n" +
     "        <span style=\"opacity: 0.1;\">&lt;</span>\n" +
     "          Localitics\n" +
     "        <span style=\"opacity: 0.1;\">&gt;</span>\n" +
     "      </h1>\n" +
+    "      <p class=\"tag-line\">0.0.1 / Locality based data visualization</p>\n" +
     "      <img src=\"http://pyrexdesigns.com/images/hard%20slit%20separator.png\" style=\"height: 50px; margin-top: 25px; opacity: 0.5\"/>\n" +
     "    </div>\n" +
     "  </div>\n" +
