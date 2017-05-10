@@ -1,0 +1,8 @@
+node_modules/
+bower_components/
+.git
+.sass-cache
+.tmp
+dist/
+dump.rdb
+.idea/
