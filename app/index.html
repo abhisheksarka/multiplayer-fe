@@ -15,6 +15,11 @@
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
+    <script>
+      window.LOCALITICS_CONFIG = {
+        API_ROOT_PATH: '/api/v3'
+      }
+    </script>
   </head>
   <body ng-app="app">
     <!--[if lte IE 8]>
@@ -56,6 +61,14 @@
     <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
 
+        <script src="scripts/lib/app.js"></script>
+        <script src="scripts/lib/templates.js"></script>
+        <script src="scripts/lib/consts.js"></script>
+        <script src="scripts/lib/all.js"></script>
+        <script src="scripts/lib/color.js"></script>
+        <script src="scripts/lib/state.js"></script>
+        <script src="scripts/lib/dialog.js"></script>
+
         <script src="scripts/pages/index/app.js"></script>
         <script src="scripts/pages/index/controller.js"></script>
         <script src="scripts/pages/show/app.js"></script>
@@ -70,16 +83,26 @@
         <script src="scripts/components/map_control/map_control_controller.js"></script>
         <script src="scripts/components/map_control/map_control_directive.js"></script>
 
+        <script src="scripts/components/distribution_map/app.js"></script>
+        <script src="scripts/components/distribution_map/distribution_map_controller.js"></script>
+        <script src="scripts/components/distribution_map/distribution_map_directive.js"></script>
+
         <script src="scripts/components/sidenav/app.js"></script>
         <script src="scripts/components/sidenav/sidenav_controller.js"></script>
         <script src="scripts/components/sidenav/sidenav_directive.js"></script>
         <script src="scripts/components/app.js"></script>
 
+        <script src="scripts/api/app.js"></script>
+        <script src="scripts/api/util.js"></script>
+        <script src="scripts/api/locality_detail.js"></script>
+
         <script src="scripts/lib/app.js"></script>
         <script src="scripts/lib/templates.js"></script>
-        <script src="scripts/lib/map_style.js"></script>
+        <script src="scripts/lib/consts.js"></script>
         <script src="scripts/lib/all.js"></script>
         <script src="scripts/lib/color.js"></script>
+        <script src="scripts/lib/state.js"></script>
+        <script src="scripts/lib/dialog.js"></script>
 
         <script src="scripts/app.js"></script>
 

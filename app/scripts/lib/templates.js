@@ -1,6 +1,19 @@
 angular.module('app.lib').run(['$templateCache', function($templateCache) {
   'use strict';
 
+  $templateCache.put('app/scripts/components/distribution_map/template.html',
+    "<ng-map\n" +
+    "  styles=\"{{dmc.mapStyle}}\"\n" +
+    "  zoom=\"11\"\n" +
+    "  keyboard-shortcuts=\"false\"\n" +
+    "  center=\"12.9716, 77.5946\"\n" +
+    "  map-type-id=\"ROADMAP\"\n" +
+    "  map-type-control=\"false\"\n" +
+    "  street-view-control=\"false\">\n" +
+    "</ng-map>\n"
+  );
+
+
   $templateCache.put('app/scripts/components/map_control/template.html',
     "<md-card md-theme=\"dark-grey\">\n" +
     "  <md-card-title>\n" +
@@ -14,18 +27,10 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
     "  <md-card-content>\n" +
     "    <md-input-container>\n" +
     "      <label>Select City</label>\n" +
-    "      <md-select name=\"favoriteColor\" ng-model=\"favoriteColor\" required md-no-float>\n" +
-    "        <md-option>Bengaluru</md-option>\n" +
-    "        <md-option>Delhi</md-option>\n" +
-    "        <md-option>Ghaziabad</md-option>\n" +
-    "        <md-option>Hyderabad</md-option>\n" +
-    "        <md-option>Mumbai</md-option>\n" +
-    "        <md-option>Pune</md-option>\n" +
-    "        <md-option>Chennai</md-option>\n" +
-    "        <md-option>Faridabad</md-option>\n" +
-    "        <md-option>Gurgaon</md-option>\n" +
-    "        <md-option>Noida</md-option>\n" +
-    "        <md-option>Kolkata</md-option>\n" +
+    "      <md-select name=\"city\" ng-model=\"selectedCity\" required md-no-float>\n" +
+    "        <md-option ng-repeat=\"city in mcc.cities\" ng-value=\"city\">\n" +
+    "          {{city}}\n" +
+    "        </md-option>\n" +
     "      </md-select>\n" +
     "    </md-input-container>\n" +
     "    &nbsp;&nbsp;\n" +
@@ -38,9 +43,9 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
     "      </md-select>\n" +
     "    </md-input-container>\n" +
     "  </md-card-content>\n" +
-    "  <md-card-actions layout=\"row\" layout-align=\"start center\">\n" +
+    "  <!-- <md-card-actions layout=\"row\" layout-align=\"start center\">\n" +
     "    <md-button>Go</md-button>\n" +
-    "  </md-card-actions>\n" +
+    "  </md-card-actions> -->\n" +
     "</md-card>\n"
   );
 
@@ -98,18 +103,10 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
     "<div class=\"page-show\">\n" +
     "  <div layout=\"column\" style=\"height:100%;z-index:10;\" ng-cloak>\n" +
     "    <section layout=\"row\" flex>\n" +
-    "      <map-control class=\"md-whiteframe-24dp\"></map-control>\n" +
+    "      <map-control class=\"md-whiteframe-24dp\" selected-city=\"ps.selectedCity\"></map-control>\n" +
     "      <md-content flex>\n" +
     "        <div id=\"map-holder\" style=\"height:100%\">\n" +
-    "          <ng-map\n" +
-    "            styles=\"{{ps.mapStyle}}\"\n" +
-    "            zoom=\"11\"\n" +
-    "            keyboard-shortcuts=\"false\"\n" +
-    "            center=\"12.9716, 77.5946\"\n" +
-    "            map-type-id=\"ROADMAP\"\n" +
-    "            map-type-control=\"false\"\n" +
-    "            street-view-control=\"false\">\n" +
-    "          </ng-map>\n" +
+    "          <distribution-map></distribution-map>\n" +
     "        </div>\n" +
     "      </md-content>\n" +
     "    </section>\n" +

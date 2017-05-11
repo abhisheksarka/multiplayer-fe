@@ -23,6 +23,7 @@ angular
     'ngLocationUpdate',
 
     'app.lib',
+    'app.api',
     'app.components',
     'app.pages'
   ])

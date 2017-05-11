@@ -1,18 +1,10 @@
 <div class="page-show">
   <div layout="column" style="height:100%;z-index:10;" ng-cloak>
     <section layout="row" flex>
-      <map-control class="md-whiteframe-24dp"></map-control>
+      <map-control class="md-whiteframe-24dp" selected-city="ps.selectedCity"></map-control>
       <md-content flex>
         <div id="map-holder" style="height:100%">
-          <ng-map
-            styles="{{ps.mapStyle}}"
-            zoom="11"
-            keyboard-shortcuts="false"
-            center="12.9716, 77.5946"
-            map-type-id="ROADMAP"
-            map-type-control="false"
-            street-view-control="false">
-          </ng-map>
+          <distribution-map></distribution-map>
         </div>
       </md-content>
     </section>

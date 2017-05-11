@@ -10,18 +10,10 @@
   <md-card-content>
     <md-input-container>
       <label>Select City</label>
-      <md-select name="favoriteColor" ng-model="favoriteColor" required md-no-float>
-        <md-option>Bengaluru</md-option>
-        <md-option>Delhi</md-option>
-        <md-option>Ghaziabad</md-option>
-        <md-option>Hyderabad</md-option>
-        <md-option>Mumbai</md-option>
-        <md-option>Pune</md-option>
-        <md-option>Chennai</md-option>
-        <md-option>Faridabad</md-option>
-        <md-option>Gurgaon</md-option>
-        <md-option>Noida</md-option>
-        <md-option>Kolkata</md-option>
+      <md-select name="city" ng-model="selectedCity" required md-no-float>
+        <md-option ng-repeat="city in mcc.cities" ng-value="city">
+          {{city}}
+        </md-option>
       </md-select>
     </md-input-container>
     &nbsp;&nbsp;
@@ -34,7 +26,7 @@
       </md-select>
     </md-input-container>
   </md-card-content>
-  <md-card-actions layout="row" layout-align="start center">
+  <!-- <md-card-actions layout="row" layout-align="start center">
     <md-button>Go</md-button>
-  </md-card-actions>
+  </md-card-actions> -->
 </md-card>

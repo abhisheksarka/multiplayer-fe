@@ -39,6 +39,7 @@ body {
     }
     md-select {
       min-width: 100px;
+      text-transform: capitalize;
     }
   }
   md-card.md-dark-grey-theme {
@@ -94,6 +95,6 @@ body {
   padding: 25px;
 }
 
-
-
-
+md-option {
+  text-transform: capitalize;
+}
