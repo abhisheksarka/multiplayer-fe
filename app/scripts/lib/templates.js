@@ -106,7 +106,7 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
     "      <map-control class=\"md-whiteframe-24dp\" selected-city=\"ps.selectedCity\"></map-control>\n" +
     "      <md-content flex>\n" +
     "        <div id=\"map-holder\" style=\"height:100%\">\n" +
-    "          <distribution-map></distribution-map>\n" +
+    "          <distribution-map selected-city=\"ps.selectedCity\" selected-type=\"ps.selectedType\"></distribution-map>\n" +
     "        </div>\n" +
     "      </md-content>\n" +
     "    </section>\n" +

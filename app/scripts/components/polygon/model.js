@@ -3,10 +3,14 @@
 (function () {
   function Factory (Color) {
     function Model (params, map) {
-      this.gPolygon = new google.maps.Polygon(angular.extend(params, Model.defaults()));
+      this.name = params.name;
+      this.lat = params.latitude;
+      this.lng = params.longitude;
+      this.gPolygon = new google.maps.Polygon(angular.extend({path: params.polygon}, Model.defaults()));
       this.map = map;
-      this.gPolygon.setMap(map);
     };
+
+    Model.all = { };
 
     var proto = Model.prototype;
 
@@ -20,6 +24,30 @@
         fillColor: color,
         fillOpacity: 0.1
       };
+    };
+
+    proto.remove = function ( ) {
+      var self = this;
+
+      delete(Model.all[self.name]);
+      self.gPolygon.setMap(null);
+
+      return true;
+    };
+
+    proto.add = function ( ) {
+      var self = this;
+
+      Model.all[self.name] = self;
+      self.gPolygon.setMap(self.map);
+
+      return true;
+    };
+
+    Model.removeAll = function () {
+      angular.forEach(Model.all, function (item) {
+        item.remove();
+      });
     };
 
     return Model;
