@@ -18,11 +18,11 @@
       var color = Color.generate();
 
       return {
-        strokeColor: color,
+        strokeColor: '#fff',
         strokeWeight: 0.5,
         strokeOpacity: 1,
         fillColor: color,
-        fillOpacity: 0.1
+        fillOpacity: 0.5
       };
     };
 

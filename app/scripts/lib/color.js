@@ -5,9 +5,10 @@
     function Color () { };
 
     Color.colors = [
-      '#009688',
-      '#F44336',
-      '#2196F3'
+      '#ff0002',
+      '#ff7f02',
+      '#fdff00',
+      '#7dff00'
     ];
 
     Color._last = null;
