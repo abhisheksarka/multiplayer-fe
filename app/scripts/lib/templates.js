@@ -39,7 +39,7 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
     "    </md-input-container>\n" +
     "  </md-card-content>\n" +
     "  <md-card-actions layout=\"row\" layout-align=\"start center\">\n" +
-    "    <md-button class=\"md-raised\">Go</md-button>\n" +
+    "    <md-button>Go</md-button>\n" +
     "  </md-card-actions>\n" +
     "</md-card>\n"
   );

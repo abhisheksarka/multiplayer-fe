@@ -16,9 +16,9 @@
       return {
         strokeColor: color,
         strokeWeight: 0.5,
-        strokeOpacity: 0.5,
+        strokeOpacity: 1,
         fillColor: color,
-        fillOpacity: 0.35
+        fillOpacity: 0.1
       };
     };
 

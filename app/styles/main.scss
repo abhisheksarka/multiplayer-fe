@@ -2,7 +2,7 @@
 // endbower
 
 body {
-  background: #efefef;
+  background: #333;
 }
 .page-show, .page-index, .page-markers {
   position: absolute;
@@ -42,7 +42,9 @@ body {
     }
   }
   md-card.md-dark-grey-theme {
-    background-color: rgba(0, 0, 0, 0.6) !important;
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    border: 1px solid #333;
+    border-radius: 3px;
   }
 }
 
