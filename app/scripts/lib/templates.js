@@ -4,9 +4,8 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
   $templateCache.put('app/scripts/components/distribution_map/template.html',
     "<ng-map\n" +
     "  styles=\"{{dmc.mapStyle}}\"\n" +
-    "  zoom=\"11\"\n" +
     "  keyboard-shortcuts=\"false\"\n" +
-    "  center=\"12.9716, 77.5946\"\n" +
+    "  zoom=\"3\"\n" +
     "  map-type-id=\"ROADMAP\"\n" +
     "  map-type-control=\"false\"\n" +
     "  street-view-control=\"false\">\n" +

@@ -24,23 +24,18 @@
     });
 
     function populatePolygons (city) {
-      PolygonModel.removeAll();
+      ApiLocalityDetail.getLocalities(city)
+      .then(function(data){
+        PolygonModel.removeAll();
 
-      if (_.isEmpty(ApiLocalityDetail.localities[city])) {
-
-        ApiLocalityDetail.getLocalities(city)
-        .then(function(data){
-          angular.forEach(data, function (item) {
-            item.polygon = google.maps.geometry.encoding.decodePath(item.polygon);
-            var p = new PolygonModel(item, dmc.map);
-            p.add();
-          });
-
-          goToLocation();
+        angular.forEach(data, function (item) {
+          item.polygon = google.maps.geometry.encoding.decodePath(item.polygon);
+          var p = new PolygonModel(item, dmc.map);
+          p.add();
         });
-      } else {
+
         goToLocation();
-      };
+      });
     };
 
     function goToLocation () {
