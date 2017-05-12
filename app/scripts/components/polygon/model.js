@@ -1,13 +1,15 @@
 'use strict';
 
 (function () {
-  function Factory (Color) {
+  function Factory (Color, PolygonStatModel) {
     function Model (params, map) {
       this.name = params.name;
       this.lat = params.latitude;
       this.lng = params.longitude;
       this.gPolygon = new google.maps.Polygon(angular.extend({path: params.polygon}, Model.defaults()));
       this.map = map;
+      this.stat = new PolygonStatModel(this.name, params.stats);
+      this.stat.add();
     };
 
     Model.all = { };
@@ -57,6 +59,7 @@
     .module('app.components.polygon')
     .factory('PolygonModel', [
       'Color',
+      'PolygonStatModel',
       Factory
     ]);
 }());

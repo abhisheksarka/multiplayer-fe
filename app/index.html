@@ -34,7 +34,14 @@
     <div ng-view></div>
     <script>
       window.POLYGON_CONFIG = {
-        API_ROOT_PATH: '/admin/zinc'
+        API_ROOT_PATH: '/admin/zinc',
+        DATA_END_POINT: '/',
+        DATA_KEYS: {
+          search: 'Search',
+          sav: 'SAV',
+          visited: 'Visited',
+          houses: 'House Density'
+        }
       };
     </script>
 
@@ -68,6 +75,7 @@
         <script src="scripts/lib/color.js"></script>
         <script src="scripts/lib/state.js"></script>
         <script src="scripts/lib/dialog.js"></script>
+        <script src="scripts/lib/bucket.js"></script>
 
         <script src="scripts/pages/index/app.js"></script>
         <script src="scripts/pages/index/controller.js"></script>
@@ -79,9 +87,17 @@
         <script src="scripts/components/polygon/model.js"></script>
         <script src="scripts/components/app.js"></script>
 
+        <script src="scripts/components/polygon_stat/app.js"></script>
+        <script src="scripts/components/polygon_stat/model.js"></script>
+        <script src="scripts/components/app.js"></script>
+
         <script src="scripts/components/map_control/app.js"></script>
         <script src="scripts/components/map_control/map_control_controller.js"></script>
         <script src="scripts/components/map_control/map_control_directive.js"></script>
+
+        <script src="scripts/components/legend/app.js"></script>
+        <script src="scripts/components/legend/legend_controller.js"></script>
+        <script src="scripts/components/legend/legend_directive.js"></script>
 
         <script src="scripts/components/distribution_map/app.js"></script>
         <script src="scripts/components/distribution_map/distribution_map_controller.js"></script>

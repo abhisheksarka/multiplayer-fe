@@ -14,6 +14,13 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
   );
 
 
+  $templateCache.put('app/scripts/components/legend/template.html',
+    "<div>\n" +
+    "\n" +
+    "</div>\n"
+  );
+
+
   $templateCache.put('app/scripts/components/map_control/template.html',
     "<md-card md-theme=\"dark-grey\">\n" +
     "  <md-card-title>\n" +
