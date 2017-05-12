@@ -8,6 +8,7 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
     "  zoom=\"3\"\n" +
     "  map-type-id=\"ROADMAP\"\n" +
     "  map-type-control=\"false\"\n" +
+    "  background-color=\"#333\"\n" +
     "  street-view-control=\"false\">\n" +
     "</ng-map>\n"
   );

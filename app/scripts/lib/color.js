@@ -15,7 +15,7 @@
 
     Color.generate = function () {
       var cs = Color.colors,
-        c = (cs[Math.floor(Math.random()*cs.length)])
+        c = (cs[Math.floor(Math.random()*cs.length)]);
       if (c == Color._last) {
         var i = cs.indexOf(c);
         if (i >= (cs.length -1)) {
