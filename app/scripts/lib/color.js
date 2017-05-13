@@ -4,18 +4,24 @@
   function Factory () {
     function Color () { };
 
-    Color.colors = [
-      '#ff0002',
-      '#ff7f02',
-      '#fdff00',
-      '#7dff00'
-    ];
+    Color.colors = {
+      red: '#F44336',
+      orange: '#FF9800',
+      green: '#4CAF50',
+      lime: '#CDDC39',
+      yellow: '#FFEB3B'
+    };
 
     Color._last = null;
 
     Color.generate = function () {
-      var cs = Color.colors,
-        c = (cs[Math.floor(Math.random()*cs.length)]);
+      var cs = [];
+
+      angular.forEach(Color.colors, function (item) {
+        cs.push(item);
+      });
+
+      var c = (cs[Math.floor(Math.random()*cs.length)]);
       if (c == Color._last) {
         var i = cs.indexOf(c);
         if (i >= (cs.length -1)) {

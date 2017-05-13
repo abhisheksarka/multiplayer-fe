@@ -1,3 +1,5 @@
-<div>
-
+<div class="legend">
+  <div class="key" ng-repeat="key in lc.keys">
+    <small><i class="material-icons" style="color: {{key.color}}">stop</i> <span ng-bind="key.key"></span></small>
+  </div>
 </div>

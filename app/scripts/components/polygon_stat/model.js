@@ -10,7 +10,6 @@
     var proto = Model.prototype;
 
     Model.all = { };
-    Model.keys = { };
 
     proto.add = function ( ) {
       var self = this;
@@ -24,13 +23,19 @@
       return true;
     };
 
+    Model.getBuckets = function () {
+      var B = Bucket;
+      Bucket.generate(data, 5, Model.min, Model.max)
+      debugger;
+    };
+
     return Model;
   };
 
   angular
     .module('app.components.polygonStat')
     .factory('PolygonStatModel', [
-      Factory,
       'Bucket',
+      Factory
     ]);
 }());

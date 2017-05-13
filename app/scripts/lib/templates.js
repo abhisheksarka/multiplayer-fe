@@ -15,8 +15,10 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('app/scripts/components/legend/template.html',
-    "<div>\n" +
-    "\n" +
+    "<div class=\"legend\">\n" +
+    "  <div class=\"key\" ng-repeat=\"key in lc.keys\">\n" +
+    "    <small><i class=\"material-icons\" style=\"color: {{key.color}}\">stop</i> <span ng-bind=\"key.key\"></span></small>\n" +
+    "  </div>\n" +
     "</div>\n"
   );
 
@@ -49,6 +51,7 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
     "        <md-option>SAV</md-option>\n" +
     "      </md-select>\n" +
     "    </md-input-container>\n" +
+    "    <legend></legend>\n" +
     "  </md-card-content>\n" +
     "  <!-- <md-card-actions layout=\"row\" layout-align=\"start center\">\n" +
     "    <md-button>Go</md-button>\n" +
