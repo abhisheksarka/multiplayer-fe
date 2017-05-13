@@ -26,6 +26,21 @@
       Model.buckets = Bucket.generate(res, 5, Model.min, Model.max);
     };
 
+    Model.findBucket = function (value) {
+      var bucket;
+
+      Model.buckets.forEach( function (item, i) {
+        var max = _.max(item),
+            min = _.min(item);
+
+        if (value >= min && value <= max) {
+          bucket = i;
+        };
+      });
+
+      return bucket;
+    };
+
     return Model;
   };
 

@@ -1,7 +1,7 @@
 'use strict';
 
 (function () {
-  function Factory (Color, PolygonStatsModel) {
+  function Factory (PolygonStatsModel) {
     function Model (params, map) {
       this.name = params.name;
       this.city = params.city;
@@ -18,14 +18,14 @@
     var proto = Model.prototype;
 
     Model.defaults = function () {
-      var color = Color.generate();
+      var color = '#fff';
 
       return {
-        strokeColor: '#ffffff',
+        strokeColor: '#333',
         strokeWeight: 0.5,
         strokeOpacity: 1,
         fillColor: color,
-        fillOpacity: 0.4
+        fillOpacity: 0.8
       };
     };
 
@@ -63,7 +63,6 @@
   angular
     .module('app.components.polygon')
     .factory('PolygonModel', [
-      'Color',
       'PolygonStatsModel',
       Factory
     ]);

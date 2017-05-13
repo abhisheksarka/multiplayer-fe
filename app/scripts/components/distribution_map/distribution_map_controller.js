@@ -6,7 +6,8 @@
     MAP_STYLE,
     PolygonModel,
     ApiLocalityDetail,
-    PolygonStatsBucket
+    PolygonStatsBucket,
+    Color
   ) {
     var dmc = this;
 
@@ -35,6 +36,7 @@
         buildPolygons(data);
         attachStats(data);
         buildBuckets();
+        fillColor();
         goToLocation();
         $scope.state.success();
       }, function () { $scope.state.error(); });
@@ -79,9 +81,21 @@
       PolygonStatsBucket.generate($scope.selectedCity, $scope.selectedType);
     };
 
+    function fillColor () {
+      angular.forEach(PolygonModel.all, function (item) {
+        var stats = item.stats || {params: { }};
+        var color = Color.findColor(stats.params[$scope.selectedType]);
+        if (color) {
+          item.gPolygon.setOptions({
+            fillColor: color
+          });
+        };
+      });
+    };
+
     function canRender() {
       return ($scope.selectedCity && $scope.selectedType && dmc.map);
-    }
+    };
   }
 
   angular
@@ -92,6 +106,7 @@
       'PolygonModel',
       'ApiLocalityDetail',
       'PolygonStatsBucket',
+      'Color',
       Controller
     ]);
 }());
