@@ -17,7 +17,13 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
   $templateCache.put('app/scripts/components/legend/template.html',
     "<div class=\"legend\">\n" +
     "  <div class=\"key\" ng-repeat=\"key in lc.keys\">\n" +
-    "    <small><i class=\"material-icons\" style=\"color: {{key.color}}\">stop</i> <span ng-bind=\"key.key\"></span></small>\n" +
+    "    <small>\n" +
+    "      <i class=\"material-icons\" style=\"color: {{key.color}}\">stop</i>\n" +
+    "      <span ng-bind=\"key.key\"></span>\n" +
+    "      <span ng-if=\"key.min != Infinity && key.max != -Infinity\" class=\"details\">\n" +
+    "        (<span ng-bind=\"key.min\"></span> - <span ng-bind=\"key.max\"></span>)&nbsp;(<span ng-bind=\"key.count\"></span>)\n" +
+    "      </span>\n" +
+    "    </small>\n" +
     "  </div>\n" +
     "</div>\n"
   );
@@ -51,7 +57,7 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
     "        </md-option>\n" +
     "      </md-select>\n" +
     "    </md-input-container>\n" +
-    "    <legend></legend>\n" +
+    "    <legend ng-if=\"state.isSuccess\"></legend>\n" +
     "  </md-card-content>\n" +
     "  <!-- <md-card-actions layout=\"row\" layout-align=\"start center\">\n" +
     "    <md-button>Go</md-button>\n" +
@@ -113,7 +119,7 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
     "<div class=\"page-show\">\n" +
     "  <div layout=\"column\" style=\"height:100%;z-index:10;\" ng-cloak>\n" +
     "    <section layout=\"row\" flex>\n" +
-    "      <map-control class=\"md-whiteframe-24dp\" selected-city=\"ps.selectedCity\" selected-type=\"ps.selectedType\"></map-control>\n" +
+    "      <map-control class=\"md-whiteframe-24dp\" selected-city=\"ps.selectedCity\" selected-type=\"ps.selectedType\" state=\"ps.state\"></map-control>\n" +
     "      <md-content flex>\n" +
     "        <div id=\"map-holder\" style=\"height:100%\">\n" +
     "          <distribution-map selected-city=\"ps.selectedCity\" selected-type=\"ps.selectedType\" state=\"ps.state\"></distribution-map>\n" +

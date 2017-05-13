@@ -3,9 +3,10 @@
 (function () {
   function Factory (Bucket, DATA_POINTS) {
     function Model (params) {
-      this.params = { };
+      var self = this;
+      self.params = { };
       _.keys(DATA_POINTS).forEach(function (item) {
-        this.params[item] = params[item];
+        self.params[item] = params[item];
       });
     };
 

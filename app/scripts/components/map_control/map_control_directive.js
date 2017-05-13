@@ -5,7 +5,8 @@
     return {
       scope: {
         selectedCity: '=',
-        selectedType: '='
+        selectedType: '=',
+        state: '='
       },
       link: function ($scope, $element, $attributes) { },
       templateUrl: 'app/scripts/components/map_control/template.html',

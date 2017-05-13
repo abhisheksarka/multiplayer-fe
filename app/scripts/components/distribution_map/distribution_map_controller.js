@@ -5,7 +5,8 @@
     $scope,
     MAP_STYLE,
     PolygonModel,
-    ApiLocalityDetail
+    ApiLocalityDetail,
+    PolygonStatsBucket
   ) {
     var dmc = this;
 
@@ -31,21 +32,9 @@
 
       ApiLocalityDetail.getLocalitiesAndStats(city)
       .then(function(data){
-        PolygonModel.removeAll();
-
-        angular.forEach(data.localityDetails, function (item) {
-          item.polygon = google.maps.geometry.encoding.decodePath(item.polygon);
-          var p = new PolygonModel(item, dmc.map);
-          p.add();
-        });
-
-        angular.forEach(data.stats, function (item) {
-          var p = PolygonModel.all[item.name];
-          if (p) {
-            p.attachStats(item);
-          };
-        });
-
+        buildPolygons(data);
+        attachStats(data);
+        buildBuckets();
         goToLocation();
         $scope.state.success();
       }, function () { $scope.state.error(); });
@@ -67,6 +56,29 @@
       dmc.map.setZoom(11);
     };
 
+    function buildPolygons (data) {
+      PolygonModel.removeAll();
+
+      angular.forEach(data.localityDetails, function (item) {
+        item.polygon = google.maps.geometry.encoding.decodePath(item.polygon);
+        var p = new PolygonModel(item, dmc.map);
+        p.add();
+      });
+    };
+
+    function attachStats (data) {
+      angular.forEach(data.stats, function (item) {
+        var p = PolygonModel.all[item.name.toLowerCase()];
+        if (p) {
+          p.attachStats(item);
+        };
+      });
+    };
+
+    function buildBuckets () {
+      PolygonStatsBucket.generate($scope.selectedCity, $scope.selectedType);
+    };
+
     function canRender() {
       return ($scope.selectedCity && $scope.selectedType && dmc.map);
     }
@@ -79,6 +91,7 @@
       'MAP_STYLE',
       'PolygonModel',
       'ApiLocalityDetail',
+      'PolygonStatsBucket',
       Controller
     ]);
 }());

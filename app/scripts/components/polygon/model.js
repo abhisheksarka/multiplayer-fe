@@ -4,6 +4,8 @@
   function Factory (Color, PolygonStatsModel) {
     function Model (params, map) {
       this.name = params.name;
+      this.city = params.city;
+      this.cid = this.name.toLowerCase();
       this.lat = params.latitude;
       this.lng = params.longitude;
       this.gPolygon = new google.maps.Polygon(angular.extend({path: params.polygon}, Model.defaults()));
@@ -30,7 +32,7 @@
     proto.remove = function ( ) {
       var self = this;
 
-      delete(Model.all[self.name]);
+      delete(Model.all[self.cid]);
       self.gPolygon.setMap(null);
 
       return true;
@@ -39,7 +41,7 @@
     proto.add = function ( ) {
       var self = this;
 
-      Model.all[self.name] = self;
+      Model.all[self.cid] = self;
       self.gPolygon.setMap(self.map);
 
       return true;
