@@ -8,13 +8,14 @@
   function Controller (
     $scope,
     $routeParams,
-    $location
+    $location,
+    State
   ) {
 
     var ps = this;
     ps.selectedCity = $routeParams.city;
     ps.selectedType = $routeParams.type;
-
+    ps.state = new State();
 
     function updateLocation() {
       $location.update_path('show/' + ps.selectedCity + '/' + ps.selectedType);
@@ -39,6 +40,7 @@
       '$scope',
       '$routeParams',
       '$location',
+      'State',
       Controller
     ]);
 }());

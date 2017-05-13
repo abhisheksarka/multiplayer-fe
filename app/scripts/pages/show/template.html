@@ -4,9 +4,12 @@
       <map-control class="md-whiteframe-24dp" selected-city="ps.selectedCity" selected-type="ps.selectedType"></map-control>
       <md-content flex>
         <div id="map-holder" style="height:100%">
-          <distribution-map selected-city="ps.selectedCity" selected-type="ps.selectedType"></distribution-map>
+          <distribution-map selected-city="ps.selectedCity" selected-type="ps.selectedType" state="ps.state"></distribution-map>
         </div>
       </md-content>
     </section>
   </div>
+</div>
+<div id="loader-overlay" ng-if="!ps.state.isSuccess">
+  <md-progress-circular class="md-hue-2 md-accent" md-diameter="120px"></md-progress-circular>
 </div>

@@ -1,7 +1,7 @@
 'use strict';
 
 (function () {
-  function Factory (ApiUtil, $http, $q) {
+  function Factory (ApiUtil, $http, $q, $timeout) {
     function LocalityDetail () { };
 
     LocalityDetail.cities = [ ];
@@ -27,6 +27,20 @@
         });
     };
 
+    LocalityDetail.getStats = function (locality_details) {
+      var defer = $q.defer();
+      $timeout(function(){
+        var stats = [ ];
+        defer.resolve({localityDetails: locality_details, stats: stats});
+      }, 2000);
+      return defer.promise;
+    };
+
+    LocalityDetail.getLocalitiesAndStats = function (city) {
+      return LocalityDetail.getLocalities(city).then(LocalityDetail.getStats);
+    };
+
+
     return LocalityDetail;
   };
 
@@ -36,6 +50,7 @@
       'ApiUtil',
       '$http',
       '$q',
+      '$timeout',
       Factory
     ]);
 }());

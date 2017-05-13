@@ -1,15 +1,14 @@
 'use strict';
 
 (function () {
-  function Factory (Color, PolygonStatModel) {
+  function Factory (Color, PolygonStatsModel) {
     function Model (params, map) {
       this.name = params.name;
       this.lat = params.latitude;
       this.lng = params.longitude;
       this.gPolygon = new google.maps.Polygon(angular.extend({path: params.polygon}, Model.defaults()));
       this.map = map;
-      this.stat = new PolygonStatModel(this.name, params.stats);
-      this.stat.add();
+      this.stats = null;
     };
 
     Model.all = { };
@@ -46,6 +45,10 @@
       return true;
     };
 
+    proto.attachStats = function (statsParams) {
+      this.stats = new PolygonStatsModel(statsParams);
+    }
+
     Model.removeAll = function () {
       angular.forEach(Model.all, function (item) {
         item.remove();
@@ -59,7 +62,7 @@
     .module('app.components.polygon')
     .factory('PolygonModel', [
       'Color',
-      'PolygonStatModel',
+      'PolygonStatsModel',
       Factory
     ]);
 }());

@@ -23,25 +23,34 @@
     });
 
     function populatePolygons () {
-      if (!canRender()) {
-        return;
-      };
+      if (!canRender()) { return; };
+      $scope.state.start();
+
       var city = $scope.selectedCity,
           type = $scope.selectedType;
 
-      ApiLocalityDetail.getLocalities(city)
+      ApiLocalityDetail.getLocalitiesAndStats(city)
       .then(function(data){
         PolygonModel.removeAll();
 
-        angular.forEach(data, function (item) {
+        angular.forEach(data.localityDetails, function (item) {
           item.polygon = google.maps.geometry.encoding.decodePath(item.polygon);
           var p = new PolygonModel(item, dmc.map);
           p.add();
         });
 
+        angular.forEach(data.stats, function (item) {
+          var p = PolygonModel.all[item.name];
+          if (p) {
+            p.attachStats(item);
+          };
+        });
+
         goToLocation();
-      });
+        $scope.state.success();
+      }, function () { $scope.state.error(); });
     };
+
 
     function goToLocation () {
       var bounds= new google.maps.LatLngBounds();

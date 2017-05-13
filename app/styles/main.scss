@@ -113,3 +113,17 @@ md-option {
     margin-bottom: 5px;
   }
 }
+
+#loader-overlay {
+  background-color: rgba(0,0,0,0.9);
+  position: fixed;
+  top: 0px;
+  bottom: 0px;
+  right: 0px;
+  left: 0px;
+  md-progress-circular {
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 15%;
+  }
+}
