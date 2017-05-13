@@ -25,8 +25,7 @@
 
     Model.getBuckets = function () {
       var B = Bucket;
-      Bucket.generate(data, 5, Model.min, Model.max)
-      debugger;
+      Bucket.generate(data, 5, Model.min, Model.max);
     };
 
     return Model;
