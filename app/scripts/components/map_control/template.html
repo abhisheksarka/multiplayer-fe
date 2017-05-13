@@ -10,7 +10,7 @@
   <md-card-content>
     <md-input-container>
       <label>Select City</label>
-      <md-select name="city" ng-model="selectedCity" required md-no-float>
+      <md-select name="city" ng-model="selectedCity" required>
         <md-option ng-repeat="city in mcc.cities" ng-value="city">
           {{city}}
         </md-option>
@@ -19,10 +19,10 @@
     &nbsp;&nbsp;
     <md-input-container>
       <label>Select Type</label>
-      <md-select name="favoriteColor" ng-model="type" required>
-        <md-option>Rent</md-option>
-        <md-option>Search</md-option>
-        <md-option>SAV</md-option>
+      <md-select name="favoriteColor" ng-model="selectedType" required>
+        <md-option ng-repeat="point in mcc.dataPoints" ng-value="point.value">
+          {{point.view}}
+        </md-option>
       </md-select>
     </md-input-container>
     <legend></legend>

@@ -6,15 +6,23 @@
 
 (function () {
   function Controller (
-    $scope
+    $scope,
+    $routeParams,
+    $location
   ) {
+
     var ps = this;
+    ps.selectedCity = $routeParams.city;
+    ps.selectedType = $routeParams.type;
+
   }
 
   angular
     .module('app.pages.show')
     .controller('PageShowController', [
       '$scope',
+      '$routeParams',
+      '$location',
       Controller
     ]);
 }());

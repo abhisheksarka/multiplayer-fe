@@ -40,7 +40,7 @@ angular
         controller: 'PageIndexController',
         controllerAs: 'pi'
       })
-      .when('/show', {
+      .when('/show/:city/:type', {
         templateUrl: 'app/scripts/pages/show/template.html',
         controller: 'PageShowController',
         controllerAs: 'ps'

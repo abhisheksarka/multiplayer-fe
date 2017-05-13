@@ -15,15 +15,20 @@
     $scope.$on('mapInitialized', function (event, map) {
       google.maps.event.trigger(map, 'resize');
       dmc.map = map;
+      populatePolygons();
     });
 
     $scope.$watch('selectedCity', function (nv, ov) {
-      if (nv && nv != ov) {
-        populatePolygons(nv);
-      }
+      populatePolygons();
     });
 
-    function populatePolygons (city) {
+    function populatePolygons () {
+      if (!canRender()) {
+        return;
+      };
+      var city = $scope.selectedCity,
+          type = $scope.selectedType;
+
       ApiLocalityDetail.getLocalities(city)
       .then(function(data){
         PolygonModel.removeAll();
@@ -52,6 +57,10 @@
       dmc.map.fitBounds(bounds)
       dmc.map.setZoom(11);
     };
+
+    function canRender() {
+      return ($scope.selectedCity && $scope.selectedType && dmc.map);
+    }
   }
 
   angular

@@ -36,7 +36,7 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
     "  <md-card-content>\n" +
     "    <md-input-container>\n" +
     "      <label>Select City</label>\n" +
-    "      <md-select name=\"city\" ng-model=\"selectedCity\" required md-no-float>\n" +
+    "      <md-select name=\"city\" ng-model=\"selectedCity\" required>\n" +
     "        <md-option ng-repeat=\"city in mcc.cities\" ng-value=\"city\">\n" +
     "          {{city}}\n" +
     "        </md-option>\n" +
@@ -45,10 +45,10 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
     "    &nbsp;&nbsp;\n" +
     "    <md-input-container>\n" +
     "      <label>Select Type</label>\n" +
-    "      <md-select name=\"favoriteColor\" ng-model=\"type\" required>\n" +
-    "        <md-option>Rent</md-option>\n" +
-    "        <md-option>Search</md-option>\n" +
-    "        <md-option>SAV</md-option>\n" +
+    "      <md-select name=\"favoriteColor\" ng-model=\"selectedType\" required>\n" +
+    "        <md-option ng-repeat=\"point in mcc.dataPoints\" ng-value=\"point.value\">\n" +
+    "          {{point.view}}\n" +
+    "        </md-option>\n" +
     "      </md-select>\n" +
     "    </md-input-container>\n" +
     "    <legend></legend>\n" +
@@ -113,7 +113,7 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
     "<div class=\"page-show\">\n" +
     "  <div layout=\"column\" style=\"height:100%;z-index:10;\" ng-cloak>\n" +
     "    <section layout=\"row\" flex>\n" +
-    "      <map-control class=\"md-whiteframe-24dp\" selected-city=\"ps.selectedCity\"></map-control>\n" +
+    "      <map-control class=\"md-whiteframe-24dp\" selected-city=\"ps.selectedCity\" selected-type=\"ps.selectedType\"></map-control>\n" +
     "      <md-content flex>\n" +
     "        <div id=\"map-holder\" style=\"height:100%\">\n" +
     "          <distribution-map selected-city=\"ps.selectedCity\" selected-type=\"ps.selectedType\"></distribution-map>\n" +

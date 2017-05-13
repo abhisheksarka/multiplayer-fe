@@ -10,7 +10,7 @@
 
     lc.keys = [
       {
-        key: 'Very High',
+        key: 'Maximum',
         color: c.red
       },
       {
@@ -26,7 +26,7 @@
         color: c.lime
       },
       {
-        key: 'Very Low',
+        key: 'Minimum',
         color: c.yellow
       }
     ];

@@ -4,7 +4,8 @@
   function Directive () {
     return {
       scope: {
-        selectedCity: '='
+        selectedCity: '=',
+        selectedType: '='
       },
       link: function ($scope, $element, $attributes) { },
       templateUrl: 'app/scripts/components/map_control/template.html',
