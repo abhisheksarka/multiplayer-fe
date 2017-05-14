@@ -137,6 +137,8 @@ md-option {
   min-width: 200px;
   z-index: 2;
   overflow: hidden;
+  border-radius: 3px;
+  background-color: rgba(0,0,0,0);
   md-card {
     margin: 0px;
   }

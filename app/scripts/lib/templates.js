@@ -73,7 +73,7 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
     "  </md-content>\n" +
     "</div> -->\n" +
     "<md-content flex ng-if=\"mbc.state.show\" style=\"top: {{mbc.state.posY -30 + 'px'}}; left: {{mbc.state.posX +30 +'px'}}\" class=\"md-whiteframe-24dp\" id=\"mouse-box\">\n" +
-    "  <md-card >\n" +
+    "  <md-card md-theme=\"dark-grey\">\n" +
     "    <md-card-header>\n" +
     "      <md-card-header-text>\n" +
     "        <span class=\"md-title\" ng-bind=\"mbc.data.title\"></span>\n" +
@@ -82,7 +82,7 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
     "    <md-card-content>\n" +
     "      <table>\n" +
     "        <tr ng-repeat=\"(key, value) in mbc.data.stats.params\" ng-if=\"value\">\n" +
-    "          <td ng-bind=\"key | uppercase\"></td>\n" +
+    "          <td ng-bind=\"mbc.dataPoints[key]\"></td>\n" +
     "          <td>-</td>\n" +
     "          <td ng-bind=\"value\"></td>\n" +
     "        </tr>\n" +
