@@ -53,6 +53,20 @@
       this.stats = new PolygonStatsModel(statsParams);
     }
 
+    proto.focus = function () {
+      this.gPolygon.setOptions({
+        strokeWeight: 2.5,
+        fillOpacity: 1
+      });
+    };
+
+    proto.unfocus = function () {
+      this.gPolygon.setOptions({
+        strokeWeight: 0.5,
+        fillOpacity: 0.8
+      });
+    };
+
     Model.removeAll = function () {
       angular.forEach(Model.all, function (item) {
         item.remove();

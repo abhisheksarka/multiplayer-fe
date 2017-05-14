@@ -19,16 +19,17 @@
 
       google.maps.event.addListener(pm.gPolygon, 'mousemove', function (event) {
         self._showMouseBox(event);
+        pm.focus();
       });
       google.maps.event.addListener(pm.gPolygon, 'mouseout', function (event) {
         self._hideMouseBox(event);
+        pm.unfocus();
       });
     };
 
 
     proto._showMouseBox = function (event) {
       var self = this;
-
       MouseBox.show(
         event.Ba.clientX, event.Ba.clientY,
         { title: self.polygonModel.name, stats: self.polygonModel.stats }
@@ -38,7 +39,6 @@
 
     proto._hideMouseBox = function (event, self) {
       var self = this;
-
       MouseBox.hide();
       self._updateNgScope();
     };
