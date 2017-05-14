@@ -3,6 +3,7 @@
 
 body {
   background: #333;
+  transition: all ease 1s;
 }
 .page-show, .page-index, .page-markers {
   position: absolute;
@@ -128,5 +129,15 @@ md-option {
     margin-right: auto;
     margin-left: auto;
     margin-top: 15%;
+  }
+}
+
+#mouse-box {
+  position: absolute;
+  max-width: 200px;
+  z-index: 2;
+  overflow: hidden;
+  md-card {
+    margin: 0px;
   }
 }

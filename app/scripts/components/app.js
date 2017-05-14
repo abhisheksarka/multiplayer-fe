@@ -4,5 +4,6 @@ angular.module('app.components', [
   'app.components.mapControl',
   'app.components.sidenav',
   'app.components.distributionMap',
-  'app.components.legend'
+  'app.components.legend',
+  'app.components.mouseBox'
 ]);

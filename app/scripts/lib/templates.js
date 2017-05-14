@@ -66,6 +66,28 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
   );
 
 
+  $templateCache.put('app/scripts/components/mouse_box/template.html',
+    "<!-- <div id=\"mouse-box\" >\n" +
+    "  <md-content flex layout-padding>\n" +
+    "    <h3 class=\"md-title\" ng-bind=\"mbc.data.title\"></h3>\n" +
+    "  </md-content>\n" +
+    "</div> -->\n" +
+    "<md-content flex ng-if=\"mbc.state.show\" style=\"top: {{mbc.state.posY+'px'}}; left: {{mbc.state.posX+'px'}}\" class=\"md-whiteframe-24dp\" id=\"mouse-box\">\n" +
+    "  <md-card >\n" +
+    "    <md-card-header>\n" +
+    "      <md-card-header-text>\n" +
+    "        <span class=\"md-title\" ng-bind=\"mbc.data.title\"></span>\n" +
+    "      </md-card-header-text>\n" +
+    "    </md-card-header>\n" +
+    "\n" +
+    "    <md-card-content>\n" +
+    "\n" +
+    "    </md-card-content>\n" +
+    "  </md-card>\n" +
+    "</md-content>\n"
+  );
+
+
   $templateCache.put('app/scripts/components/sidenav/template.html',
     "<md-sidenav\n" +
     "    class=\"md-sidenav-left\"\n" +

@@ -1,7 +1,7 @@
 'use strict';
 
 (function () {
-  function Factory (PolygonStatsModel) {
+  function Factory (PolygonStatsModel, PolygonEvent) {
     function Model (params, map) {
       this.name = params.name;
       this.city = params.city;
@@ -11,6 +11,8 @@
       this.gPolygon = new google.maps.Polygon(angular.extend({path: params.polygon}, Model.defaults()));
       this.map = map;
       this.stats = null;
+      this.event = new PolygonEvent(this);
+      this.event.register();
     };
 
     Model.all = { };
@@ -64,6 +66,7 @@
     .module('app.components.polygon')
     .factory('PolygonModel', [
       'PolygonStatsModel',
+      'PolygonEvent',
       Factory
     ]);
 }());
