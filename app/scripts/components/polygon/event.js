@@ -15,26 +15,31 @@
 
     proto.registerMouseEvents = function () {
       var self = this,
-          pm = self.polygonModel,
-          showMouseBox = _.debounce(self._showMouseBox, 100),
-          hideMouseBox = _.debounce(self._hideMouseBox, 100);
+          pm = self.polygonModel;
 
-      google.maps.event.addListener(pm.gPolygon, 'mouseover', function (event) {
-        showMouseBox(event, self);
+      google.maps.event.addListener(pm.gPolygon, 'mousemove', function (event) {
+        self._showMouseBox(event);
       });
       google.maps.event.addListener(pm.gPolygon, 'mouseout', function (event) {
-        hideMouseBox(event, self);
+        self._hideMouseBox(event);
       });
     };
 
 
-    proto._showMouseBox = function (event, self) {
-      MouseBox.show(event.Ba.clientX, event.Ba.clientY, { title: self.polygonModel.name });
+    proto._showMouseBox = function (event) {
+      var self = this;
+
+      MouseBox.show(
+        event.Ba.clientX, event.Ba.clientY,
+        { title: self.polygonModel.name, stats: self.polygonModel.stats }
+      );
       self._updateNgScope();
     };
 
     proto._hideMouseBox = function (event, self) {
-      // MouseBox.hide();
+      var self = this;
+
+      MouseBox.hide();
       self._updateNgScope();
     };
 

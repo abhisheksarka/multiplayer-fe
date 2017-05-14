@@ -4,6 +4,7 @@
   function Factory () {
 
     function Service () { };
+    Service.all = { };
 
     Service.state = {
       posX: null,

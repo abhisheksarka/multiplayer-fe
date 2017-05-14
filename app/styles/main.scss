@@ -134,7 +134,7 @@ md-option {
 
 #mouse-box {
   position: absolute;
-  max-width: 200px;
+  min-width: 200px;
   z-index: 2;
   overflow: hidden;
   md-card {
