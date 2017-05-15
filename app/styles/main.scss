@@ -143,3 +143,28 @@ md-option {
     margin: 0px;
   }
 }
+
+#map-control {
+  md-autocomplete.md-dark-grey-theme {
+    background: rgba(0, 0, 0, 1);
+    input {
+      color: whitesmoke;
+    }
+  }
+}
+
+.md-autocomplete-suggestions-container.md-dark-grey-theme {
+  background: #333;
+}
+
+.md-autocomplete-suggestions-container.md-dark-grey-theme li {
+  background: #333;
+  color: whitesmoke;
+  &:hover {
+    background: #111;
+  }
+}
+
+.md-autocomplete-suggestions-container.md-dark-grey-theme li.selected {
+  background: #111;
+}

@@ -4,7 +4,9 @@
   function Controller (
     $scope,
     ApiLocalityDetail,
-    PolygonModel
+    PolygonModel,
+    MouseBox,
+    GmapUtil
   ) {
     var sc = this,
         localitiesRaw = ApiLocalityDetail.localities[$scope.selectedCity];
@@ -18,25 +20,20 @@
     }
 
     sc.selectedItemChange = function (item) {
-      if (sc.selectedPolygon) {
-        sc.selectedPolygon.unfocus();
-      };
+      if (sc.selectedPolygon) { sc.selectedPolygon.unfocus(); }
+
       if (item) {
         sc.selectedPolygon = PolygonModel.all[angular.lowercase(item)];
         sc.selectedPolygon.focus();
-        goToLocation();
+        GmapUtil.goToPolygon(sc.selectedPolygon, 12);
+        var coords = GmapUtil.polygonScreenCoords(sc.selectedPolygon);
+        MouseBox.show(
+          coords.x, coords.y,
+          { title: sc.selectedPolygon.name, stats: sc.selectedPolygon.stats }
+        );
       } else {
         sc.selectedPolygon.map.setZoom(11);
       }
-    };
-
-
-    function goToLocation () {
-      var bounds= new google.maps.LatLngBounds(),
-          polygonModel = sc.selectedPolygon;
-
-      polygonModel.map.setCenter(new google.maps.LatLng(polygonModel.lat, polygonModel.lng));
-      polygonModel.map.setZoom(12);
     };
 
 
@@ -55,6 +52,8 @@
       '$scope',
       'ApiLocalityDetail',
       'PolygonModel',
+      'MouseBox',
+      'GmapUtil',
       Controller
     ]);
 }());

@@ -31,7 +31,7 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('app/scripts/components/map_control/template.html',
-    "<md-card md-theme=\"dark-grey\">\n" +
+    "<md-card md-theme=\"dark-grey\" id=\"map-control\">\n" +
     "  <md-card-title>\n" +
     "    <md-card-title-text>\n" +
     "      <span class=\"md-headline\">\n" +
@@ -99,6 +99,7 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
     "<!-- md-selected-item-change=\"ctrl.selectedItemChange(item)\" -->\n" +
     "\n" +
     "<md-autocomplete\n" +
+    "  md-theme=\"dark-grey\"\n" +
     "  md-selected-item=\"sc.selectedItem\"\n" +
     "  md-search-text=\"sc.searchText\"\n" +
     "  md-items=\"item in sc.querySearch(sc.searchText)\"\n" +
