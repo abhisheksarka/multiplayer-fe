@@ -7,11 +7,12 @@
 (function () {
   function Controller (
     $scope,
-    $location
+    $location,
+    DATA_POINTS
   ) {
     var pi = this;
     pi.show = function () {
-      $location.path('/show/bengaluru/search');
+      $location.path('/show/bengaluru/' + _.keys(DATA_POINTS)[0]);
     };
   }
 
@@ -20,6 +21,7 @@
   .controller('PageIndexController', [
     '$scope',
     '$location',
+    'DATA_POINTS',
     Controller
   ]);
 }());

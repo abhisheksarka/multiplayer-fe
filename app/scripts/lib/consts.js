@@ -4,4 +4,5 @@
 
   module.constant('API_ROOT_PATH', window.LOCALITICS_CONFIG.API_ROOT_PATH);
   module.constant('DATA_POINTS', window.LOCALITICS_CONFIG.DATA_POINTS);
+  module.constant('CITY_LAT_LNGS', window.LOCALITICS_CONFIG.CITY_LAT_LNGS);
 }());
