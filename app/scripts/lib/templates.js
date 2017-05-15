@@ -9,6 +9,7 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
     "  map-type-id=\"ROADMAP\"\n" +
     "  map-type-control=\"false\"\n" +
     "  background-color=\"#333\"\n" +
+    "  disable-default-u-i=\"true\"\n" +
     "  street-view-control=\"false\">\n" +
     "</ng-map>\n"
   );
@@ -58,10 +59,29 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
     "      </md-select>\n" +
     "    </md-input-container>\n" +
     "    <legend ng-if=\"state.isSuccess\"></legend>\n" +
+    "    <br>\n" +
+    "    <md-autocomplete\n" +
+    "          ng-if=\"state.isSuccess\"\n" +
+    "          ng-disabled=\"ctrl.isDisabled\"\n" +
+    "          md-no-cache=\"ctrl.noCache\"\n" +
+    "          md-selected-item=\"ctrl.selectedItem\"\n" +
+    "          md-search-text-change=\"ctrl.searchTextChange(ctrl.searchText)\"\n" +
+    "          md-search-text=\"ctrl.searchText\"\n" +
+    "          md-selected-item-change=\"ctrl.selectedItemChange(item)\"\n" +
+    "          md-items=\"item in ctrl.querySearch(ctrl.searchText)\"\n" +
+    "          md-item-text=\"item.display\"\n" +
+    "          md-min-length=\"0\"\n" +
+    "          placeholder=\"Find a locality in Bengaluru\">\n" +
+    "        <md-item-template>\n" +
+    "          <span md-highlight-text=\"ctrl.searchText\" md-highlight-flags=\"^i\">{{item.display}}</span>\n" +
+    "        </md-item-template>\n" +
+    "        <md-not-found>\n" +
+    "          No states matching \"{{ctrl.searchText}}\" were found.\n" +
+    "          <a ng-click=\"ctrl.newState(ctrl.searchText)\">Create a new one!</a>\n" +
+    "        </md-not-found>\n" +
+    "      </md-autocomplete>\n" +
     "  </md-card-content>\n" +
-    "  <!-- <md-card-actions layout=\"row\" layout-align=\"start center\">\n" +
-    "    <md-button>Go</md-button>\n" +
-    "  </md-card-actions> -->\n" +
+    "  <br>\n" +
     "</md-card>\n"
   );
 

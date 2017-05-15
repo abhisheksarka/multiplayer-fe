@@ -11,7 +11,7 @@
   ) {
     var pi = this;
     pi.show = function () {
-      $location.path('/show');
+      $location.path('/show/bengaluru/search');
     };
   }
 
