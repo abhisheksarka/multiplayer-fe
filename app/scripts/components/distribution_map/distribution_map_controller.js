@@ -69,8 +69,8 @@
     };
 
     function attachStats (data) {
-      angular.forEach(data.stats, function (item) {
-        var p = PolygonModel.all[item.name.toLowerCase()];
+      angular.forEach(data.stats, function (item, key) {
+        var p = PolygonModel.all[key.toLowerCase()];
         if (p) {
           p.attachStats(item);
         };
