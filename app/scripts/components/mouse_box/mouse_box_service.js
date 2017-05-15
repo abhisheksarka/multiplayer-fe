@@ -17,14 +17,22 @@
       stats: { }
     };
 
+    Service.config = {
+      color: null
+    }
+
     Service.show = function (posX, posY, data) {
       var s = Service.state,
-          d = Service.data;
+          d = Service.data,
+          c = Service.config
 
       s.posX = posX;
       s.posY = posY;
+
       d.title = data.title;
       d.stats = data.stats;
+
+      c.color = data.color;
 
       s.show = true;
     };

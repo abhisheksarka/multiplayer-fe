@@ -9,6 +9,7 @@
     var mbc = this;
     mbc.state = MouseBox.state;
     mbc.data = MouseBox.data;
+    mbc.config = MouseBox.config;
     mbc.dataPoints = DATA_POINTS;
   }
 

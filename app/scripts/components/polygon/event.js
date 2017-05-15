@@ -32,7 +32,11 @@
       var self = this;
       MouseBox.show(
         event.Ba.clientX, event.Ba.clientY,
-        { title: self.polygonModel.name, stats: self.polygonModel.stats }
+        {
+          title: self.polygonModel.name,
+          stats: self.polygonModel.stats,
+          color: self.polygonModel.gPolygon.fillColor
+        }
       );
       self._updateNgScope();
     };

@@ -29,7 +29,11 @@
         var coords = GmapUtil.polygonScreenCoords(sc.selectedPolygon);
         MouseBox.show(
           coords.x, coords.y,
-          { title: sc.selectedPolygon.name, stats: sc.selectedPolygon.stats }
+          {
+            title: sc.selectedPolygon.name,
+            stats: sc.selectedPolygon.stats,
+            color: sc.selectedPolygon.gPolygon.fillColor
+          }
         );
       } else {
         sc.selectedPolygon.map.setZoom(11);

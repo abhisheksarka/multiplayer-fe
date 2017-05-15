@@ -3,7 +3,11 @@
     <h3 class="md-title" ng-bind="mbc.data.title"></h3>
   </md-content>
 </div> -->
-<md-content flex ng-if="mbc.state.show" style="top: {{mbc.state.posY -30 + 'px'}}; left: {{mbc.state.posX +30 +'px'}}" class="md-whiteframe-24dp" id="mouse-box">
+<md-content flex
+  ng-if="mbc.state.show"
+  style="top: {{mbc.state.posY -30 + 'px'}}; left: {{mbc.state.posX +30 +'px'}}; border-top: 4px solid {{mbc.config.color}}"
+  class="md-whiteframe-24dp"
+  id="mouse-box">
   <md-card md-theme="dark-grey">
     <md-card-header>
       <md-card-header-text>

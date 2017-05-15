@@ -73,7 +73,11 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
     "    <h3 class=\"md-title\" ng-bind=\"mbc.data.title\"></h3>\n" +
     "  </md-content>\n" +
     "</div> -->\n" +
-    "<md-content flex ng-if=\"mbc.state.show\" style=\"top: {{mbc.state.posY -30 + 'px'}}; left: {{mbc.state.posX +30 +'px'}}\" class=\"md-whiteframe-24dp\" id=\"mouse-box\">\n" +
+    "<md-content flex\n" +
+    "  ng-if=\"mbc.state.show\"\n" +
+    "  style=\"top: {{mbc.state.posY -30 + 'px'}}; left: {{mbc.state.posX +30 +'px'}}; border-top: 4px solid {{mbc.config.color}}\"\n" +
+    "  class=\"md-whiteframe-24dp\"\n" +
+    "  id=\"mouse-box\">\n" +
     "  <md-card md-theme=\"dark-grey\">\n" +
     "    <md-card-header>\n" +
     "      <md-card-header-text>\n" +
