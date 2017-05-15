@@ -16,10 +16,10 @@
     </md-card-header>
     <md-card-content>
       <table>
-        <tr ng-repeat="(key, value) in mbc.data.stats.params" ng-if="value">
+        <tr ng-repeat="(key, value) in mbc.data.stats.params">
           <td ng-bind="mbc.dataPoints[key]"></td>
           <td>-</td>
-          <td ng-bind="value"></td>
+          <td ng-bind="value || 'N/A'"></td>
         </tr>
       </table>
     </md-card-content>

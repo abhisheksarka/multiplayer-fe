@@ -9,7 +9,6 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
     "  map-type-id=\"ROADMAP\"\n" +
     "  map-type-control=\"false\"\n" +
     "  background-color=\"#333\"\n" +
-    "  disable-default-u-i=\"true\"\n" +
     "  street-view-control=\"false\">\n" +
     "</ng-map>\n"
   );
@@ -40,7 +39,7 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
     "      </span>\n" +
     "    </md-card-title-text>\n" +
     "  </md-card-title>\n" +
-    "  <md-card-content>\n" +
+    "  <md-card-content ng-show=\"mcc.cities.length > 0\">\n" +
     "    <md-input-container>\n" +
     "      <label>Select City</label>\n" +
     "      <md-select name=\"city\" ng-model=\"selectedCity\" required>\n" +
@@ -86,10 +85,10 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
     "    </md-card-header>\n" +
     "    <md-card-content>\n" +
     "      <table>\n" +
-    "        <tr ng-repeat=\"(key, value) in mbc.data.stats.params\" ng-if=\"value\">\n" +
+    "        <tr ng-repeat=\"(key, value) in mbc.data.stats.params\">\n" +
     "          <td ng-bind=\"mbc.dataPoints[key]\"></td>\n" +
     "          <td>-</td>\n" +
-    "          <td ng-bind=\"value\"></td>\n" +
+    "          <td ng-bind=\"value || 'N/A'\"></td>\n" +
     "        </tr>\n" +
     "      </table>\n" +
     "    </md-card-content>\n" +
