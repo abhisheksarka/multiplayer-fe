@@ -20,7 +20,7 @@
     var proto = Model.prototype;
 
     Model.defaults = function () {
-      var color = '#fff';
+      var color = '#795548';
 
       return {
         strokeColor: '#333',
