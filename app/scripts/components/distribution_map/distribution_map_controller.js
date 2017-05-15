@@ -24,6 +24,10 @@
       populatePolygons();
     });
 
+    $scope.$watch('selectedType', function (nv, ov) {
+      populatePolygons();
+    });
+
     function populatePolygons () {
       if (!canRender()) { return; };
       $scope.state.start();
@@ -60,9 +64,8 @@
 
     function buildPolygons (data) {
       PolygonModel.removeAll();
-
       angular.forEach(data.localityDetails, function (item) {
-        item.polygon = google.maps.geometry.encoding.decodePath(item.polygon);
+        item.polygonPath = google.maps.geometry.encoding.decodePath(item.polygon);
         var p = new PolygonModel(item, dmc.map);
         p.add();
       });

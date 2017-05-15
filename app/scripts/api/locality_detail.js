@@ -6,32 +6,53 @@
 
     LocalityDetail.cities = [ ];
     LocalityDetail.localities = { };
+    LocalityDetail.localityStats = { };
 
     LocalityDetail.getCities = function () {
       return $http.get(ApiUtil.fullPath('/locality_details/cities'))
-        .then(function (res) {
-          var d = res.data.data;
-          d.forEach(function(item){
-            LocalityDetail.cities.push(item);
-          })
-          return d;
-        });
+      .then(function (res) {
+        var d = res.data.data;
+        d.forEach(function(item){
+          LocalityDetail.cities.push(item);
+        })
+        return d;
+      });
     };
 
     LocalityDetail.getLocalities = function (city) {
-      return $http.get(ApiUtil.fullPath('/locality_details/localities'), {params: {city: city}})
+      var defer = $q.defer(),
+          l = LocalityDetail.localities[city];
+      if (!_.isEmpty(l)) {
+        defer.resolve({localityDetails: l, city: city});
+      } else {
+        $http.get(ApiUtil.fullPath('/locality_details/localities'), {params: {city: city}})
         .then(function (res) {
           var d = res.data.data;
           LocalityDetail.localities[city] = d;
-          return d;
+          defer.resolve({localityDetails: d, city: city});
+        }, function () {
+          defer.reject();
         });
+      };
+      return defer.promise;
     };
 
-    LocalityDetail.getStats = function (locality_details) {
-      return $http.get(ApiUtil.fullPath('/locality_details/localitics_data'), {params: {city: city}})
-      .then(function (res) {
-        return {localityDetails: locality_details, stats: res.data.data};
-      });
+    LocalityDetail.getStats = function (params) {
+      var defer = $q.defer(),
+          city = params.city,
+          s = LocalityDetail.localityStats[city];
+
+      if (!_.isEmpty(s)) {
+        defer.resolve({localityDetails: params.localityDetails, stats: s});
+      } else {
+        $http.get(ApiUtil.fullPath('/locality_details/localitics_data'), {params: {city: params.city}})
+        .then(function (res) {
+          var d = res.data.data;
+          LocalityDetail.localityStats[city] = d;
+          defer.resolve({localityDetails: params.localityDetails, stats: d});
+        });
+      };
+      return defer.promise;
     };
 
     LocalityDetail.getLocalitiesAndStats = function (city) {

@@ -8,7 +8,7 @@
       this.cid = this.name.toLowerCase();
       this.lat = params.latitude;
       this.lng = params.longitude;
-      this.gPolygon = new google.maps.Polygon(angular.extend({path: params.polygon}, Model.defaults()));
+      this.gPolygon = new google.maps.Polygon(angular.extend({path: params.polygonPath}, Model.defaults()));
       this.map = map;
       this.stats = null;
       this.event = new PolygonEvent(this);
