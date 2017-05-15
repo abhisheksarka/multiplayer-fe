@@ -121,25 +121,6 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('app/scripts/components/sidenav/template.html',
-    "<md-sidenav\n" +
-    "    class=\"md-sidenav-left\"\n" +
-    "    md-component-id=\"left\"\n" +
-    "    style=\"width: 360px; height: 100%;\"\n" +
-    "    md-is-locked-open=\"$mdMedia('gt-sm')\" >\n" +
-    "  <md-toolbar class=\"md-theme-indigo\">\n" +
-    "    <h1 class=\"md-toolbar-tools\">Disabled Backdrop</h1>\n" +
-    "  </md-toolbar>\n" +
-    "  <md-content>\n" +
-    "    <div layout-padding>\n" +
-    "      <md-input-container>\n" +
-    "      </md-input-container>\n" +
-    "    </div>\n" +
-    "  </md-content>\n" +
-    "</md-sidenav>\n"
-  );
-
-
   $templateCache.put('app/scripts/pages/index/template.html',
     "<div class=\"page-index\" layout-align=\"center\">\n" +
     "  <div layout=\"row\" flex layout-align=\"center center\">\n" +
