@@ -60,28 +60,9 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
     "    </md-input-container>\n" +
     "    <legend ng-if=\"state.isSuccess\"></legend>\n" +
     "    <br>\n" +
-    "    <md-autocomplete\n" +
-    "          ng-if=\"state.isSuccess\"\n" +
-    "          ng-disabled=\"ctrl.isDisabled\"\n" +
-    "          md-no-cache=\"ctrl.noCache\"\n" +
-    "          md-selected-item=\"ctrl.selectedItem\"\n" +
-    "          md-search-text-change=\"ctrl.searchTextChange(ctrl.searchText)\"\n" +
-    "          md-search-text=\"ctrl.searchText\"\n" +
-    "          md-selected-item-change=\"ctrl.selectedItemChange(item)\"\n" +
-    "          md-items=\"item in ctrl.querySearch(ctrl.searchText)\"\n" +
-    "          md-item-text=\"item.display\"\n" +
-    "          md-min-length=\"0\"\n" +
-    "          placeholder=\"Find a locality in Bengaluru\">\n" +
-    "        <md-item-template>\n" +
-    "          <span md-highlight-text=\"ctrl.searchText\" md-highlight-flags=\"^i\">{{item.display}}</span>\n" +
-    "        </md-item-template>\n" +
-    "        <md-not-found>\n" +
-    "          No states matching \"{{ctrl.searchText}}\" were found.\n" +
-    "          <a ng-click=\"ctrl.newState(ctrl.searchText)\">Create a new one!</a>\n" +
-    "        </md-not-found>\n" +
-    "      </md-autocomplete>\n" +
+    "    <search ng-if=\"state.isSuccess\" selected-city=\"selectedCity\"></search>\n" +
+    "    <br>\n" +
     "  </md-card-content>\n" +
-    "  <br>\n" +
     "</md-card>\n"
   );
 
@@ -110,6 +91,29 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
     "    </md-card-content>\n" +
     "  </md-card>\n" +
     "</md-content>\n"
+  );
+
+
+  $templateCache.put('app/scripts/components/search/template.html',
+    "<!-- md-search-text-change=\"ctrl.searchTextChange(ctrl.searchText)\" -->\n" +
+    "<!-- md-selected-item-change=\"ctrl.selectedItemChange(item)\" -->\n" +
+    "\n" +
+    "<md-autocomplete\n" +
+    "  md-selected-item=\"sc.selectedItem\"\n" +
+    "  md-search-text=\"sc.searchText\"\n" +
+    "  md-items=\"item in sc.querySearch(sc.searchText)\"\n" +
+    "  md-item-text=\"item\"\n" +
+    "  md-min-length=\"0\"\n" +
+    "  md-selected-item-change=\"sc.selectedItemChange(item)\"\n" +
+    "  placeholder=\"Find a locality in Bengaluru\">\n" +
+    "  <md-item-template>\n" +
+    "    <span md-highlight-text=\"sc.searchText\" md-highlight-flags=\"^i\">{{item}}</span>\n" +
+    "  </md-item-template>\n" +
+    "  <md-not-found>\n" +
+    "    No localities matching \"{{sc.searchText}}\" were found.\n" +
+    "    <!-- <a ng-click=\"ctrl.newState(ctrl.searchText)\">Create a new one!</a> -->\n" +
+    "  </md-not-found>\n" +
+    "</md-autocomplete>\n"
   );
 
 
