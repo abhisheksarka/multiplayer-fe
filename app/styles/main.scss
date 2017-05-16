@@ -34,6 +34,7 @@ body {
   md-card {
     position: absolute;
     max-width: 360px;
+    min-width: 180px;
     z-index: 20;
     .logo {
       top: 12px;
@@ -130,6 +131,8 @@ md-option {
     margin-left: auto;
     margin-top: 15%;
   }
+  color: white;
+  text-align: center;
 }
 
 #mouse-box {
@@ -167,4 +170,10 @@ md-option {
 
 .md-autocomplete-suggestions-container.md-dark-grey-theme li.selected {
   background: #111;
+}
+
+md-progress-circular {
+  path {
+    stroke-width: 5px !important;
+  }
 }

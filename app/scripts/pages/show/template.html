@@ -11,5 +11,8 @@
   </div>
 </div>
 <div id="loader-overlay" ng-if="!ps.state.isSuccess">
-  <md-progress-circular class="md-hue-2 md-accent" md-diameter="120px"></md-progress-circular>
+  <div ng-if="ps.state.isStart">
+    <md-progress-circular class="md-hue-2 md-accent" md-diameter="120px"></md-progress-circular>
+    <h3>Crunching data...</h3>
+  </div>
 </div>

@@ -171,7 +171,10 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
     "  </div>\n" +
     "</div>\n" +
     "<div id=\"loader-overlay\" ng-if=\"!ps.state.isSuccess\">\n" +
-    "  <md-progress-circular class=\"md-hue-2 md-accent\" md-diameter=\"120px\"></md-progress-circular>\n" +
+    "  <div ng-if=\"ps.state.isStart\">\n" +
+    "    <md-progress-circular class=\"md-hue-2 md-accent\" md-diameter=\"120px\"></md-progress-circular>\n" +
+    "    <h3>Crunching data...</h3>\n" +
+    "  </div>\n" +
     "</div>\n"
   );
 
