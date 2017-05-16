@@ -115,7 +115,7 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
     "  md-item-text=\"item\"\n" +
     "  md-min-length=\"0\"\n" +
     "  md-selected-item-change=\"sc.selectedItemChange(item)\"\n" +
-    "  placeholder=\"Find a locality in Bengaluru\">\n" +
+    "  placeholder=\"Find a locality\">\n" +
     "  <md-item-template>\n" +
     "    <span md-highlight-text=\"sc.searchText\" md-highlight-flags=\"^i\">{{item}}</span>\n" +
     "  </md-item-template>\n" +

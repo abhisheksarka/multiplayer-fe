@@ -30,6 +30,17 @@
         );
       }
     })
+
+    $scope.$watch('selectedCity', function (nv, ov) {
+      if (nv && nv != ov) {
+        $scope.state.start();
+        $timeout(
+          function () {
+            $scope.state.success();
+          }, true
+        );
+      }
+    })
   }
 
   angular

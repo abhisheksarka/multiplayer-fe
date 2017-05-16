@@ -8,14 +8,13 @@
     MouseBox,
     GmapUtil
   ) {
-    var sc = this,
-        localitiesRaw = ApiLocalityDetail.localities[$scope.selectedCity];
+    var sc = this;
 
     sc.selectedPolygon = null;
-    sc.localities = localitiesRaw.map(function (item) { return item.name; });
 
     sc.querySearch = function(query) {
-      var results = query ? sc.localities.filter(createFilterFor(query)) : sc.localities;
+      var localities = ApiLocalityDetail.localities[$scope.selectedCity].map(function (item) { return item.name; });
+      var results = query ? localities.filter(createFilterFor(query)) : localities;
       return results;
     }
 
