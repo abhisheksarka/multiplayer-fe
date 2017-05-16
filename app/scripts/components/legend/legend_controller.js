@@ -10,7 +10,7 @@
         c = Color.colors,
         b = PolygonStatsBucket.buckets;
 
-
+    lc.defaultColor = Color.default;    
     lc.keys = [
       {
         key: 'Maximum',

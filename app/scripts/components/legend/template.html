@@ -1,11 +1,17 @@
 <div class="legend">
-  <div class="key" ng-repeat="key in lc.keys" ng-if="key.min != Infinity || key.max != -Infinity">
+  <div class="key" ng-repeat="key in lc.keys" ng-if="(key.min.toString() != 'Infinity' && key.max.toString() != 'Infinity')">
     <small>
       <i class="material-icons" style="color: {{key.color}}">stop</i>
       <span ng-bind="key.key"></span>
       <span class="details">
         (<span ng-bind="key.min"></span> - <span ng-bind="key.max"></span>)&nbsp;(<span ng-bind="key.count"></span>)
       </span>
+    </small>
+  </div>
+  <div class="key">
+    <small>
+      <i class="material-icons" style="color: {{lc.defaultColor}}">stop</i>
+      <span>Data unavailable</span>
     </small>
   </div>
 </div>

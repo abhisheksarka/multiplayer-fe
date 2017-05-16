@@ -12,6 +12,7 @@
       maximum: '#F44336'
     };
 
+    Color.default = '#795548';
 
     Color.findColor = function (value) {
       var bucket = PolygonStatsBucket.findBucket(value);

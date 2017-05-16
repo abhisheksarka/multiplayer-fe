@@ -23,7 +23,7 @@
     '$scope',
     '$location',
     'DATA_POINTS',
-    'CITY_LAT_LNGS'
+    'CITY_LAT_LNGS',
     Controller
   ]);
 }());
