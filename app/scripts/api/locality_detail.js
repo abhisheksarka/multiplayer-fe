@@ -1,7 +1,7 @@
 'use strict';
 
 (function () {
-  function Factory (ApiUtil, $http, $q, $timeout) {
+  function Factory (ApiUtil, $http, $q, $timeout, CITY_LAT_LNGS) {
     function LocalityDetail () { };
 
     LocalityDetail.cities = [ ];
@@ -13,7 +13,9 @@
       .then(function (res) {
         var d = res.data.data;
         d.forEach(function(item){
-          LocalityDetail.cities.push(item);
+          if CITY_LAT_LNGS[item.toLowerCase()] {
+            LocalityDetail.cities.push(item);
+          };
         })
         return d;
       });
@@ -70,6 +72,7 @@
       '$http',
       '$q',
       '$timeout',
+      'CITY_LAT_LNGS',
       Factory
     ]);
 }());

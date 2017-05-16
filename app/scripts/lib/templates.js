@@ -16,11 +16,11 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
 
   $templateCache.put('app/scripts/components/legend/template.html',
     "<div class=\"legend\">\n" +
-    "  <div class=\"key\" ng-repeat=\"key in lc.keys\">\n" +
+    "  <div class=\"key\" ng-repeat=\"key in lc.keys\" ng-if=\"key.min != Infinity && key.max != -Infinity\">\n" +
     "    <small>\n" +
     "      <i class=\"material-icons\" style=\"color: {{key.color}}\">stop</i>\n" +
     "      <span ng-bind=\"key.key\"></span>\n" +
-    "      <span ng-if=\"key.min != Infinity && key.max != -Infinity\" class=\"details\">\n" +
+    "      <span class=\"details\">\n" +
     "        (<span ng-bind=\"key.min\"></span> - <span ng-bind=\"key.max\"></span>)&nbsp;(<span ng-bind=\"key.count\"></span>)\n" +
     "      </span>\n" +
     "    </small>\n" +

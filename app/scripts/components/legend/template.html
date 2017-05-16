@@ -1,9 +1,9 @@
 <div class="legend">
-  <div class="key" ng-repeat="key in lc.keys">
+  <div class="key" ng-repeat="key in lc.keys" ng-if="key.min != Infinity || key.max != -Infinity">
     <small>
       <i class="material-icons" style="color: {{key.color}}">stop</i>
       <span ng-bind="key.key"></span>
-      <span ng-if="key.min != Infinity && key.max != -Infinity" class="details">
+      <span class="details">
         (<span ng-bind="key.min"></span> - <span ng-bind="key.max"></span>)&nbsp;(<span ng-bind="key.count"></span>)
       </span>
     </small>
