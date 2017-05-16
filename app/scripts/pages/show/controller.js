@@ -10,7 +10,8 @@
     $routeParams,
     $location,
     State,
-    $rootScope
+    $rootScope,
+    MouseBox
   ) {
 
     var ps = this;
@@ -30,6 +31,7 @@
     $scope.$watch(angular.bind(ps, function () {
       return ps.selectedCity;
     }), function (newVal, oldVal) {
+      MouseBox.hide();
       updateLocation();
     });
 
@@ -48,6 +50,7 @@
       '$location',
       'State',
       '$rootScope',
+      'MouseBox',
       Controller
     ]);
 }());
