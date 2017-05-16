@@ -16,7 +16,7 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
 
   $templateCache.put('app/scripts/components/legend/template.html',
     "<div class=\"legend\">\n" +
-    "  <div class=\"key\" ng-repeat=\"key in lc.keys\" ng-if=\"key.min != Infinity && key.max != -Infinity\">\n" +
+    "  <div class=\"key\" ng-repeat=\"key in lc.keys\" ng-if=\"key.min != Infinity || key.max != -Infinity\">\n" +
     "    <small>\n" +
     "      <i class=\"material-icons\" style=\"color: {{key.color}}\">stop</i>\n" +
     "      <span ng-bind=\"key.key\"></span>\n" +
