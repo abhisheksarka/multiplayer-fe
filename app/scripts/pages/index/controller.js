@@ -8,11 +8,12 @@
   function Controller (
     $scope,
     $location,
-    DATA_POINTS
+    DATA_POINTS,
+    CITY_LAT_LNGS
   ) {
     var pi = this;
     pi.show = function () {
-      $location.path('/show/bengaluru/' + _.keys(DATA_POINTS)[0]);
+      $location.path('/show/' + _.keys(CITY_LAT_LNGS)[0] + '/' + _.keys(DATA_POINTS)[0]);
     };
   }
 
@@ -22,6 +23,7 @@
     '$scope',
     '$location',
     'DATA_POINTS',
+    'CITY_LAT_LNGS'
     Controller
   ]);
 }());
