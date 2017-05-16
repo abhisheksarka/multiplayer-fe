@@ -13,7 +13,7 @@
       .then(function (res) {
         var d = res.data.data;
         d.forEach(function(item){
-          if CITY_LAT_LNGS[item.toLowerCase()] {
+          if (CITY_LAT_LNGS[item.toLowerCase()]) {
             LocalityDetail.cities.push(item);
           };
         })
