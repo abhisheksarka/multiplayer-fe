@@ -50,21 +50,7 @@
 
     function goToLocation () {
       var latLng = CITY_LAT_LNGS[$scope.selectedCity.toLowerCase()];
-      if (latLng) {
-        dmc.map.setCenter(new google.maps.LatLng(latLng.lat, latLng.lng));
-      } else {
-        var bounds= new google.maps.LatLngBounds();
-        angular.forEach(PolygonModel.all, function (item) {
-          var paths = item.gPolygon.getPaths();
-          paths.forEach(function (path) {
-            var ar = path.getArray();
-            for (var i=0, l=ar.length; i<l; i++){
-               bounds.extend(ar[i]);
-             };
-           });
-        });
-        dmc.map.fitBounds(bounds);
-      };
+      dmc.map.setCenter(new google.maps.LatLng(latLng.lat, latLng.lng));
       dmc.map.setZoom(11);
     };
 
