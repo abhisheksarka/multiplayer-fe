@@ -8,7 +8,8 @@
     ApiLocalityDetail,
     PolygonStatsBucket,
     Color,
-    CITY_LAT_LNGS
+    CITY_LAT_LNGS,
+    $timeout
   ) {
     var dmc = this;
 
@@ -43,8 +44,14 @@
         buildBuckets();
         fillColor();
         goToLocation();
-        $scope.state.success();
-      }, function () { $scope.state.error(); });
+        $timeout(function () {
+          $scope.state.success();
+        }, 0, true);
+      }, function () {
+        $timeout(function () {
+          $scope.state.error();
+        }, 0, true);
+      });
     };
 
 
@@ -103,6 +110,7 @@
       'PolygonStatsBucket',
       'Color',
       'CITY_LAT_LNGS',
+      '$timeout',
       Controller
     ]);
 }());
