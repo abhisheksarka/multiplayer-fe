@@ -9,13 +9,19 @@
     $scope,
     $routeParams,
     $location,
-    State
+    State,
+    $rootScope
   ) {
 
     var ps = this;
-    ps.selectedCity = $routeParams.city;
-    ps.selectedType = $routeParams.type;
+
     ps.state = new State();
+    setValues();
+
+    function setValues() {
+      ps.selectedCity = $routeParams.city;
+      ps.selectedType = $routeParams.type;
+    };
 
     function updateLocation() {
       $location.update_path('show/' + ps.selectedCity + '/' + ps.selectedType);
@@ -41,6 +47,7 @@
       '$routeParams',
       '$location',
       'State',
+      '$rootScope',
       Controller
     ]);
 }());

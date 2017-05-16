@@ -23,7 +23,7 @@
       var color = '#795548';
 
       return {
-        strokeColor: '#333',
+        strokeColor: '#000',
         strokeWeight: 0.5,
         strokeOpacity: 1,
         fillColor: color,
