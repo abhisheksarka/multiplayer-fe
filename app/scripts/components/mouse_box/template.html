@@ -17,7 +17,7 @@
     <md-card-content>
       <table>
         <tr ng-repeat="(key, value) in mbc.data.stats.params">
-          <td><span ng-bind="mbc.dataPoints[key]"></span> : </td>
+          <td><span ng-bind="mbc.dataPoints[key].name"></span> : </td>
           <td ng-bind="value || 'N/A'"></td>
         </tr>
       </table>

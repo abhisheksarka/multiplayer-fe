@@ -13,7 +13,7 @@
     angular.forEach(DATA_POINTS, function (item, key) {
       mcc.dataPoints.push({
         value: key,
-        view: item
+        view: item.name
       });
     });
 

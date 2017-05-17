@@ -17,13 +17,23 @@
     <!-- endbuild -->
     <script>
       window.LOCALITICS_CONFIG = {
-        API_ROOT_PATH: 'http://192.168.43.223:3000/api/v3',
+        API_ROOT_PATH: 'http://172.16.0.98:3000/api/v3',
         DATA_POINTS: {
-          search_count: 'Search',
-          sav_count: 'Scheduled Visits',
-          house_count: 'Houses Added',
-          soldout_count: 'Sold Out Houses',
-          ready_count: 'Ready to Move In Houses'
+          search_count: {
+            name: 'Search'
+          },
+          sav_count: {
+            name: 'Scheduled Visits'
+          },
+          house_count: {
+            name: 'Houses Added'
+          },
+          soldout_count: {
+            name: 'Sold Out Houses'
+          },
+          ready_count: {
+            name: 'Ready to Move In Houses'
+          }
         },
         CITY_LAT_LNGS: {
           bengaluru: {lat: 12.9716, lng: 77.5946},
