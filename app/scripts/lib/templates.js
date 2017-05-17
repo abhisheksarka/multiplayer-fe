@@ -92,7 +92,7 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
     "    <md-card-content>\n" +
     "      <table>\n" +
     "        <tr ng-repeat=\"(key, value) in mbc.data.stats.params\">\n" +
-    "          <td><span ng-bind=\"mbc.dataPoints[key]\"></span> : </td>\n" +
+    "          <td><span ng-bind=\"mbc.dataPoints[key].name\"></span> : </td>\n" +
     "          <td ng-bind=\"value || 'N/A'\"></td>\n" +
     "        </tr>\n" +
     "      </table>\n" +

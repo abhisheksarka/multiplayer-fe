@@ -4,9 +4,14 @@
   function Factory (Bucket, DATA_POINTS) {
     function Model (params) {
       var self = this;
+      self.rawParams = params;
       self.params = { };
-      _.keys(DATA_POINTS).forEach(function (item) {
-        self.params[item] = params[item];
+      angular.forEach(DATA_POINTS, function(item, key){
+        if (item.formula) {
+          self.params[key] = item.formula(params);
+        } else {
+          self.params[key] = params[key];
+        }
       });
     };
 

@@ -17,22 +17,31 @@
     <!-- endbuild -->
     <script>
       window.LOCALITICS_CONFIG = {
-        API_ROOT_PATH: 'http://172.16.0.98:3000/api/v3',
+        API_ROOT_PATH: 'http://172.16.0.99:3000/api/v3',
         DATA_POINTS: {
-          search_count: {
-            name: 'Search'
+          hotness_index: {
+            name: 'Hotness Index',
+            formula: function (params) {
+              return params.search_count;
+            }
           },
-          sav_count: {
-            name: 'Scheduled Visits'
+          liquidity_index: {
+            name: 'Liquidity Index',
+            formula: function (params) {
+              return _.random(0, 100);
+            }
           },
-          house_count: {
-            name: 'Houses Added'
+          distribution_index: {
+            name: 'Distribution Index',
+            formula: function (params) {
+              return _.random(0, 1000);
+            }
           },
-          soldout_count: {
-            name: 'Sold Out Houses'
-          },
-          ready_count: {
-            name: 'Ready to Move In Houses'
+          coversion_index: {
+            name: 'Conversion Index',
+            formula: function (params) {
+              return _.random(10, 10000);
+            }
           }
         },
         CITY_LAT_LNGS: {
