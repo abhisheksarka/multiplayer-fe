@@ -17,7 +17,9 @@
       angular.forEach(PolygonModel.all, function (item, key) {
         if (item.city == city) {
           item.stats = item.stats || { params: { }};
-          res.push(item.stats.params[type]);
+          if (item.stats.params[type]) {
+            res.push(item.stats.params[type]);
+          };
         };
       });
 
