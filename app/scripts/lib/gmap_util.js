@@ -22,6 +22,18 @@
       return new google.maps.Point((worldPoint.x - bottomLeft.x) * scale, (worldPoint.y - topRight.y) * scale);
     };
 
+    GmapUtil.addMarker = function (polygonModel) {
+      var map = polygonModel.gPolygon.map,
+          latLng = {lat: polygonModel.lat, lng: polygonModel.lng},
+          marker = new google.maps.Marker({
+            position: latLng,
+            map: map,
+            icon: 'https://cdn4.iconfinder.com/data/icons/universal-7/614/2_-_Down-48.png',
+            animation: google.maps.Animation.BOUNCE
+          });
+      return marker;
+    };
+
     return GmapUtil;
   };
 

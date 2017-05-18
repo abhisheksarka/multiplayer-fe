@@ -19,12 +19,12 @@
 
     Service.config = {
       color: null
-    }
+    };
 
     Service.show = function (posX, posY, data) {
       var s = Service.state,
           d = Service.data,
-          c = Service.config
+          c = Service.config;
 
       s.posX = posX;
       s.posY = posY;

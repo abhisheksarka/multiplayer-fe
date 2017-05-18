@@ -11,6 +11,7 @@
     var sc = this;
 
     sc.selectedPolygon = null;
+    sc.markers = [];
 
     sc.querySearch = function(query) {
       var localities = ApiLocalityDetail.localities[$scope.selectedCity].map(function (item) { return item.name; });
@@ -19,11 +20,12 @@
     }
 
     sc.selectedItemChange = function (item) {
+      clearMarkers();
       if (sc.selectedPolygon) { sc.selectedPolygon.unfocus(); }
-
       if (item) {
         sc.selectedPolygon = PolygonModel.all[angular.lowercase(item)];
         sc.selectedPolygon.focus();
+        sc.markers.push(GmapUtil.addMarker(sc.selectedPolygon));
         GmapUtil.goToPolygon(sc.selectedPolygon, 12);
         var coords = GmapUtil.polygonScreenCoords(sc.selectedPolygon);
         MouseBox.show(
@@ -39,6 +41,11 @@
       }
     };
 
+    function clearMarkers() {
+      sc.markers.forEach(function (marker) {
+        marker.setMap(null);
+      });
+    };
 
     function createFilterFor(query) {
       var lowercaseQuery = angular.lowercase(query);

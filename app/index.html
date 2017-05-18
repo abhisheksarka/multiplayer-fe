@@ -17,7 +17,7 @@
     <!-- endbuild -->
     <script>
       window.LOCALITICS_CONFIG = {
-        API_ROOT_PATH: 'http://172.16.0.99:3000/api/v3',
+        API_ROOT_PATH: 'http://127.0.0.1:3000/api/v3',
         DATA_POINTS: {
           hotness_index: {
             name: 'Hotness Index',
@@ -28,13 +28,15 @@
           liquidity_index: {
             name: 'Liquidity Index',
             formula: function (params) {
-              return _.random(0, 100);
+              var val = (params.empty_bed_count/params.search_count);
+              return (isNaN(val) ? null : parseFloat(val.toFixed(4)));
             }
           },
           distribution_index: {
             name: 'Distribution Index',
             formula: function (params) {
-              return _.random(0, 1000);
+              var val = (params.empty_bed_count/params.sav_count);
+              return (isNaN(val) ? null : parseFloat(val.toFixed(4))*100);
             }
           },
           coversion_index: {

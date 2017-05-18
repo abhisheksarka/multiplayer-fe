@@ -1,7 +1,11 @@
 'use strict';
 
 (function () {
-  function Factory (PolygonStatsModel, PolygonEvent) {
+  function Factory (
+    PolygonStatsModel,
+    PolygonEvent,
+    GmapUtil
+  ) {
     function Model (params, map) {
       this.name = params.name;
       this.city = params.city;
@@ -55,7 +59,7 @@
 
     proto.focus = function () {
       this.gPolygon.setOptions({
-        strokeWeight: 2.5,
+        strokeWeight: 3,
         fillOpacity: 1
       });
     };
@@ -81,6 +85,7 @@
     .factory('PolygonModel', [
       'PolygonStatsModel',
       'PolygonEvent',
+      'GmapUtil',
       Factory
     ]);
 }());
