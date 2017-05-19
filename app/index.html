@@ -19,30 +19,31 @@
       window.LOCALITICS_CONFIG = {
         API_ROOT_PATH: 'http://127.0.0.1:3000/api/v3',
         DATA_POINTS: {
-          hotness_index: {
+          hotnessIndex: {
             name: 'Hotness Index',
             formula: function (params) {
               return params.search_count;
             }
           },
-          liquidity_index: {
+          liquidityIndex: {
             name: 'Liquidity Index',
             formula: function (params) {
               var val = (params.empty_bed_count/params.search_count);
               return (isNaN(val) ? null : parseFloat(val.toFixed(4)));
             }
           },
-          distribution_index: {
+          distributionIndex: {
             name: 'Distribution Index',
             formula: function (params) {
               var val = (params.empty_bed_count/params.sav_count);
               return (isNaN(val) ? null : parseFloat(val.toFixed(4))*100);
             }
           },
-          coversion_index: {
+          conversionIndex: {
             name: 'Conversion Index',
             formula: function (params) {
-              return _.random(10, 10000);
+              var val = (params.filled_bed_count/params.sav_count);
+              return (isNaN(val) ? null : parseFloat(val.toFixed(4))*100);
             }
           }
         },
