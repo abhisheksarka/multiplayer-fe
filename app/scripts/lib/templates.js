@@ -169,6 +169,7 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
     "    </section>\n" +
     "  </div>\n" +
     "</div>\n" +
+    "<mouse-box></mouse-box>\n" +
     "<div id=\"loader-overlay\" ng-if=\"!ps.state.isSuccess\">\n" +
     "  <!-- <div ng-if=\"ps.state.isStart\"> -->\n" +
     "    <md-progress-circular class=\"md-hue-2 md-accent\" md-diameter=\"120px\"></md-progress-circular>\n" +
