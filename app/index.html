@@ -28,22 +28,22 @@
           liquidityIndex: {
             name: 'Liquidity Index',
             formula: function (params) {
-              var val = (params.empty_bed_count/params.search_count);
+              var val = params.empty_bed_count;
               return (isNaN(val) ? null : parseFloat(val.toFixed(4)));
             }
           },
           distributionIndex: {
             name: 'Distribution Index',
             formula: function (params) {
-              var val = (params.empty_bed_count/params.sav_count);
-              return (isNaN(val) ? null : parseFloat(val.toFixed(4))*100);
+              var val = params.sav_count;
+              return (isNaN(val) ? null : parseFloat(val.toFixed(4)));
             }
           },
-          conversionIndex: {
-            name: 'Conversion Index',
+          efficiencyIndex: {
+            name: 'Efficiency Index',
             formula: function (params) {
               var val = (params.filled_bed_count/params.sav_count);
-              return (isNaN(val) ? null : parseFloat(val.toFixed(4))*100);
+              return (isNaN(val) ? null : parseFloat(val.toFixed(4)));
             }
           }
         },
