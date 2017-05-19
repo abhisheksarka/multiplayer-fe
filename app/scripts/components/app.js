@@ -5,5 +5,6 @@ angular.module('app.components', [
   'app.components.distributionMap',
   'app.components.legend',
   'app.components.mouseBox',
-  'app.components.search'
+  'app.components.search',
+  'app.components.timeline'
 ]);

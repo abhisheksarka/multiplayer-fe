@@ -22,6 +22,7 @@
     function setValues() {
       ps.selectedCity = $routeParams.city;
       ps.selectedType = $routeParams.type;
+      ps.selectedTimeline = 12;
     };
 
     function updateLocation() {

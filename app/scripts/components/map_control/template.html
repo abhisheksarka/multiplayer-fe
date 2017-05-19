@@ -25,9 +25,10 @@
         </md-option>
       </md-select>
     </md-input-container>
+    <timeline selected-timeline="selectedTimeline" ng-if="state.isSuccess"></timeline>
+    <br><br>
     <legend ng-if="state.isSuccess"></legend>
     <br>
     <search ng-if="state.isSuccess" selected-city="selectedCity"></search>
-    <br>
   </md-card-content>
 </md-card>

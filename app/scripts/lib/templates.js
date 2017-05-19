@@ -63,10 +63,11 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
     "        </md-option>\n" +
     "      </md-select>\n" +
     "    </md-input-container>\n" +
+    "    <timeline selected-timeline=\"selectedTimeline\" ng-if=\"state.isSuccess\"></timeline>\n" +
+    "    <br><br>\n" +
     "    <legend ng-if=\"state.isSuccess\"></legend>\n" +
     "    <br>\n" +
     "    <search ng-if=\"state.isSuccess\" selected-city=\"selectedCity\"></search>\n" +
-    "    <br>\n" +
     "  </md-card-content>\n" +
     "</md-card>\n"
   );
@@ -105,24 +106,38 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
   $templateCache.put('app/scripts/components/search/template.html',
     "<!-- md-search-text-change=\"ctrl.searchTextChange(ctrl.searchText)\" -->\n" +
     "<!-- md-selected-item-change=\"ctrl.selectedItemChange(item)\" -->\n" +
-    "\n" +
-    "<md-autocomplete\n" +
-    "  md-theme=\"dark-grey\"\n" +
-    "  md-selected-item=\"sc.selectedItem\"\n" +
-    "  md-search-text=\"sc.searchText\"\n" +
-    "  md-items=\"item in sc.querySearch(sc.searchText)\"\n" +
-    "  md-item-text=\"item\"\n" +
-    "  md-min-length=\"0\"\n" +
-    "  md-selected-item-change=\"sc.selectedItemChange(item)\"\n" +
-    "  placeholder=\"Find a locality\">\n" +
-    "  <md-item-template>\n" +
-    "    <span md-highlight-text=\"sc.searchText\" md-highlight-flags=\"^i\">{{item}}</span>\n" +
-    "  </md-item-template>\n" +
-    "  <md-not-found>\n" +
-    "    No localities matching \"{{sc.searchText}}\" were found.\n" +
-    "    <!-- <a ng-click=\"ctrl.newState(ctrl.searchText)\">Create a new one!</a> -->\n" +
-    "  </md-not-found>\n" +
-    "</md-autocomplete>\n"
+    "<div>\n" +
+    "  <md-autocomplete\n" +
+    "    md-theme=\"dark-grey\"\n" +
+    "    md-selected-item=\"sc.selectedItem\"\n" +
+    "    md-search-text=\"sc.searchText\"\n" +
+    "    md-items=\"item in sc.querySearch(sc.searchText)\"\n" +
+    "    md-item-text=\"item\"\n" +
+    "    md-min-length=\"0\"\n" +
+    "    md-selected-item-change=\"sc.selectedItemChange(item)\"\n" +
+    "    placeholder=\"Find a locality\">\n" +
+    "    <md-item-template>\n" +
+    "      <span md-highlight-text=\"sc.searchText\" md-highlight-flags=\"^i\">{{item}}</span>\n" +
+    "    </md-item-template>\n" +
+    "    <md-not-found>\n" +
+    "      No localities matching \"{{sc.searchText}}\" were found.\n" +
+    "      <!-- <a ng-click=\"ctrl.newState(ctrl.searchText)\">Create a new one!</a> -->\n" +
+    "    </md-not-found>\n" +
+    "  </md-autocomplete>\n" +
+    "</div>\n"
+  );
+
+
+  $templateCache.put('app/scripts/components/timeline/template.html',
+    "<div>\n" +
+    "  <small>\n" +
+    "    <label>Timeline (<span ng-bind=\"selectedTimeline\"></span> weeks)</label>\n" +
+    "  </small>\n" +
+    "  <md-slider-container>\n" +
+    "    <md-slider flex min=\"1\" max=\"12\" ng-model=\"selectedTimeline\" aria-label=\"red\" id=\"red-slider\">\n" +
+    "    </md-slider>\n" +
+    "  </md-slider-container>\n" +
+    "</div>\n"
   );
 
 
@@ -160,7 +175,7 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
     "<div class=\"page-show\">\n" +
     "  <div layout=\"column\" style=\"height:100%;z-index:10;\" ng-cloak>\n" +
     "    <section layout=\"row\" flex>\n" +
-    "      <map-control class=\"md-whiteframe-24dp\" selected-city=\"ps.selectedCity\" selected-type=\"ps.selectedType\" state=\"ps.state\"></map-control>\n" +
+    "      <map-control class=\"md-whiteframe-24dp\" selected-city=\"ps.selectedCity\" selected-type=\"ps.selectedType\" selected-timeline=\"ps.selectedTimeline\" state=\"ps.state\"></map-control>\n" +
     "      <md-content flex>\n" +
     "        <div id=\"map-holder\" style=\"height:100%\">\n" +
     "          <distribution-map selected-city=\"ps.selectedCity\" selected-type=\"ps.selectedType\" state=\"ps.state\"></distribution-map>\n" +
