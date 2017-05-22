@@ -43,7 +43,7 @@
             name: 'Efficiency Index',
             formula: function (params) {
               var val = (params.filled_bed_count/params.sav_count);
-              return (isNaN(val) ? null : parseFloat(val.toFixed(4)));
+              return (isNaN(val) ? null : parseFloat(parseFloat((val.toFixed(4))*100).toFixed(2)));
             }
           }
         },
