@@ -4,7 +4,7 @@
   function Directive () {
     return {
       scope: {
-        selectedTimeline: '='
+        timelineConfig: '='
       },
       link: function ($scope, $element, $attributes) { },
       templateUrl: 'app/scripts/components/timeline/template.html',

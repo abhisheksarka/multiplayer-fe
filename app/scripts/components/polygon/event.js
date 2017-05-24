@@ -31,7 +31,7 @@
     proto._showMouseBox = function (event) {
       var self = this;
       MouseBox.show(
-        event.Ba.clientX, event.Ba.clientY,
+        event.ta.clientX, event.ta.clientY,
         {
           title: self.polygonModel.name,
           stats: self.polygonModel.stats,

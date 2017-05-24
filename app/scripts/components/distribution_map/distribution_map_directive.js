@@ -6,6 +6,7 @@
       scope: {
         selectedCity: '=',
         selectedType: '=',
+        timelineConfig: '=',
         state: '='
       },
       link: function ($scope, $element, $attributes) { },

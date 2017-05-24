@@ -17,12 +17,12 @@
     var ps = this;
 
     ps.state = new State();
-    setValues();
-
-    function setValues() {
-      ps.selectedCity = $routeParams.city;
-      ps.selectedType = $routeParams.type;
-      ps.selectedTimeline = 12;
+    ps.selectedCity = $routeParams.city;
+    ps.selectedType = $routeParams.type;
+    ps.timelineConfig = {
+      min: 1,
+      max: 90,
+      selected: 90
     };
 
     function updateLocation() {

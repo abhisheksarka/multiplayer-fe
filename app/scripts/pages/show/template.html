@@ -1,10 +1,21 @@
 <div class="page-show">
   <div layout="column" style="height:100%;z-index:10;" ng-cloak>
     <section layout="row" flex>
-      <map-control class="md-whiteframe-24dp" selected-city="ps.selectedCity" selected-type="ps.selectedType" selected-timeline="ps.selectedTimeline" state="ps.state"></map-control>
+      <map-control
+        class="md-whiteframe-24dp"
+        selected-city="ps.selectedCity"
+        selected-type="ps.selectedType"
+        timeline-config="ps.timelineConfig"
+        state="ps.state">
+      </map-control>
       <md-content flex>
         <div id="map-holder" style="height:100%">
-          <distribution-map selected-city="ps.selectedCity" selected-type="ps.selectedType" state="ps.state"></distribution-map>
+          <distribution-map
+            selected-city="ps.selectedCity"
+            selected-type="ps.selectedType"
+            timeline-config="ps.timelineConfig"
+            state="ps.state">
+          </distribution-map>
         </div>
       </md-content>
     </section>

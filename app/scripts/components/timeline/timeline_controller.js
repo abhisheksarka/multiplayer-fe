@@ -2,7 +2,8 @@
 
 (function () {
   function Controller (
-    $scope
+    $scope,
+    $rootScope
   ) {
     var tc = this;
   }
@@ -11,6 +12,7 @@
     .module('app.components.timeline')
     .controller('TimelineController', [
       '$scope',
+      '$rootScope',
       Controller
     ]);
 }());

@@ -57,7 +57,7 @@
       return defer.promise;
     };
 
-    LocalityDetail.getLocalitiesAndStats = function (city) {
+    LocalityDetail.getLocalitiesAndStats = function (city, timeline) {
       return LocalityDetail.getLocalities(city).then(LocalityDetail.getStats);
     };
 

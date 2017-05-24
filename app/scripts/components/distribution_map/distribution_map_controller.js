@@ -26,6 +26,10 @@
       populatePolygons();
     });
 
+    $scope.$watch("timelineConfig.selected", function(nv, ov){
+      populatePolygons();
+    });
+
     $scope.$watch('selectedType', function (nv, ov) {
       populatePolygons();
     });
@@ -35,9 +39,10 @@
       $scope.state.start();
 
       var city = $scope.selectedCity,
-          type = $scope.selectedType;
+          type = $scope.selectedType,
+          timeline = $scope.timelineConfig.selected;
 
-      ApiLocalityDetail.getLocalitiesAndStats(city)
+      ApiLocalityDetail.getLocalitiesAndStats(city, timeline)
       .then(function(data){
         buildPolygons(data);
         attachStats(data);

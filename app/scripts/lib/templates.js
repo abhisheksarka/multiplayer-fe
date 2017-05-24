@@ -63,7 +63,7 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
     "        </md-option>\n" +
     "      </md-select>\n" +
     "    </md-input-container>\n" +
-    "    <timeline selected-timeline=\"selectedTimeline\" ng-if=\"state.isSuccess\"></timeline>\n" +
+    "    <timeline timeline-config=\"timelineConfig\"></timeline>\n" +
     "    <br><br>\n" +
     "    <legend ng-if=\"state.isSuccess\"></legend>\n" +
     "    <br>\n" +
@@ -131,10 +131,10 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
   $templateCache.put('app/scripts/components/timeline/template.html',
     "<div>\n" +
     "  <small>\n" +
-    "    <label>Timeline (<span ng-bind=\"selectedTimeline\"></span> weeks)</label>\n" +
+    "    <label>Timeline (<span ng-bind=\"timelineConfig.selected\"></span> days)</label>\n" +
     "  </small>\n" +
     "  <md-slider-container>\n" +
-    "    <md-slider flex min=\"1\" max=\"12\" ng-model=\"selectedTimeline\" aria-label=\"red\" id=\"red-slider\">\n" +
+    "    <md-slider flex min=\"{{timelineConfig.min}}\" max=\"{{timelineConfig.max}}\" ng-model=\"timelineConfig.selected\" aria-label=\"red\" id=\"red-slider\">\n" +
     "    </md-slider>\n" +
     "  </md-slider-container>\n" +
     "</div>\n"
@@ -175,10 +175,21 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
     "<div class=\"page-show\">\n" +
     "  <div layout=\"column\" style=\"height:100%;z-index:10;\" ng-cloak>\n" +
     "    <section layout=\"row\" flex>\n" +
-    "      <map-control class=\"md-whiteframe-24dp\" selected-city=\"ps.selectedCity\" selected-type=\"ps.selectedType\" selected-timeline=\"ps.selectedTimeline\" state=\"ps.state\"></map-control>\n" +
+    "      <map-control\n" +
+    "        class=\"md-whiteframe-24dp\"\n" +
+    "        selected-city=\"ps.selectedCity\"\n" +
+    "        selected-type=\"ps.selectedType\"\n" +
+    "        timeline-config=\"ps.timelineConfig\"\n" +
+    "        state=\"ps.state\">\n" +
+    "      </map-control>\n" +
     "      <md-content flex>\n" +
     "        <div id=\"map-holder\" style=\"height:100%\">\n" +
-    "          <distribution-map selected-city=\"ps.selectedCity\" selected-type=\"ps.selectedType\" state=\"ps.state\"></distribution-map>\n" +
+    "          <distribution-map\n" +
+    "            selected-city=\"ps.selectedCity\"\n" +
+    "            selected-type=\"ps.selectedType\"\n" +
+    "            timeline-config=\"ps.timelineConfig\"\n" +
+    "            state=\"ps.state\">\n" +
+    "          </distribution-map>\n" +
     "        </div>\n" +
     "      </md-content>\n" +
     "    </section>\n" +
