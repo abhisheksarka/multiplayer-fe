@@ -21,8 +21,8 @@
     ps.selectedType = $routeParams.type;
     ps.timelineConfig = {
       min: 1,
-      max: 90,
-      selected: 90
+      max: 12,
+      selected: 12
     };
 
     function updateLocation() {

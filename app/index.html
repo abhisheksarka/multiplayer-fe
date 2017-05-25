@@ -17,33 +17,30 @@
     <!-- endbuild -->
     <script>
       window.LOCALITICS_CONFIG = {
-        API_ROOT_PATH: 'http://127.0.0.1:3000/api/v3',
+        API_ROOT_PATH: 'http://172.16.0.97:3000/api/v3',
         DATA_POINTS: {
           hotnessIndex: {
             name: 'Hotness Index',
             formula: function (params) {
-              return params.search_count;
+              return parseFloat(params.hotness_index.toFixed(2));
             }
           },
           liquidityIndex: {
             name: 'Liquidity Index',
             formula: function (params) {
-              var val = params.empty_bed_count;
-              return (isNaN(val) ? null : parseFloat(val.toFixed(4)));
+              return parseFloat(params.liquidity_index.toFixed(2));
             }
           },
           distributionIndex: {
             name: 'Distribution Index',
             formula: function (params) {
-              var val = params.sav_count;
-              return (isNaN(val) ? null : parseFloat(val.toFixed(4)));
+              return parseFloat(params.distribution_index.toFixed(2));
             }
           },
-          efficiencyIndex: {
-            name: 'Efficiency Index',
+          conversionIndex: {
+            name: 'Conversion Index',
             formula: function (params) {
-              var val = (params.filled_bed_count/params.sav_count);
-              return (isNaN(val) ? null : parseFloat(parseFloat((val.toFixed(4))*100).toFixed(2)));
+              return parseFloat(params.conversion_index.toFixed(2));
             }
           }
         },

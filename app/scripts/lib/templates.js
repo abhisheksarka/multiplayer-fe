@@ -131,7 +131,7 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
   $templateCache.put('app/scripts/components/timeline/template.html',
     "<div>\n" +
     "  <small>\n" +
-    "    <label>Timeline (<span ng-bind=\"timelineConfig.selected\"></span> days)</label>\n" +
+    "    <label>Timeline (<span ng-bind=\"timelineConfig.selected\"></span> weeks)</label>\n" +
     "  </small>\n" +
     "  <md-slider-container>\n" +
     "    <md-slider flex min=\"{{timelineConfig.min}}\" max=\"{{timelineConfig.max}}\" ng-model=\"timelineConfig.selected\" aria-label=\"red\" id=\"red-slider\">\n" +

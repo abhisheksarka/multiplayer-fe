@@ -21,17 +21,17 @@
       });
     };
 
-    LocalityDetail.getLocalities = function (city) {
+    LocalityDetail.getLocalities = function (city, days) {
       var defer = $q.defer(),
           l = LocalityDetail.localities[city];
       if (!_.isEmpty(l)) {
-        defer.resolve({localityDetails: l, city: city});
+        defer.resolve({localityDetails: l, city: city, days: days});
       } else {
         $http.get(ApiUtil.fullPath('/locality_details/localities'), {params: {city: city}})
         .then(function (res) {
           var d = res.data.data;
           LocalityDetail.localities[city] = d;
-          defer.resolve({localityDetails: d, city: city});
+          defer.resolve({localityDetails: d, city: city, days: days});
         }, function () {
           defer.reject();
         });
@@ -42,23 +42,41 @@
     LocalityDetail.getStats = function (params) {
       var defer = $q.defer(),
           city = params.city,
-          s = LocalityDetail.localityStats[city];
+          days = params.days;
 
-      if (!_.isEmpty(s)) {
-        defer.resolve({localityDetails: params.localityDetails, stats: s});
+      var cc = LocalityDetail.localityStats[city];
+      if (_.isEmpty(cc)) {
+        LocalityDetail.localityStats[city] = { };
+      };
+
+      var cdc = LocalityDetail.localityStats[city][days];
+      if (_.isEmpty(cdc)) {
+        LocalityDetail.localityStats[city][days] = { };
+      };
+
+      var c = LocalityDetail.localityStats[city][days];
+
+      if (!_.isEmpty(c)) {
+        defer.resolve({localityDetails: params.localityDetails, stats: c});
       } else {
-        $http.get(ApiUtil.fullPath('/locality_details/localitics_data'), {params: {city: params.city}})
+        $http.get(ApiUtil.fullPath('/locality_details/localitics_data'), {params: {city: params.city, days: params.days}})
         .then(function (res) {
           var d = res.data.data;
-          LocalityDetail.localityStats[city] = d;
+          LocalityDetail.localityStats[city][days] = d;
           defer.resolve({localityDetails: params.localityDetails, stats: d});
         });
       };
+
       return defer.promise;
     };
 
-    LocalityDetail.getLocalitiesAndStats = function (city, timeline) {
-      return LocalityDetail.getLocalities(city).then(LocalityDetail.getStats);
+    LocalityDetail.getLocalitiesAndStats = function (city, weeks) {
+      var days = weeks*7;
+      if (days >= 84) {
+        days = 90;
+      };
+
+      return LocalityDetail.getLocalities(city, days).then(LocalityDetail.getStats);
     };
 
 
