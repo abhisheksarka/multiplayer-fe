@@ -147,7 +147,7 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
     "    <div layout=\"column\" layout-align=\"center\">\n" +
     "      <br><br><br><br>\n" +
     "      <div class=\"logo-container\">\n" +
-    "        <img src=\"https://www.polymer-project.org/images/logos/p-logo.png\"/>\n" +
+    "        <img src=\"https://s3.amazonaws.com/localitics/images/logo_large.png\"/>\n" +
     "      </div>\n" +
     "      <h1 class=\"md-display-2\">\n" +
     "        <span style=\"opacity: 0.1;\">&lt;</span>\n" +
@@ -160,7 +160,7 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
     "  </div>\n" +
     "  <br><br>\n" +
     "  <section layout=\"row\" layout-sm=\"column\" layout-align=\"center center\" layout-wrap>\n" +
-    "    <md-button class=\"md-raised md-accent md-large md-round\" ng-click=\"pi.show($event)\">Go</md-button>\n" +
+    "    <md-button class=\"md-raised md-large md-round\" ng-click=\"pi.show($event)\">Go</md-button>\n" +
     "  </section>\n" +
     "  <div layout=\"row\" class=\"footer\" layout-align=\"center\">\n" +
     "    <small>\n" +
