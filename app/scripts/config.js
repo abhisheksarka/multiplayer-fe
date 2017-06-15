@@ -70,11 +70,13 @@ window.LOCALITICS_CONFIG = {
     mumbai: {lat: 19.0760, lng: 72.877}
   },
   TREND_DATA_POINTS: {
+    conversion_index: 'Conversion Index',
+    liquidity_index: 'Liquidity Index',
+    distribution_index: 'Distribution Index',
     searches: 'Searches',
     bookings: 'Bookings',
     scheduled_savs: 'Scheduled Savs',
     savs: 'Created Savs',
-    empty_beds: 'Empty Beds',
-    shared_rent: 'Shared Rent'
+    empty_beds: 'Empty Beds'
   }
 }
