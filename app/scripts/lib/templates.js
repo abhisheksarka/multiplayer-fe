@@ -143,16 +143,25 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
 
   $templateCache.put('app/scripts/components/trend/template.html',
     "<div id=\"trend\">\n" +
+    "  <div class=\"overlay\">\n" +
+    "  </div>\n" +
     "  <div layout-align=\"center\">\n" +
     "    <md-progress-linear md-mode=\"indeterminate\" class=\"md-hue-2 md-accent\" style=\"margin-right: auto; margin-left: auto;\" ng-if=\"tc.state.isStart\"></md-progress-linear>\n" +
     "  </div>\n" +
     "  <div id=\"trend-display\" ng-if=\"tc.state.isSuccess\"></div>\n" +
+    "  <div ng-if=\"tc.state.isSuccess\" id=\"trend-overlay\">\n" +
+    "    <h2 id=\"trend-message\">\n" +
+    "      Select a Data Point from the below list to get started\n" +
+    "      <br>\n" +
+    "      <i class=\"material-icons\">arrow_downward</i>\n" +
+    "    </h2>\n" +
+    "  </div>\n" +
     "</div>\n"
   );
 
 
   $templateCache.put('app/scripts/components/trend/trend_dialog_template.html',
-    "<md-dialog aria-label=\"{{tc.name + ' Trends'}}\">\n" +
+    "<md-dialog aria-label=\"{{tc.name + ' Trends'}}\" class=\"trend-dialog\">\n" +
     "  <md-toolbar md-theme=\"dark-grey\" class=\"md-accent\">\n" +
     "    <div class=\"md-toolbar-tools md-accent\">\n" +
     "      <h2 ng-bind=\"tdc.name + ' Trends'\"></h2>\n" +

@@ -1,6 +1,15 @@
 <div id="trend">
+  <div class="overlay">
+  </div>
   <div layout-align="center">
     <md-progress-linear md-mode="indeterminate" class="md-hue-2 md-accent" style="margin-right: auto; margin-left: auto;" ng-if="tc.state.isStart"></md-progress-linear>
   </div>
   <div id="trend-display" ng-if="tc.state.isSuccess"></div>
+  <div ng-if="tc.state.isSuccess" id="trend-overlay">
+    <h2 id="trend-message">
+      Select a Data Point from the below list to get started
+      <br>
+      <i class="material-icons">arrow_downward</i>
+    </h2>
+  </div>
 </div>

@@ -52,7 +52,12 @@
         bindto: '#trend-display',
         data: {
           x: 'x',
-          columns: toC3(data)
+          columns: toC3(data),
+          hide: true
+        },
+        zoom: {
+          enabled: true,
+          rescale: true
         },
         axis: {
           x: {
@@ -71,6 +76,7 @@
           }
         }
       });
+      $scope.onRendered();
     };
 
     load();
