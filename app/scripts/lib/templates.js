@@ -141,6 +141,50 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
   );
 
 
+  $templateCache.put('app/scripts/components/trend/template.html',
+    "<div id=\"trend\">\n" +
+    "  <div layout-align=\"center\">\n" +
+    "    <md-progress-linear md-mode=\"indeterminate\" class=\"md-hue-2 md-accent\" style=\"margin-right: auto; margin-left: auto;\" ng-if=\"tc.state.isStart\"></md-progress-linear>\n" +
+    "  </div>\n" +
+    "  <div id=\"trend-display\" ng-if=\"tc.state.isSuccess\"></div>\n" +
+    "</div>\n"
+  );
+
+
+  $templateCache.put('app/scripts/components/trend/trend_dialog_template.html',
+    "<md-dialog aria-label=\"{{tc.name + ' Trends'}}\">\n" +
+    "  <md-toolbar md-theme=\"dark-grey\" class=\"md-accent\">\n" +
+    "    <div class=\"md-toolbar-tools md-accent\">\n" +
+    "      <h2 ng-bind=\"tdc.name + ' Trends'\"></h2>\n" +
+    "      <!-- <span flex></span>\n" +
+    "      <md-button class=\"md-icon-button\" ng-click=\"cancel()\">\n" +
+    "        <md-icon md-svg-src=\"img/icons/ic_close_24px.svg\" aria-label=\"Close dialog\"></md-icon>\n" +
+    "      </md-button> -->\n" +
+    "    </div>\n" +
+    "  </md-toolbar>\n" +
+    "\n" +
+    "  <md-dialog-content>\n" +
+    "    <div class=\"md-dialog-content\">\n" +
+    "      <trend trend-config=\"tdc.trendConfig\"></trend>\n" +
+    "    </div>\n" +
+    "  </md-dialog-content>\n" +
+    "\n" +
+    "  <!-- <md-dialog-actions layout=\"row\">\n" +
+    "    <md-button href=\"http://en.wikipedia.org/wiki/Mango\" target=\"_blank\" md-autofocus>\n" +
+    "      More on Wikipedia\n" +
+    "    </md-button>\n" +
+    "    <span flex></span>\n" +
+    "    <md-button ng-click=\"answer('not useful')\">\n" +
+    "     Not Useful\n" +
+    "    </md-button>\n" +
+    "    <md-button ng-click=\"answer('useful')\">\n" +
+    "      Useful\n" +
+    "    </md-button>\n" +
+    "  </md-dialog-actions> -->\n" +
+    "</md-dialog>\n"
+  );
+
+
   $templateCache.put('app/scripts/pages/index/template.html',
     "<div class=\"page-index\" layout-align=\"center\">\n" +
     "  <div layout=\"row\" flex layout-align=\"center center\">\n" +

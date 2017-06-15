@@ -1,7 +1,7 @@
 'use strict';
 
 (function () {
-  function Factory (MouseBox, $rootScope) {
+  function Factory (MouseBox, $rootScope, TrendDialog) {
 
     function Model (polygonModel) {
       this.polygonModel = polygonModel;
@@ -11,6 +11,7 @@
 
     proto.register = function () {
       this.registerMouseEvents();
+      this.registerClick();
     };
 
     proto.registerMouseEvents = function () {
@@ -21,12 +22,21 @@
         self._showMouseBox(event);
         pm.focus();
       });
+
       google.maps.event.addListener(pm.gPolygon, 'mouseout', function (event) {
         self._hideMouseBox(event);
         pm.unfocus();
       });
     };
 
+    proto.registerClick = function () {
+      var self = this,
+          pm = self.polygonModel;
+      google.maps.event.addListener(pm.gPolygon, 'click', function (event) {
+        TrendDialog.open(pm);
+        pm.focus();
+      });
+    };
 
     proto._showMouseBox = function (event) {
       var self = this;
@@ -62,6 +72,7 @@
     .factory('PolygonEvent', [
       'MouseBox',
       '$rootScope',
+      'TrendDialog',
       Factory
     ]);
 }());

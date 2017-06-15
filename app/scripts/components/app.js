@@ -6,5 +6,6 @@ angular.module('app.components', [
   'app.components.legend',
   'app.components.mouseBox',
   'app.components.search',
-  'app.components.timeline'
+  'app.components.timeline',
+  'app.components.trend'
 ]);

@@ -34,6 +34,11 @@
       return marker;
     };
 
+    GmapUtil.area = function (polygonModel) {
+      var a = google.maps.geometry.spherical.computeArea(polygonModel.gPolygon.getPath());
+      return parseFloat((a/1000000).toFixed(6));
+    };
+
     return GmapUtil;
   };
 

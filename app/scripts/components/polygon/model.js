@@ -10,6 +10,7 @@
       this.name = params.name;
       this.city = params.city;
       this.cid = this.name.toLowerCase();
+      this.lid = params.id;
       this.lat = params.latitude;
       this.lng = params.longitude;
       this.gPolygon = new google.maps.Polygon(angular.extend({path: params.polygonPath}, Model.defaults()));
@@ -24,7 +25,7 @@
     var proto = Model.prototype;
 
     Model.defaults = function () {
-      var color = '#795548';
+      var color = '#555';
 
       return {
         strokeColor: '#000',
@@ -53,9 +54,17 @@
       return true;
     };
 
+    proto.area = function () {
+      if (!this.calculatedArea) {
+        this.calculatedArea = GmapUtil.area(this);
+      };
+      return this.calculatedArea;
+    };
+
     proto.attachStats = function (statsParams) {
+      statsParams.area = this.area();
       this.stats = new PolygonStatsModel(statsParams);
-    }
+    };
 
     proto.focus = function () {
       this.gPolygon.setOptions({
