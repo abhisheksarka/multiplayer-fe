@@ -14,7 +14,10 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
     "          <span ng-if=\"!game.status\">Coming soon</span>\n" +
     "        </small>\n" +
     "      </p>\n" +
-    "      <md-button class=\"md-secondary md-accent md-round md-raised\" ng-disabled=\"!game.status\">Join</md-button>\n" +
+    "      <md-button class=\"md-secondary md-accent md-round md-raised\" ng-disabled=\"!game.status || game.state.isStart\" ng-click=\"gl.join(game)\">\n" +
+    "        <span ng-if=\"game.state.isStart\">Joining</span>\n" +
+    "        <span ng-if=\"!game.state.isStart\">Join</span>\n" +
+    "      </md-button>\n" +
     "    </md-list-item>\n" +
     "  </md-list>\n" +
     "</div>\n"

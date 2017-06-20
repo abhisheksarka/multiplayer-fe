@@ -7,7 +7,7 @@
     User.signUp = function (user, state) {
       var defer = $q.defer();
       $http
-      .post(ApiUtil.fullPath('/user/create'), user)
+      .post(ApiUtil.fullPath('/user'), user)
       .then(function (res) {
         ApiUtil.handleResponse(res, defer, state);
       }, function(res) {
