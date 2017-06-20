@@ -6,6 +6,10 @@ body {
   transition: all ease 1s;
 }
 
+h1 {
+  font-weight: 200 !important;
+}
+
 .page-index {
   border-top: 5px solid rgba(255,64,129, 1);
   h1 {
@@ -51,12 +55,13 @@ a {
 }
 
 #games-list {
-  max-width: 500px;
-  margin-left: auto;
-  margin-right: auto;
   small {
     font-size: 12px;
     font-weight: bold;
     opacity: 0.5;
   }
+}
+
+.page-all-games {
+  h1.md-display-3 { opacity: 0.5; }
 }

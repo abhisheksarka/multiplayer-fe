@@ -4,7 +4,6 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
   $templateCache.put('app/scripts/components/games_list/template.html',
     "<div id=\"games-list\">\n" +
     "  <md-list flex>\n" +
-    "    <md-subheader class=\"md-no-sticky\">Available Games</md-subheader>\n" +
     "    <md-list-item ng-repeat=\"game in gl.games\">\n" +
     "      <img ng-src=\"https://cdn4.iconfinder.com/data/icons/gradient-ui-1/512/games-512.png\" class=\"md-avatar\" alt=\"{{game.name}}\" />\n" +
     "      <p>\n" +
@@ -65,8 +64,13 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('app/scripts/pages/all_games/template.html',
-    "<div class=\"page-all-games\" layout-align=\"center\">\n" +
-    "  <games-list></games-list>\n" +
+    "<div class=\"page-all-games\">\n" +
+    "  <div layout=\"row\" flex layout-align=\"center\">\n" +
+    "    <h1 class=\"md-display-3\">Available Games</h1>\n" +
+    "  </div>\n" +
+    "  <div layout=\"row\" flex layout-align=\"center\">\n" +
+    "    <games-list></games-list>\n" +
+    "  </div>\n" +
     "</div>\n"
   );
 
