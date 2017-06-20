@@ -1,0 +1,17 @@
+<div id="games-list">
+  <md-list flex>
+    <md-subheader class="md-no-sticky">Available Games</md-subheader>
+    <md-list-item ng-repeat="game in gl.games">
+      <img ng-src="https://cdn4.iconfinder.com/data/icons/gradient-ui-1/512/games-512.png" class="md-avatar" alt="{{game.name}}" />
+      <p>
+        {{ game.name }}
+        <br>
+        <small>
+          <span ng-if="game.status">Available</span>
+          <span ng-if="!game.status">Coming soon</span>
+        </small>
+      </p>
+      <md-button class="md-secondary md-accent md-round md-raised" ng-disabled="!game.status">Join</md-button>
+    </md-list-item>
+  </md-list>
+</div>

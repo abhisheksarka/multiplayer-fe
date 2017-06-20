@@ -1,6 +1,27 @@
 angular.module('app.lib').run(['$templateCache', function($templateCache) {
   'use strict';
 
+  $templateCache.put('app/scripts/components/games_list/template.html',
+    "<div id=\"games-list\">\n" +
+    "  <md-list flex>\n" +
+    "    <md-subheader class=\"md-no-sticky\">Available Games</md-subheader>\n" +
+    "    <md-list-item ng-repeat=\"game in gl.games\">\n" +
+    "      <img ng-src=\"https://cdn4.iconfinder.com/data/icons/gradient-ui-1/512/games-512.png\" class=\"md-avatar\" alt=\"{{game.name}}\" />\n" +
+    "      <p>\n" +
+    "        {{ game.name }}\n" +
+    "        <br>\n" +
+    "        <small>\n" +
+    "          <span ng-if=\"game.status\">Available</span>\n" +
+    "          <span ng-if=\"!game.status\">Coming soon</span>\n" +
+    "        </small>\n" +
+    "      </p>\n" +
+    "      <md-button class=\"md-secondary md-accent md-round md-raised\" ng-disabled=\"!game.status\">Join</md-button>\n" +
+    "    </md-list-item>\n" +
+    "  </md-list>\n" +
+    "</div>\n"
+  );
+
+
   $templateCache.put('app/scripts/components/sign_in_form/template.html',
     "<div id=\"sign-in-form\">\n" +
     "  <form name=\"signInForm\">\n" +
@@ -45,7 +66,7 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
 
   $templateCache.put('app/scripts/pages/all_games/template.html',
     "<div class=\"page-all-games\" layout-align=\"center\">\n" +
-    "  \n" +
+    "  <games-list></games-list>\n" +
     "</div>\n"
   );
 

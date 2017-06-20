@@ -8,9 +8,15 @@
   function Controller (
     $scope,
     $location,
-    User
+    User,
+    Game,
+    State
   ) {
     var pg = this;
+
+    pg.games = [ ];
+    pg.state = State.getInstance();
+
     $scope.$on('$routeChangeSuccess', function (event, next, current) {
       if (!User.isSignedIn()) {
         $location.path('/');
@@ -30,6 +36,8 @@
     '$scope',
     '$location',
     'ApiUser',
+    'ApiGame',
+    'State',
     Controller
   ]);
 }());

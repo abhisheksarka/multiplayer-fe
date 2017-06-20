@@ -49,3 +49,14 @@ a {
     cursor: pointer;
   }
 }
+
+#games-list {
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  small {
+    font-size: 12px;
+    font-weight: bold;
+    opacity: 0.5;
+  }
+}

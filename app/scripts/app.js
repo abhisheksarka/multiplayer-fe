@@ -49,3 +49,24 @@ angular
         redirectTo: '/'
       });
   })
+  .config(['$httpProvider', function($httpProvider) {
+    $httpProvider
+    .interceptors
+    .push([
+      'localStorageService',
+      function (localStorageService) {
+        return {
+          request: function(config, params) {
+            var token = null;
+            try {
+              token = localStorageService.get('sessionToken');
+              if (token) {
+                config.headers['Authorization'] = 'JWT ' + token;
+              };
+            } catch (err) { }
+            return config;
+          }
+        };
+      }
+    ]);
+  }]);

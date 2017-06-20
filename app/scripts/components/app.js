@@ -1,4 +1,5 @@
 angular.module('app.components', [
   'app.components.signUpForm',
-  'app.components.signInForm'
+  'app.components.signInForm',
+  'app.components.gamesList'
 ]);
