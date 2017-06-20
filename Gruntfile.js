@@ -77,9 +77,9 @@ module.exports = function (grunt) {
       },
       proxies: [
         {
-          context: ['/api/v3'],
+          context: ['/api/v1'],
           host: '127.0.0.1',
-          port: 3000,
+          port: 1337,
           https: false,
           xforward: false
         }
@@ -387,7 +387,7 @@ module.exports = function (grunt) {
     ngtemplates: {
       dist: {
         options: {
-          module: 'lokalApp',
+          module: 'mGameApp',
           htmlmin: '<%= htmlmin.dist.options %>',
           usemin: 'scripts/scripts.js'
         },

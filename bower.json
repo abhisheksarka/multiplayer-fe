@@ -1,5 +1,5 @@
 {
-  "name": "lokal",
+  "name": "mGame",
   "version": "0.0.0",
   "dependencies": {
     "angular": "^1.4.0",
@@ -9,18 +9,14 @@
     "angular-route": "^1.4.0",
     "angular-sanitize": "^1.4.0",
     "angular-touch": "^1.4.0",
-    "ngmap": "^1.18.4",
-    "turf": "^4.2.0",
     "underscore": "^1.8.3",
-    "angular-moment": "^1.0.1",
     "angular-location-update": "^0.0.2",
     "angular-aria": "^1.6.4",
-    "c3": "^0.4.12",
-    "moment": "^2.18.1"
+    "ngstorage": "^0.3.11"
   },
   "devDependencies": {
     "angular-mocks": "^1.4.0"
   },
   "appPath": "app",
-  "moduleName": "lokalApp"
+  "moduleName": "mGameApp"
 }

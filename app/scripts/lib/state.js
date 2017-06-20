@@ -68,7 +68,7 @@
     proto.showMessage = function (msg) {
       if (!msg) { return; }
       $mdToast.show(
-        $mdToast.simple().position('top right').textContent(msg).hideDelay(3000)
+        $mdToast.simple().position('top left right').textContent(msg).hideDelay(3000)
       );
     };
 

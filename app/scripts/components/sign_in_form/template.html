@@ -1,0 +1,17 @@
+<div id="sign-in-form">
+  <form name="signInForm">
+    <md-input-container class="md-block">
+      <label>Username</label>
+      <input ng-model="sufc.user.username" required name="username">
+    </md-input-container>
+
+    <md-input-container class="md-block">
+      <label>Password</label>
+      <input ng-model="sufc.user.password" type="password" required name="password">
+    </md-input-container>
+
+    <md-input-container class="md-block" style="text-align:center;">
+      <md-button class="md-raised md-accent md-round" ng-click="sufc.signIn($event)" ng-disabled="!signInForm.$valid">Sign in</md-button>
+    </md-input-container>
+  </form>
+</div>

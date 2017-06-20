@@ -1,32 +1,24 @@
 'use strict';
 
 (function () {
-  function Factory (API_ROOT_PATH, State, Dialog) {
+  function Factory (API_ROOT_PATH, State, $q) {
     function Util () { };
 
     Util.fullPath = function (path) {
       return API_ROOT_PATH + path;
     };
 
-    Util.sharedState = State.getInstance({name: 'api'});
-
-    Util.canRequest = function () {
-      var state = Util.sharedState;
-      if (state.isInit || state.isSuccess) { return true; };
-
-      if (state.isStart) {
-        Dialog.notify("");
-        return false;
+    Util.handleResponse = function (response, defer) {
+      var state = new State(),
+          res = response.data;
+      state.start();
+      if (res.success) {
+        defer.resolve(res);
+        state.success();
+      } else {
+        defer.reject(res);
+        state.error(res.info);
       };
-
-      if (state.isError) {
-        Dialog.notify("");
-        return false;
-      };
-    };
-
-    Util.reset = function () {
-      Util.sharedState.init();
     };
 
     return Util;
@@ -38,6 +30,7 @@
       'API_ROOT_PATH',
       'State',
       'Dialog',
+      '$q',
       Factory
     ]);
 }());

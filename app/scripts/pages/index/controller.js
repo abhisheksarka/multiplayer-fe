@@ -7,13 +7,20 @@
 (function () {
   function Controller (
     $scope,
-    $location,
-    DATA_POINTS,
-    CITY_LAT_LNGS
+    $location
   ) {
     var pi = this;
-    pi.show = function () {
-      $location.path('/show/' + _.keys(CITY_LAT_LNGS)[0] + '/' + _.keys(DATA_POINTS)[0]);
+
+    pi.tabs = {
+      signUp: true,
+      signIn: false
+    };
+
+    pi.open = function (tabName) {
+      angular.forEach(pi.tabs, function (v, k) {
+        pi.tabs[k] = false;
+      });
+      pi.tabs[tabName] = true;
     };
   }
 
@@ -22,8 +29,6 @@
   .controller('PageIndexController', [
     '$scope',
     '$location',
-    'DATA_POINTS',
-    'CITY_LAT_LNGS',
     Controller
   ]);
 }());

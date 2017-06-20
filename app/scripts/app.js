@@ -2,9 +2,9 @@
 
 /**
  * @ngdoc overview
- * @name lokalApp
+ * @name mGameApp
  * @description
- * # lokalApp
+ * # mGameApp
  *
  * Main module of the application.
  */
@@ -14,13 +14,10 @@ angular
     'ngAnimate',
     'ngAria',
     'ngCookies',
-    'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngMap',
     'ngMaterial',
-    'angularMoment',
-    'ngLocationUpdate',
+    'ngStorage',
 
     'app.lib',
     'app.api',
@@ -40,12 +37,7 @@ angular
         controller: 'PageIndexController',
         controllerAs: 'pi'
       })
-      .when('/show/:city/:type', {
-        templateUrl: 'app/scripts/pages/show/template.html',
-        controller: 'PageShowController',
-        controllerAs: 'ps'
-      })
       .otherwise({
         redirectTo: '/'
       });
-  });
+  })
