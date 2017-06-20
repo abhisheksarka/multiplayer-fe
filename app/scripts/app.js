@@ -18,12 +18,20 @@ angular
     'ngSanitize',
     'ngMaterial',
     'LocalStorageModule',
+    'btford.socket-io',
 
     'app.lib',
     'app.api',
     'app.components',
     'app.pages'
   ])
+  .factory('$socket', function (socketFactory) {
+    var ioSocket = io.connect(window.GAME_DOME_CONFIG.SOCKET_PATH),
+        socket = socketFactory({
+          ioSocket: ioSocket
+        });
+    return socket;
+  })
   .config(function($mdThemingProvider) {
     $mdThemingProvider.theme('dark-grey').backgroundPalette('grey').dark();
     $mdThemingProvider.theme('dark-orange').backgroundPalette('orange').dark();

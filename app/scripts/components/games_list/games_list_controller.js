@@ -33,7 +33,7 @@
       '$scope',
       'ApiGame',
       'ApiGamePlay',
-      'State',
+      'State'
       Controller
     ]);
 }());
