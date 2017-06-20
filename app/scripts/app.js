@@ -17,7 +17,7 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngMaterial',
-    'ngStorage',
+    'LocalStorageModule',
 
     'app.lib',
     'app.api',
@@ -30,12 +30,20 @@ angular
     $mdThemingProvider.theme('dark-purple').backgroundPalette('deep-purple').dark();
     $mdThemingProvider.theme('dark-blue').backgroundPalette('blue').dark();
   })
+  .config(function (localStorageServiceProvider) {
+    localStorageServiceProvider.setPrefix('gamedome');
+  })
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'app/scripts/pages/index/template.html',
         controller: 'PageIndexController',
         controllerAs: 'pi'
+      })
+      .when('/all_games', {
+        templateUrl: 'app/scripts/pages/all_games/template.html',
+        controller: 'AllGamesController',
+        controllerAs: 'pg'
       })
       .otherwise({
         redirectTo: '/'

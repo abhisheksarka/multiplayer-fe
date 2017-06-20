@@ -7,9 +7,18 @@
 (function () {
   function Controller (
     $scope,
-    $location
+    $location,
+    User
   ) {
     var pi = this;
+
+    $scope.$on('$routeChangeSuccess', function (event, next, current) {
+      if (User.isSignedIn()) {
+        $location.path('/all_games');
+      } else {
+        init();
+      }
+    });
 
     pi.tabs = {
       signUp: true,
@@ -22,6 +31,10 @@
       });
       pi.tabs[tabName] = true;
     };
+
+    function init() {
+
+    };
   }
 
   angular
@@ -29,6 +42,7 @@
   .controller('PageIndexController', [
     '$scope',
     '$location',
+    'ApiUser',
     Controller
   ]);
 }());

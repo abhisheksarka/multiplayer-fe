@@ -15,7 +15,7 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
     "    </md-input-container>\n" +
     "\n" +
     "    <md-input-container class=\"md-block\" style=\"text-align:center;\">\n" +
-    "      <md-button class=\"md-raised md-accent md-round\" ng-click=\"sufc.signIn($event)\" ng-disabled=\"!signInForm.$valid\">Sign in</md-button>\n" +
+    "      <md-button class=\"md-raised md-accent md-round\" ng-click=\"sufc.signIn($event)\" ng-disabled=\"!signInForm.$valid || sufc.state.isStart\">Sign in</md-button>\n" +
     "    </md-input-container>\n" +
     "  </form>\n" +
     "</div>\n"
@@ -36,9 +36,16 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
     "    </md-input-container>\n" +
     "\n" +
     "    <md-input-container class=\"md-block\" style=\"text-align:center;\">\n" +
-    "      <md-button class=\"md-raised md-primary md-round\" ng-click=\"sufc.signUp($event)\" ng-disabled=\"!signUpForm.$valid\">Sign up</md-button>\n" +
+    "      <md-button class=\"md-raised md-primary md-round\" ng-click=\"sufc.signUp($event)\" ng-disabled=\"!signUpForm.$valid || sufc.state.isStart\">Sign up</md-button>\n" +
     "    </md-input-container>\n" +
     "  </form>\n" +
+    "</div>\n"
+  );
+
+
+  $templateCache.put('app/scripts/pages/all_games/template.html',
+    "<div class=\"page-all-games\" layout-align=\"center\">\n" +
+    "  \n" +
     "</div>\n"
   );
 

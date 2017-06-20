@@ -30,7 +30,7 @@ module.exports = function(config) {
       'bower_components/underscore/underscore.js',
       'bower_components/angular-location-update/angular-location-update.js',
       'bower_components/angular-aria/angular-aria.js',
-      'bower_components/ngstorage/ngStorage.js',
+      'bower_components/angular-local-storage/dist/angular-local-storage.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',

@@ -8,10 +8,9 @@
       return API_ROOT_PATH + path;
     };
 
-    Util.handleResponse = function (response, defer) {
-      var state = new State(),
+    Util.handleResponse = function (response, defer, state) {
+      var state = state || State.getInstance(),
           res = response.data;
-      state.start();
       if (res.success) {
         defer.resolve(res);
         state.success();

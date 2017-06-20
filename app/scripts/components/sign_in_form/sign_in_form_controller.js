@@ -3,13 +3,19 @@
 (function () {
   function Controller (
     $scope,
-    User
+    User,
+    $window,
+    State
   ) {
     var sufc = this;
     sufc.user = { };
+    sufc.state = State.getInstance();
 
     sufc.signIn = function () {
-      User.signIn(sufc.user);
+      sufc.state.start();
+      User.signIn(sufc.user, sufc.state).then(function () {
+        $window.location.reload();
+      });
     }
   }
 
@@ -18,6 +24,8 @@
     .controller('SignInFormController', [
       '$scope',
       'ApiUser',
+      '$window',
+      'State',
       Controller
     ]);
 }());

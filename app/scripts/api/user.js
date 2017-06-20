@@ -1,36 +1,40 @@
 'use strict';
 
 (function () {
-  function Factory (ApiUtil, $http, $q, $localStorage) {
+  function Factory (ApiUtil, $http, $q, localStorageService) {
     function User () { };
 
-    User.signUp = function (user) {
+    User.signUp = function (user, state) {
       var defer = $q.defer();
       $http
       .post(ApiUtil.fullPath('/user/create'), user)
       .then(function (res) {
-        ApiUtil.handleResponse(res, defer);
+        ApiUtil.handleResponse(res, defer, state);
       }, function(res) {
-        ApiUtil.handleResponse(res, defer);
+        ApiUtil.handleResponse(res, defer, state);
       });
       return defer.promise;
     };
 
-    User.signIn = function (user) {
+    User.signIn = function (user, state) {
       var defer = $q.defer();
       $http
       .post(ApiUtil.fullPath('/auth/login'), user)
       .then(function (res) {
-        ApiUtil.handleResponse(res, defer);
-        User._createSession(res.token);
+        ApiUtil.handleResponse(res, defer, state);
+        User._createSession(res.data.info.token);
       }, function(res) {
-        ApiUtil.handleResponse(res, defer);
+        ApiUtil.handleResponse(res, defer, state);
       });
       return defer.promise;
     };
 
     User._createSession = function (sessionToken) {
-      $localStorage.sessionToken = sessionToken;
+      localStorageService.set("sessionToken", sessionToken);
+    };
+
+    User.isSignedIn = function () {
+      return (localStorageService.get("sessionToken") ? true : false);
     };
 
     return User;
@@ -42,7 +46,7 @@
       'ApiUtil',
       '$http',
       '$q',
-      '$localStorage',
+      'localStorageService',
       Factory
     ]);
 }());
