@@ -6,10 +6,14 @@
     State,
     GamePlayManager,
     GamePlay,
-    User
+    User,
+    Toast
   ) {
     var gcc = this,
-        events = [{name: 'joined', fn: onJoined}],
+        events = [
+          {name: 'joined', fn: onJoined},
+          {name: 'left', fn: onLeft}
+        ],
         gpm = new GamePlayManager(GamePlay.current, events),
         socket = null;
 
@@ -24,6 +28,28 @@
 
     function onJoined(user) {
       gcc.players.push(user);
+      notify(user, 'joined');
+    };
+
+    function onLeft(user) {
+      var index = null;
+      gcc.players.forEach(function(p, i) {
+        if (p.id == user.id) {
+          index = i;
+        };
+      });
+
+      if (gcc.players[index]) {
+        notify(gcc.players[index], 'left');
+      };
+
+      if (index > -1) {
+        gcc.players.splice(index, 1);
+      };
+    };
+
+    function notify(user, status) {
+      Toast.notify(user.username + ' has ' + status);
     };
 
     function loadPlayers() {
@@ -46,6 +72,7 @@
       'ApiGamePlayManager',
       'ApiGamePlay',
       'ApiUser',
+      'Toast',
       Controller
     ]);
 }());
