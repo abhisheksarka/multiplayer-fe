@@ -21,7 +21,9 @@
     };
 
     gl.join = function(game) {
-      Game.join(game, game.state);
+      GamePlay.create(game.id, game.state).then(function(res) {
+        GamePlay.current = res.info;
+      });
     };
 
     init();
@@ -33,7 +35,7 @@
       '$scope',
       'ApiGame',
       'ApiGamePlay',
-      'State'
+      'State',
       Controller
     ]);
 }());

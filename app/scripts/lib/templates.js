@@ -1,6 +1,13 @@
 angular.module('app.lib').run(['$templateCache', function($templateCache) {
   'use strict';
 
+  $templateCache.put('app/scripts/components/game_container/template.html',
+    "<div id=\"game-container\">\n" +
+    "\n" +
+    "</div>\n"
+  );
+
+
   $templateCache.put('app/scripts/components/games_list/template.html',
     "<div id=\"games-list\">\n" +
     "  <md-list flex>\n" +
@@ -72,7 +79,8 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
     "    <h1 class=\"md-display-3\">Available Games</h1>\n" +
     "  </div>\n" +
     "  <div layout=\"row\" flex layout-align=\"center\">\n" +
-    "    <games-list></games-list>\n" +
+    "    <games-list game-play=\"pg.gamePlay\"></games-list>\n" +
+    "    {{pg.gamePlay}}\n" +
     "  </div>\n" +
     "</div>\n"
   );

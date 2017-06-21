@@ -3,7 +3,8 @@
 (function () {
   function Factory (ApiUtil, $http, $q) {
     function GamePlay () { };
-
+    GamePlay.current = { };
+    
     GamePlay.create = function (gameId, state) {
       var defer = $q.defer();
       state.start();

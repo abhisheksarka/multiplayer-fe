@@ -3,7 +3,9 @@
 (function () {
   function Directive () {
     return {
-      scope: { },
+      scope: {
+        gamePlay: '='
+      },
       link: function ($scope, $element, $attributes) { },
       templateUrl: 'app/scripts/components/games_list/template.html',
       controller: 'GamesListController',

@@ -4,13 +4,16 @@
   function Controller (
     $scope,
     State,
-    $socket
+    GamePlayManager,
+    GamePlay
   ) {
-    var gcc = this;
+    var gcc = this,
+        gpm = new GamePlayManager(GamePlay.current);
+
     gcc.state = State.getInstance();
 
     function init() {
-
+      gpm.connect();
     };
 
     init();
@@ -21,7 +24,8 @@
     .controller('GameContainerController', [
       '$scope',
       'State',
-      '$socket',
+      'ApiGamePlayManager',
+      'ApiGamePlay',
       Controller
     ]);
 }());

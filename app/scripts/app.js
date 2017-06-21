@@ -26,11 +26,12 @@ angular
     'app.pages'
   ])
   .factory('$socket', function (socketFactory) {
-    var ioSocket = io.connect(window.GAME_DOME_CONFIG.SOCKET_PATH),
-        socket = socketFactory({
-          ioSocket: ioSocket
-        });
-    return socket;
+    function SocketBuilder(ns) {
+      return socketFactory({
+        ioSocket: io.connect(window.GAME_DOME_CONFIG.SOCKET_PATH + ns),
+      });
+    };
+    return SocketBuilder;
   })
   .config(function($mdThemingProvider) {
     $mdThemingProvider.theme('dark-grey').backgroundPalette('grey').dark();

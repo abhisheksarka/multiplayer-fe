@@ -8,15 +8,10 @@
   function Controller (
     $scope,
     $location,
-    User,
-    Game,
-    State
+    GamePlay
   ) {
-    var pg = this;
-
-    pg.games = [ ];
-    pg.state = State.getInstance();
-    pg.gamePlay = { };
+    var pc = this;
+    pc.gamePlay = GamePlay.current;
 
     $scope.$on('$routeChangeSuccess', function (event, next, current) {
       if (!User.isSignedIn()) {
@@ -32,13 +27,11 @@
   }
 
   angular
-  .module('app.pages.allGames')
-  .controller('AllGamesController', [
+  .module('app.pages.play')
+  .controller('PlayController', [
     '$scope',
     '$location',
-    'ApiUser',
-    'ApiGame',
-    'State',
+    'ApiGamePlay',
     Controller
   ]);
 }());

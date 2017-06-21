@@ -19,9 +19,18 @@
     };
 
     Game.join = function (game, state) {
-      GamePlay.create(game.id, state).then(function(res) {
-        GamePlayUser.create(res.info, state);
-      })
+      var defer = $q.defer();
+
+      GamePlay.create(game.id, state).then(function(gamePlay) {
+        GamePlayUser.create(gamePlay.info, state).then(function(gamePlayUser) {
+          defer.resolve({
+            gamePlay: gamePlay.info,
+            gamePlayUser: gamePlayUser.info
+          });
+        });
+      });
+
+      return defer.promise;
     };
 
     return Game;
