@@ -1,5 +1,5 @@
-<div id="game-container">
-  <div class="players">
+<div layout="row" id="game-container">
+  <div flex="20" class="game-players">
     <md-list flex>
       <md-list-item ng-repeat="player in gcc.players">
         <img ng-src="https://cdn2.iconfinder.com/data/icons/weird-social-icon-pack/70/twitch-128.png" class="md-avatar" alt="{{player.name}}" />
@@ -8,5 +8,17 @@
         </p>
       </md-list-item>
     </md-list>
+    <div layout-padding>
+      <p ng-if="gcc.players.length < 2">Waiting for at least one more player...</p>
+      <md-input-container class="md-block" ng-if="gcc.players.length >= 2" ng-init="gcc.state.init()">
+        <md-button class="md-raised md-accent md-round" ng-click="gcc.start()" ng-disabled="gcc.state.isSuccess">
+          <span ng-if="gcc.state.isStart">Please wait...</span>
+          <span ng-if="!gcc.state.isSuccess">Start</span>
+          <span ng-if="gcc.state.isSuccess">Game On</span>
+        </md-button>
+      </md-input-container>
+    </div>
+  </div>
+  <div flex="80" lass="game-board">
   </div>
 </div>

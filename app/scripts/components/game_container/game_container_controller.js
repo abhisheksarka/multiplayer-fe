@@ -12,7 +12,8 @@
     var gcc = this,
         events = [
           {name: 'joined', fn: onJoined},
-          {name: 'left', fn: onLeft}
+          {name: 'left', fn: onLeft},
+          {name: 'started', fn: onStarted}
         ],
         gpm = new GamePlayManager(GamePlay.current, events),
         socket = null;
@@ -20,6 +21,13 @@
     gcc.gamePlay = GamePlay.current;
     gcc.state = State.getInstance();
     gcc.players = [];
+
+    gcc.start = function() {
+      GamePlay.startCurrent(gcc.state)
+      .then(function() {
+        gpm.start();
+      });
+    };
 
     function establishConnection() {
       gpm.connect();
@@ -29,6 +37,10 @@
     function onJoined(user) {
       gcc.players.push(user);
       notify(user, 'joined');
+    };
+
+    function onStarted() {
+      gcc.state.success();
     };
 
     function onLeft(user) {

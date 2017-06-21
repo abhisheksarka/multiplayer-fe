@@ -23,6 +23,10 @@
       this.conn.emit('joined', user);
     };
 
+    proto.start = function() {
+      this.conn.emit('started');
+    };
+
     proto.listen = function() {
       var self = this;
       angular.forEach(self.events, function(event) {

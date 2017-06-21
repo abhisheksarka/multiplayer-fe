@@ -2,8 +2,8 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
   'use strict';
 
   $templateCache.put('app/scripts/components/game_container/template.html',
-    "<div id=\"game-container\">\n" +
-    "  <div class=\"players\">\n" +
+    "<div layout=\"row\" id=\"game-container\">\n" +
+    "  <div flex=\"20\" class=\"game-players\">\n" +
     "    <md-list flex>\n" +
     "      <md-list-item ng-repeat=\"player in gcc.players\">\n" +
     "        <img ng-src=\"https://cdn2.iconfinder.com/data/icons/weird-social-icon-pack/70/twitch-128.png\" class=\"md-avatar\" alt=\"{{player.name}}\" />\n" +
@@ -12,6 +12,18 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
     "        </p>\n" +
     "      </md-list-item>\n" +
     "    </md-list>\n" +
+    "    <div layout-padding>\n" +
+    "      <p ng-if=\"gcc.players.length < 2\">Waiting for at least one more player...</p>\n" +
+    "      <md-input-container class=\"md-block\" ng-if=\"gcc.players.length >= 2\" ng-init=\"gcc.state.init()\">\n" +
+    "        <md-button class=\"md-raised md-accent md-round\" ng-click=\"gcc.start()\" ng-disabled=\"gcc.state.isSuccess\">\n" +
+    "          <span ng-if=\"gcc.state.isStart\">Please wait...</span>\n" +
+    "          <span ng-if=\"!gcc.state.isSuccess\">Start</span>\n" +
+    "          <span ng-if=\"gcc.state.isSuccess\">Game On</span>\n" +
+    "        </md-button>\n" +
+    "      </md-input-container>\n" +
+    "    </div>\n" +
+    "  </div>\n" +
+    "  <div flex=\"80\" lass=\"game-board\">\n" +
     "  </div>\n" +
     "</div>\n"
   );
