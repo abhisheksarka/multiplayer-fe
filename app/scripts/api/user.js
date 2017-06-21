@@ -22,20 +22,29 @@
       .post(ApiUtil.fullPath('/auth/login'), user)
       .then(function (res) {
         ApiUtil.handleResponse(res, defer, state);
-        User._createSession(res.data.info.token);
+        User._createSession(res.data.info);
       }, function(res) {
         ApiUtil.handleResponse(res, defer, state);
       });
       return defer.promise;
     };
 
-    User._createSession = function (sessionToken) {
-      localStorageService.set("sessionToken", sessionToken);
+    User._createSession = function (sessionData) {
+      localStorageService.set("sessionData", sessionData);
     };
 
     User.isSignedIn = function () {
-      return (localStorageService.get("sessionToken") ? true : false);
+      var s = localStorageService.get("sessionData") || { };
+      return (s.token ? true : false);
     };
+
+    User.current = function () {
+      var s = localStorageService.get("sessionData") || { };
+      return {
+        id: s.id,
+        username: s.username
+      };
+    }
 
     return User;
   };

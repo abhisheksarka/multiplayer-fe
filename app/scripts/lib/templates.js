@@ -3,7 +3,16 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
 
   $templateCache.put('app/scripts/components/game_container/template.html',
     "<div id=\"game-container\">\n" +
-    "  {{gcc.gamePlay}}\n" +
+    "  <div class=\"players\">\n" +
+    "    <md-list flex>\n" +
+    "      <md-list-item ng-repeat=\"player in gcc.players\">\n" +
+    "        <img ng-src=\"https://cdn2.iconfinder.com/data/icons/weird-social-icon-pack/70/twitch-128.png\" class=\"md-avatar\" alt=\"{{player.name}}\" />\n" +
+    "        <p>\n" +
+    "          {{ player.username }}\n" +
+    "        </p>\n" +
+    "      </md-list-item>\n" +
+    "    </md-list>\n" +
+    "  </div>\n" +
     "</div>\n"
   );
 

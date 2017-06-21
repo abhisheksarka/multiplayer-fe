@@ -65,3 +65,18 @@ a {
 .page-all-games {
   h1.md-display-3 { opacity: 0.5; }
 }
+
+#game-container {
+  max-width: 100%;
+  min-width: 500px;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid lightgray;
+  md-list {
+    max-width: 20%;
+    background: rgba(0,0,0,0.1);
+    border-radius: 2px;
+    margin: 10px;
+  }
+}

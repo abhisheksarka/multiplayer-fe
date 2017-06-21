@@ -71,12 +71,9 @@ angular
       function (localStorageService) {
         return {
           request: function(config, params) {
-            var token = null;
             try {
-              token = localStorageService.get('sessionToken');
-              if (token) {
-                config.headers['Authorization'] = 'JWT ' + token;
-              };
+              var s = localStorageService.get('sessionData') || { };
+              config.headers['Authorization'] = 'JWT ' + s.token;
             } catch (err) { }
             return config;
           }

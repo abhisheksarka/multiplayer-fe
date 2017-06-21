@@ -5,19 +5,37 @@
     $scope,
     State,
     GamePlayManager,
-    GamePlay
+    GamePlay,
+    User
   ) {
     var gcc = this,
-        gpm = new GamePlayManager(GamePlay.current);
-        
+        events = [{name: 'joined', fn: onJoined}],
+        gpm = new GamePlayManager(GamePlay.current, events),
+        socket = null;
+
     gcc.gamePlay = GamePlay.current;
     gcc.state = State.getInstance();
+    gcc.players = [];
 
-    function init() {
+    function establishConnection() {
       gpm.connect();
+      gpm.join(User.current());
     };
 
-    init();
+    function onJoined(user) {
+      gcc.players.push(user);
+    };
+
+    function loadPlayers() {
+      GamePlay.players(gcc.gamePlay.id, gcc.state)
+      .then(function(res) {
+        angular.forEach(res.info, function(d) {
+          gcc.players.push(d);
+        });
+        establishConnection();
+      });
+    };
+    loadPlayers();
   }
 
   angular
@@ -27,6 +45,7 @@
       'State',
       'ApiGamePlayManager',
       'ApiGamePlay',
+      'ApiUser',
       Controller
     ]);
 }());
