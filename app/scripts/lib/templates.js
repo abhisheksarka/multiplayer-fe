@@ -3,7 +3,7 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
 
   $templateCache.put('app/scripts/components/game_container/template.html',
     "<div id=\"game-container\">\n" +
-    "\n" +
+    "  {{gcc.gamePlay}}\n" +
     "</div>\n"
   );
 
@@ -80,7 +80,6 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
     "  </div>\n" +
     "  <div layout=\"row\" flex layout-align=\"center\">\n" +
     "    <games-list game-play=\"pg.gamePlay\"></games-list>\n" +
-    "    {{pg.gamePlay}}\n" +
     "  </div>\n" +
     "</div>\n"
   );
@@ -99,6 +98,13 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
     "      </small>\n" +
     "    </p>\n" +
     "  </div>\n" +
+    "</div>\n"
+  );
+
+
+  $templateCache.put('app/scripts/pages/play/template.html',
+    "<div class=\"page-all-play\">\n" +
+    "  <game-container ng-if=\"pc.gamePlay.id\"></game-container>\n" +
     "</div>\n"
   );
 

@@ -9,7 +9,8 @@
   ) {
     var gcc = this,
         gpm = new GamePlayManager(GamePlay.current);
-
+        
+    gcc.gamePlay = GamePlay.current;
     gcc.state = State.getInstance();
 
     function init() {

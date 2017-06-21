@@ -3,6 +3,7 @@
 (function () {
   function Controller (
     $scope,
+    $location,
     Game,
     GamePlay,
     State
@@ -23,6 +24,7 @@
     gl.join = function(game) {
       GamePlay.create(game.id, game.state).then(function(res) {
         GamePlay.current = res.info;
+        $location.path('/play');
       });
     };
 
@@ -33,6 +35,7 @@
     .module('app.components.gamesList')
     .controller('GamesListController', [
       '$scope',
+      '$location',
       'ApiGame',
       'ApiGamePlay',
       'State',

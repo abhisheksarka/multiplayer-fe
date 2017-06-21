@@ -1,1 +1,1 @@
-angular.module('app.pages.playGame', [ ]);
+angular.module('app.pages.play', [ ]);

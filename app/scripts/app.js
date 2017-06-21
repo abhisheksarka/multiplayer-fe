@@ -28,7 +28,7 @@ angular
   .factory('$socket', function (socketFactory) {
     function SocketBuilder(ns) {
       return socketFactory({
-        ioSocket: io.connect(window.GAME_DOME_CONFIG.SOCKET_PATH + ns),
+        ioSocket: io.connect(window.GAME_DOME_CONFIG.ROOT_SOCKET_PATH + ns),
       });
     };
     return SocketBuilder;
@@ -53,6 +53,11 @@ angular
         templateUrl: 'app/scripts/pages/all_games/template.html',
         controller: 'AllGamesController',
         controllerAs: 'pg'
+      })
+      .when('/play', {
+        templateUrl: 'app/scripts/pages/play/template.html',
+        controller: 'PlayController',
+        controllerAs: 'pc'
       })
       .otherwise({
         redirectTo: '/'

@@ -8,7 +8,8 @@
   function Controller (
     $scope,
     $location,
-    GamePlay
+    GamePlay,
+    User
   ) {
     var pc = this;
     pc.gamePlay = GamePlay.current;
@@ -32,6 +33,7 @@
     '$scope',
     '$location',
     'ApiGamePlay',
+    'ApiUser',
     Controller
   ]);
 }());
