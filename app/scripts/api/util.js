@@ -8,17 +8,6 @@
       return API_ROOT_PATH + path;
     };
 
-    // Util.handleResponse = function (response, defer, state) {
-    //   var state = state || State.getInstance(),
-    //       res = response.data;
-    //   if (res.success) {
-    //     defer.resolve(res);
-    //     state.success();
-    //   } else {
-    //     defer.reject(res);
-    //     state.error(res.info);
-    //   };
-    // };
 
     Util.handleResponse = function (defer, state) {
       return function(response) {
