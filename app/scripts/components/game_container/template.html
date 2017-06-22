@@ -11,14 +11,21 @@
     <div layout-padding>
       <p ng-if="gcc.players.length < 2">Waiting for at least one more player...</p>
       <md-input-container class="md-block" ng-if="gcc.players.length >= 2" ng-init="gcc.state.init()">
-        <md-button class="md-raised md-accent md-round" ng-click="gcc.start()" ng-disabled="gcc.state.isSuccess">
+        <md-button class="md-raised md-accent md-round" ng-click="gcc.start()" ng-disabled="gcc.state.isStart || gcc.state.isSuccess">
           <span ng-if="gcc.state.isStart">Please wait...</span>
-          <span ng-if="!gcc.state.isSuccess">Start</span>
           <span ng-if="gcc.state.isSuccess">Game On</span>
+          <span ng-if="!gcc.state.isSuccess && !gcc.state.isStart">Start</span>
         </md-button>
       </md-input-container>
     </div>
   </div>
-  <div flex="80" lass="game-board">
+  <div flex="80" class="game-board">
+    <div class="curtain" ng-if="gcc.reveal.counter != 0">
+      <h1 class="md-display-4" ng-bind="gcc.reveal.counter">
+      </h1>
+    </div>
+    <div class="game" ng-if="gcc.reveal.counter == 0">
+      <games-clickit config="gcc.config"></games-clickit>
+    </div>
   </div>
 </div>

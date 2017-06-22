@@ -1,0 +1,11 @@
+<div id="games-clickit">
+  <md-button class="md-fab md-primary md-hue-2" aria-label="click" ng-click="cc.increment()">
+    <md-icon>
+      <i class="material-icons">donut_small</i>
+    </md-icon>
+  </md-button>
+  <p class="text">
+    <span ng-if="cc.counter == 0">Click me as fast as you can</span>
+    <span ng-if="cc.counter > 0" ng-bind="cc.counter"></span>
+  </p>
+</div>

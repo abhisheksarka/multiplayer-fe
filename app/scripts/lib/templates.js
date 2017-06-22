@@ -15,16 +15,38 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
     "    <div layout-padding>\n" +
     "      <p ng-if=\"gcc.players.length < 2\">Waiting for at least one more player...</p>\n" +
     "      <md-input-container class=\"md-block\" ng-if=\"gcc.players.length >= 2\" ng-init=\"gcc.state.init()\">\n" +
-    "        <md-button class=\"md-raised md-accent md-round\" ng-click=\"gcc.start()\" ng-disabled=\"gcc.state.isSuccess\">\n" +
+    "        <md-button class=\"md-raised md-accent md-round\" ng-click=\"gcc.start()\" ng-disabled=\"gcc.state.isStart || gcc.state.isSuccess\">\n" +
     "          <span ng-if=\"gcc.state.isStart\">Please wait...</span>\n" +
-    "          <span ng-if=\"!gcc.state.isSuccess\">Start</span>\n" +
     "          <span ng-if=\"gcc.state.isSuccess\">Game On</span>\n" +
+    "          <span ng-if=\"!gcc.state.isSuccess && !gcc.state.isStart\">Start</span>\n" +
     "        </md-button>\n" +
     "      </md-input-container>\n" +
     "    </div>\n" +
     "  </div>\n" +
-    "  <div flex=\"80\" lass=\"game-board\">\n" +
+    "  <div flex=\"80\" class=\"game-board\">\n" +
+    "    <div class=\"curtain\" ng-if=\"gcc.reveal.counter != 0\">\n" +
+    "      <h1 class=\"md-display-4\" ng-bind=\"gcc.reveal.counter\">\n" +
+    "      </h1>\n" +
+    "    </div>\n" +
+    "    <div class=\"game\" ng-if=\"gcc.reveal.counter == 0\">\n" +
+    "      <games-clickit config=\"gcc.config\"></games-clickit>\n" +
+    "    </div>\n" +
     "  </div>\n" +
+    "</div>\n"
+  );
+
+
+  $templateCache.put('app/scripts/components/games/clickit/template.html',
+    "<div id=\"games-clickit\">\n" +
+    "  <md-button class=\"md-fab md-primary md-hue-2\" aria-label=\"click\" ng-click=\"cc.increment()\">\n" +
+    "    <md-icon>\n" +
+    "      <i class=\"material-icons\">donut_small</i>\n" +
+    "    </md-icon>\n" +
+    "  </md-button>\n" +
+    "  <p class=\"text\">\n" +
+    "    <span ng-if=\"cc.counter == 0\">Click me as fast as you can</span>\n" +
+    "    <span ng-if=\"cc.counter > 0\" ng-bind=\"cc.counter\"></span>\n" +
+    "  </p>\n" +
     "</div>\n"
   );
 

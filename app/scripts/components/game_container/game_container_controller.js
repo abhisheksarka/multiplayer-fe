@@ -7,7 +7,8 @@
     GamePlayManager,
     GamePlay,
     User,
-    Toast
+    Toast,
+    $interval
   ) {
     var gcc = this,
         events = [
@@ -21,12 +22,28 @@
     gcc.gamePlay = GamePlay.current;
     gcc.state = State.getInstance();
     gcc.players = [];
+    gcc.reveal = {counter: 3};
+    gcc.config = {
+      score: 0,
+      unit: null,
+      status: "hold",
+      timeToPlay: null
+    };
 
     gcc.start = function() {
-      GamePlay.startCurrent(gcc.state)
-      .then(function() {
-        gpm.start();
-      });
+      gcc.state.start();
+      gpm.start();
+    };
+
+    function onStarted() {
+      gcc.state.start();
+      $interval(function() {
+        if (gcc.reveal.counter != 0) {
+          gcc.reveal.counter--;
+        } else {
+          gcc.state.success();
+        }
+      }, 1000, 4);
     };
 
     function establishConnection() {
@@ -39,22 +56,14 @@
       notify(user, 'joined');
     };
 
-    function onStarted() {
-      gcc.state.success();
-    };
-
     function onLeft(user) {
       var index = null;
       gcc.players.forEach(function(p, i) {
-        if (p.id == user.id) {
-          index = i;
-        };
+        if (p.id == user.id) index = i;
       });
-
       if (gcc.players[index]) {
         notify(gcc.players[index], 'left');
       };
-
       if (index > -1) {
         gcc.players.splice(index, 1);
       };
@@ -85,6 +94,7 @@
       'ApiGamePlay',
       'ApiUser',
       'Toast',
+      '$interval',
       Controller
     ]);
 }());
