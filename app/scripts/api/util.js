@@ -11,7 +11,7 @@
 
     Util.handleResponse = function (defer, state) {
       return function(response) {
-        var res = response.data
+        var res = response.data;
         if (res.success) {
           defer.resolve(res);
           state.success();

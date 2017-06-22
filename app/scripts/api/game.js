@@ -5,12 +5,14 @@
     function Game () { };
 
     Game.index = function (state) {
-      var defer = $q.defer();
+      var defer = $q.defer(),
+          cb = ApiUtil.handleResponse(defer, state);
+
       state.start();
 
       $http
       .get(ApiUtil.fullPath('/games'))
-      .then(ApiUtil.handleResponse(defer, state));
+      .then(cb, cb);
       return defer.promise;
     };
 

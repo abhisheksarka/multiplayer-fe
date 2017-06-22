@@ -5,21 +5,23 @@
     function User () { };
 
     User.signUp = function (user, state) {
-      var defer = $q.defer();
+      var defer = $q.defer(),
+          cb = ApiUtil.handleResponse(defer, state)
       $http
       .post(ApiUtil.fullPath('/user'), user)
-      .then(ApiUtil.handleResponse(defer, state));
+      .then(cb, cb);
 
       return defer.promise;
     };
 
     User.signIn = function (user, state) {
-      var defer = $q.defer();
+      var defer = $q.defer(),
+          cb = ApiUtil.handleResponse(defer, state);
       $http
       .post(ApiUtil.fullPath('/auth/login'), user)
-      .then(ApiUtil.handleResponse(defer, state))
+      .then(cb, cb)
       .then(function(res){ User._createSession(res.info); });
-      
+
       return defer.promise;
     };
 

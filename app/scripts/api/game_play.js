@@ -6,29 +6,35 @@
     GamePlay.current = { };
 
     GamePlay.startCurrent = function(state) {
-      var defer = $q.defer();
+      var defer = $q.defer(),
+          cb = ApiUtil.handleResponse(defer, state);
+
       state.start();
       $http
       .post(ApiUtil.fullPath('/gamePlay/' + GamePlay.current.id + '/start'))
-      .then(ApiUtil.handleResponse(defer, state));
+      .then(cb, cb);
       return defer.promise;
     };
 
     GamePlay.create = function (gameId, state) {
-      var defer = $q.defer();
+      var defer = $q.defer(),
+          cb = ApiUtil.handleResponse(defer, state);
+
       state.start();
       $http
       .post(ApiUtil.fullPath('/gamePlay'), {gameId: gameId})
-      .then(ApiUtil.handleResponse(defer, state));
+      .then(cb, cb);
       return defer.promise;
     };
 
     GamePlay.players = function(gamePlayId, state) {
-      var defer = $q.defer();
+      var defer = $q.defer(),
+          cb = ApiUtil.handleResponse(defer, state);
+
       state.start();
       $http
       .get(ApiUtil.fullPath('/gamePlay/' + gamePlayId + '/players'))
-      .then(ApiUtil.handleResponse(defer, state));
+      .then(cb, cb);
       return defer.promise;
     };
 

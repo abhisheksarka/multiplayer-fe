@@ -5,13 +5,14 @@
     function GamePlayUser () { };
 
     GamePlayUser.create = function (gamePlay, state) {
-      var defer = $q.defer();
+      var defer = $q.defer(),
+          cb = ApiUtil.handleResponse(defer, state);
       state.start();
       $http
       .post(ApiUtil.fullPath('/gamePlayUser'), {
         gamePlayId: gamePlay.id
       })
-      .then(ApiUtil.handleResponse(defer, state));
+      .then(cb, cb);
       return defer.promise;
     };
 
