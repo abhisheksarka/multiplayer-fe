@@ -4,6 +4,7 @@
 body {
   background: #dedede;
   transition: all ease 1s;
+  padding-top: 70px;
 }
 
 h1 {
@@ -72,10 +73,12 @@ a {
   position: relative;
   margin-left: auto;
   margin-right: auto;
-  border: 1px solid lightgray;
+  background: white;
+  box-shadow: 0px 0px 30px rgba(0,0,0,0.1);
+  border-radius: 3px;
   .game-players, .game-board {
     background: rgba(0,0,0,0.1);
-    border-radius: 2px;
+    border-radius: 3px;
     margin: 10px;
     position: relative;
   }
@@ -88,6 +91,12 @@ a {
     right: 0px;
     text-align: center;
   }
+}
+
+.page-play {
+  max-width: 980px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #games-clickit {

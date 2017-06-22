@@ -6,12 +6,18 @@
         <p>
           {{ player.username }}
         </p>
+        <small>
+          <span ng-bind="player.gameData.score"></span>
+        </small>
       </md-list-item>
     </md-list>
     <div layout-padding>
+      <md-divider></md-divider>
+    </div>
+    <div layout-padding>
       <p ng-if="gcc.players.length < 2">Waiting for at least one more player...</p>
       <md-input-container class="md-block" ng-if="gcc.players.length >= 2" ng-init="gcc.state.init()">
-        <md-button class="md-raised md-accent md-round" ng-click="gcc.start()" ng-disabled="gcc.state.isStart || gcc.state.isSuccess">
+        <md-button class="md-raised md-primary md-round" ng-click="gcc.start()" ng-disabled="gcc.state.isStart || gcc.state.isSuccess">
           <span ng-if="gcc.state.isStart">Please wait...</span>
           <span ng-if="gcc.state.isSuccess">Game On</span>
           <span ng-if="!gcc.state.isSuccess && !gcc.state.isStart">Start</span>

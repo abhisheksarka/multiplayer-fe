@@ -14,7 +14,8 @@
         events = [
           {name: 'joined', fn: onJoined},
           {name: 'left', fn: onLeft},
-          {name: 'started', fn: onStarted}
+          {name: 'started', fn: onStarted},
+          {name: 'gameData', fn: onGameData}
         ],
         gpm = new GamePlayManager(GamePlay.current, events),
         socket = null;
@@ -23,6 +24,7 @@
     gcc.state = State.getInstance();
     gcc.players = [];
     gcc.reveal = {counter: 3};
+
     gcc.config = {
       score: 0,
       unit: null,
@@ -44,6 +46,18 @@
           gcc.state.success();
         }
       }, 1000, 4);
+    };
+
+    function onGameData(res) {
+      var p = null;
+      angular.forEach(gcc.players, function(player) {
+        if (player.id == res.user.id) {
+          p = player;
+        };
+      });
+      if (p) {
+        p.gameData = res.data;
+      };
     };
 
     function establishConnection() {
@@ -83,6 +97,14 @@
       });
     };
     loadPlayers();
+
+    $scope.$watch(angular.bind(gcc, function() {
+      return gcc.config;
+    }), function (nv, ov) {
+      if (nv.score != ov.score) {
+        gpm.gameData(User.current(), gcc.config);
+      };
+    }, true);
   }
 
   angular

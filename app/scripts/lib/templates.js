@@ -10,12 +10,18 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
     "        <p>\n" +
     "          {{ player.username }}\n" +
     "        </p>\n" +
+    "        <small>\n" +
+    "          <span ng-bind=\"player.gameData.score\"></span>\n" +
+    "        </small>\n" +
     "      </md-list-item>\n" +
     "    </md-list>\n" +
     "    <div layout-padding>\n" +
+    "      <md-divider></md-divider>\n" +
+    "    </div>\n" +
+    "    <div layout-padding>\n" +
     "      <p ng-if=\"gcc.players.length < 2\">Waiting for at least one more player...</p>\n" +
     "      <md-input-container class=\"md-block\" ng-if=\"gcc.players.length >= 2\" ng-init=\"gcc.state.init()\">\n" +
-    "        <md-button class=\"md-raised md-accent md-round\" ng-click=\"gcc.start()\" ng-disabled=\"gcc.state.isStart || gcc.state.isSuccess\">\n" +
+    "        <md-button class=\"md-raised md-primary md-round\" ng-click=\"gcc.start()\" ng-disabled=\"gcc.state.isStart || gcc.state.isSuccess\">\n" +
     "          <span ng-if=\"gcc.state.isStart\">Please wait...</span>\n" +
     "          <span ng-if=\"gcc.state.isSuccess\">Game On</span>\n" +
     "          <span ng-if=\"!gcc.state.isSuccess && !gcc.state.isStart\">Start</span>\n" +
@@ -146,7 +152,7 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('app/scripts/pages/play/template.html',
-    "<div class=\"page-all-play\">\n" +
+    "<div class=\"page-play\">\n" +
     "  <game-container ng-if=\"pc.gamePlay.id\"></game-container>\n" +
     "</div>\n"
   );

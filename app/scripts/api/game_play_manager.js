@@ -27,6 +27,10 @@
       this.conn.emit('started');
     };
 
+    proto.gameData = function(user, data) {
+      this.conn.emit('gameData', {user: user, data: data});
+    };
+
     proto.listen = function() {
       var self = this;
       angular.forEach(self.events, function(event) {
