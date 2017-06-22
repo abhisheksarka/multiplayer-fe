@@ -1,5 +1,8 @@
 <div id="games-list">
-  <md-list flex>
+  <div ng-if="gl.state.isStart">
+    <md-progress-circular class="md-accent" md-diameter="100px"></md-progress-circular>
+  </div>
+  <md-list flex ng-if="gl.state.isSuccess">
     <md-list-item ng-repeat="game in gl.games">
       <img ng-src="https://cdn4.iconfinder.com/data/icons/gradient-ui-1/512/games-512.png" class="md-avatar" alt="{{game.name}}" />
       <p>

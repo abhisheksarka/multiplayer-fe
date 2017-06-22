@@ -6,7 +6,8 @@
   <div layout="row" layout-align="center">
     <p>
       <small>
-        <a ng-click="pi.open('signUp')">Sign Up</a>&nbsp;|&nbsp;<a ng-click="pi.open('signIn')">Sign In</a>
+        <a ng-click="pi.open('signUp')" ng-if="pi.tabs.signIn">Sign Up</a>
+        <a ng-click="pi.open('signIn')" ng-if="pi.tabs.signUp">Sign In</a>
       </small>
     </p>
   </div>

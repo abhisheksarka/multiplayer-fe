@@ -79,7 +79,10 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
 
   $templateCache.put('app/scripts/components/games_list/template.html',
     "<div id=\"games-list\">\n" +
-    "  <md-list flex>\n" +
+    "  <div ng-if=\"gl.state.isStart\">\n" +
+    "    <md-progress-circular class=\"md-accent\" md-diameter=\"100px\"></md-progress-circular>\n" +
+    "  </div>\n" +
+    "  <md-list flex ng-if=\"gl.state.isSuccess\">\n" +
     "    <md-list-item ng-repeat=\"game in gl.games\">\n" +
     "      <img ng-src=\"https://cdn4.iconfinder.com/data/icons/gradient-ui-1/512/games-512.png\" class=\"md-avatar\" alt=\"{{game.name}}\" />\n" +
     "      <p>\n" +
@@ -147,7 +150,7 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
     "  <div layout=\"row\" flex layout-align=\"center\">\n" +
     "    <h1 class=\"md-display-3\">Available Games</h1>\n" +
     "  </div>\n" +
-    "  <div layout=\"row\" flex layout-align=\"center\">\n" +
+    "  <div layout=\"row\" flex layout-align=\"center\" ng-if=\"pg.init\">\n" +
     "    <games-list game-play=\"pg.gamePlay\"></games-list>\n" +
     "  </div>\n" +
     "</div>\n"
@@ -163,7 +166,8 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
     "  <div layout=\"row\" layout-align=\"center\">\n" +
     "    <p>\n" +
     "      <small>\n" +
-    "        <a ng-click=\"pi.open('signUp')\">Sign Up</a>&nbsp;|&nbsp;<a ng-click=\"pi.open('signIn')\">Sign In</a>\n" +
+    "        <a ng-click=\"pi.open('signUp')\" ng-if=\"pi.tabs.signIn\">Sign Up</a>\n" +
+    "        <a ng-click=\"pi.open('signIn')\" ng-if=\"pi.tabs.signUp\">Sign In</a>\n" +
     "      </small>\n" +
     "    </p>\n" +
     "  </div>\n" +

@@ -17,6 +17,7 @@
     pg.games = [ ];
     pg.state = State.getInstance();
     pg.gamePlay = { };
+    pg.init = false;
 
     $scope.$on('$routeChangeSuccess', function (event, next, current) {
       if (!User.isSignedIn()) {
@@ -27,7 +28,7 @@
     });
 
     function init() {
-
+      pg.init = true;
     };
   }
 
