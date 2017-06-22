@@ -8,11 +8,14 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
     "      <md-list-item ng-repeat=\"player in gcc.players\">\n" +
     "        <img ng-src=\"https://cdn2.iconfinder.com/data/icons/weird-social-icon-pack/70/twitch-128.png\" class=\"md-avatar\" alt=\"{{player.name}}\" />\n" +
     "        <p>\n" +
-    "          {{ player.username }}\n" +
+    "          {{ player.username }}<br>\n" +
+    "          <strong>\n" +
+    "            <small>\n" +
+    "              <span ng-bind=\"player.gameData.score\"></span>&nbsp;<span ng-bind=\"player.gameData.unit\"></span>\n" +
+    "            </small>\n" +
+    "          </strong>\n" +
     "        </p>\n" +
-    "        <small>\n" +
-    "          <span ng-bind=\"player.gameData.score\"></span>\n" +
-    "        </small>\n" +
+    "\n" +
     "      </md-list-item>\n" +
     "    </md-list>\n" +
     "    <div layout-padding>\n" +

@@ -4,11 +4,14 @@
       <md-list-item ng-repeat="player in gcc.players">
         <img ng-src="https://cdn2.iconfinder.com/data/icons/weird-social-icon-pack/70/twitch-128.png" class="md-avatar" alt="{{player.name}}" />
         <p>
-          {{ player.username }}
+          {{ player.username }}<br>
+          <strong>
+            <small>
+              <span ng-bind="player.gameData.score"></span>&nbsp;<span ng-bind="player.gameData.unit"></span>
+            </small>
+          </strong>
         </p>
-        <small>
-          <span ng-bind="player.gameData.score"></span>
-        </small>
+
       </md-list-item>
     </md-list>
     <div layout-padding>
