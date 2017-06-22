@@ -22,8 +22,10 @@
     };
 
     gl.join = function(game) {
-      GamePlay.create(game.id, game.state).then(function(res) {
+      GamePlay.create(game.id, game.state)
+      .then(function(res) {
         GamePlay.current = res.info;
+        Game.current = game;
         $location.path('/play');
       });
     };

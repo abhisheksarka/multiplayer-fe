@@ -37,7 +37,8 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
     "      <p class=\"timer\">\n" +
     "        <span ng-bind=\"gcc.counters.timeLeft\"></span>\n" +
     "      </p>\n" +
-    "      <games-clickit config=\"gcc.config\"></games-clickit>\n" +
+    "      <div id=\"game-injection\"></div>\n" +
+    "      <span ng-init=\"compileAndInject()\"></span>\n" +
     "    </div>\n" +
     "  </div>\n" +
     "  <div flex=\"100\" class=\"game-results\" ng-if=\"gcc.config.status == 'ended'\">\n" +
@@ -61,8 +62,8 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('app/scripts/components/games/clickit/template.html',
-    "<div id=\"games-clickit\">\n" +
+  $templateCache.put('app/scripts/components/games/click_it/template.html',
+    "<div id=\"games-click-it\">\n" +
     "  <h1 class=\"md-display-3\">ClickIt</h1>\n" +
     "  <md-button class=\"md-fab md-primary md-hue-2\" aria-label=\"click\" ng-click=\"cc.increment()\">\n" +
     "    <md-icon>\n" +
@@ -72,6 +73,20 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
     "  <p class=\"text\">\n" +
     "    <span ng-if=\"cc.counter == 0\">Click me as fast as you can</span>\n" +
     "    <span ng-if=\"cc.counter > 0\"><span ng-bind=\"cc.counter\"></span> Clicks</span>\n" +
+    "  </p>\n" +
+    "</div>\n"
+  );
+
+
+  $templateCache.put('app/scripts/components/games/space_race/template.html',
+    "<div id=\"games-space-race\">\n" +
+    "  <h1 class=\"md-display-3\">Space Race</h1>\n" +
+    "  <md-button class=\"md-raised\" aria-label=\"keypress\" ng-keyup=\"cc.increment($event)\" focus-me=\"true\">\n" +
+    "    The bar\n" +
+    "  </md-button>\n" +
+    "  <p class=\"text\">\n" +
+    "    <span ng-if=\"cc.counter == 0\">Hit 'the bar', then press spacebar as fast as you can</span>\n" +
+    "    <span ng-if=\"cc.counter > 0\"><span ng-bind=\"cc.counter\"></span> Presses</span>\n" +
     "  </p>\n" +
     "</div>\n"
   );
@@ -152,6 +167,9 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
     "  </div>\n" +
     "  <div layout=\"row\" flex layout-align=\"center\" ng-if=\"pg.init\">\n" +
     "    <games-list game-play=\"pg.gamePlay\"></games-list>\n" +
+    "  </div>\n" +
+    "  <div layout=\"row\" flex layout-align=\"center\" ng-if=\"pg.init\">\n" +
+    "    <!-- <games-space-race config=\"{}\"></games-space-race> -->\n" +
     "  </div>\n" +
     "</div>\n"
   );

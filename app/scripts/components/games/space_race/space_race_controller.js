@@ -10,13 +10,15 @@
         config = $scope.config,
         state = new State();
 
-    $scope.config.unit = 'clicks';
-    $scope.config.playTime = 10;
+    $scope.config.unit = 'presses';
+    $scope.config.timeToPlay = 10000;
 
     cc.counter = 0;
 
-    cc.increment = function() {
-      cc.counter++;
+    cc.increment = function(e) {
+      if (e.which == 32) {
+        cc.counter++;
+      };
     };
 
     $scope.$watch(angular.bind(cc, function () {
@@ -27,8 +29,8 @@
   }
 
   angular
-    .module('app.components.games.clickit')
-    .controller('ClickitController', [
+    .module('app.components.games.spaceRace')
+    .controller('SpaceRaceController', [
       '$scope',
       '$location',
       'State',

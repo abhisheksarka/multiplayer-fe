@@ -1,0 +1,10 @@
+<div id="games-space-race">
+  <h1 class="md-display-3">Space Race</h1>
+  <md-button class="md-raised" aria-label="keypress" ng-keyup="cc.increment($event)" focus-me="true">
+    The bar
+  </md-button>
+  <p class="text">
+    <span ng-if="cc.counter == 0">Hit 'the bar', then press spacebar as fast as you can</span>
+    <span ng-if="cc.counter > 0"><span ng-bind="cc.counter"></span> Presses</span>
+  </p>
+</div>

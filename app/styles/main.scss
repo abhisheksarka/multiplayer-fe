@@ -136,7 +136,31 @@ a {
   margin-right: auto;
 }
 
-#games-clickit {
+#games-space-race {
+  text-align: center;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  bottom: 0px;
+  right: 0px;
+  color: white;
+  text-shadow: 0px 1px 1px black;
+  background: url(http://img11.deviantart.net/52bb/i/2015/118/2/0/minimal_space_earth__photoshop__by_madcatz5-d8rfuoi.jpg);
+  button {
+    width: 90%;
+    padding: 20px;
+    margin-top: 80px;
+    background: rgba(77,77,77,0.6);
+    color: white;
+  }
+  .text {
+    font-weight: 200;
+    font-size: 36px;
+  }
+}
+
+
+#games-click-it {
   text-align: center;
   position: absolute;
   left: 0px;
