@@ -3,7 +3,7 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
 
   $templateCache.put('app/scripts/components/game_container/template.html',
     "<div layout=\"row\" id=\"game-container\">\n" +
-    "  <div flex=\"20\" class=\"game-players\">\n" +
+    "  <div flex=\"20\" class=\"game-players\" ng-if=\"gcc.config.status != 'ended'\">\n" +
     "    <md-list flex>\n" +
     "      <md-list-item ng-repeat=\"player in gcc.players\">\n" +
     "        <img ng-src=\"https://cdn2.iconfinder.com/data/icons/weird-social-icon-pack/70/twitch-128.png\" class=\"md-avatar\" alt=\"{{player.name}}\" />\n" +
@@ -21,7 +21,7 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
     "      <md-divider></md-divider>\n" +
     "    </div>\n" +
     "  </div>\n" +
-    "  <div flex=\"80\" class=\"game-board\">\n" +
+    "  <div flex=\"80\" class=\"game-board\" ng-if=\"gcc.config.status != 'ended'\">\n" +
     "    <div class=\"curtain\" ng-if=\"gcc.counters.begin != 0\">\n" +
     "      <h1 class=\"md-display-4\" ng-bind=\"gcc.counters.begin\"></h1>\n" +
     "      <p ng-if=\"gcc.players.length < 2\">Waiting for at least one more player...</p>\n" +
@@ -38,6 +38,23 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
     "        <span ng-bind=\"gcc.counters.timeLeft\"></span>\n" +
     "      </p>\n" +
     "      <games-clickit config=\"gcc.config\"></games-clickit>\n" +
+    "    </div>\n" +
+    "  </div>\n" +
+    "  <div flex=\"100\" class=\"game-results\" ng-if=\"gcc.config.status == 'ended'\">\n" +
+    "    <div layout-padding layout=\"row\">\n" +
+    "      <table>\n" +
+    "        <tr>\n" +
+    "          <th>Player</th>\n" +
+    "          <th>Score</th>\n" +
+    "        </tr>\n" +
+    "        <tr ng-repeat=\"player in gcc.players\">\n" +
+    "          <td ng-bind=\"player.username\"></td>\n" +
+    "          <td ng-bind=\"player.gameData.score\"></td>\n" +
+    "        </tr>\n" +
+    "      </table>\n" +
+    "    </div>\n" +
+    "    <div layout-padding layout=\"row\" layout-align=\"center\">\n" +
+    "      <md-button href=\"#!/all_games\" class=\"md-raised md-primary\">Play more games</md-button>\n" +
     "    </div>\n" +
     "  </div>\n" +
     "</div>\n"

@@ -94,6 +94,18 @@ a {
     position: relative;
     overflow: hidden;
   }
+  .game-results {
+    table {
+      width: 100%;
+      th {
+        background: whitesmoke;
+      }
+      th,td {
+        border: 1px solid lightgray;
+        padding: 10px;
+      }
+    }
+  }
 
   .curtain, .board {
     position: absolute;

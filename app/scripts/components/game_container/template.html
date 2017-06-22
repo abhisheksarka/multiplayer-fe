@@ -1,5 +1,5 @@
 <div layout="row" id="game-container">
-  <div flex="20" class="game-players">
+  <div flex="20" class="game-players" ng-if="gcc.config.status != 'ended'">
     <md-list flex>
       <md-list-item ng-repeat="player in gcc.players">
         <img ng-src="https://cdn2.iconfinder.com/data/icons/weird-social-icon-pack/70/twitch-128.png" class="md-avatar" alt="{{player.name}}" />
@@ -17,7 +17,7 @@
       <md-divider></md-divider>
     </div>
   </div>
-  <div flex="80" class="game-board">
+  <div flex="80" class="game-board" ng-if="gcc.config.status != 'ended'">
     <div class="curtain" ng-if="gcc.counters.begin != 0">
       <h1 class="md-display-4" ng-bind="gcc.counters.begin"></h1>
       <p ng-if="gcc.players.length < 2">Waiting for at least one more player...</p>
@@ -34,6 +34,23 @@
         <span ng-bind="gcc.counters.timeLeft"></span>
       </p>
       <games-clickit config="gcc.config"></games-clickit>
+    </div>
+  </div>
+  <div flex="100" class="game-results" ng-if="gcc.config.status == 'ended'">
+    <div layout-padding layout="row">
+      <table>
+        <tr>
+          <th>Player</th>
+          <th>Score</th>
+        </tr>
+        <tr ng-repeat="player in gcc.players">
+          <td ng-bind="player.username"></td>
+          <td ng-bind="player.gameData.score"></td>
+        </tr>
+      </table>
+    </div>
+    <div layout-padding layout="row" layout-align="center">
+      <md-button href="#!/all_games" class="md-raised md-primary">Play more games</md-button>
     </div>
   </div>
 </div>
