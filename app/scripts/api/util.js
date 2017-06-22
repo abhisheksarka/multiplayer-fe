@@ -19,7 +19,8 @@
           defer.reject(res);
           state.error(res.info);
         };
-      }
+        return defer.promise;
+      };
     }
 
     return Util;
