@@ -23,13 +23,17 @@
     gcc.gamePlay = GamePlay.current;
     gcc.state = State.getInstance();
     gcc.players = [];
-    gcc.reveal = {counter: 3};
 
     gcc.config = {
       score: 0,
-      unit: null,
+      unit: 'n/a',
       status: "hold",
-      timeToPlay: null
+      timeToPlay: 10
+    };
+
+    gcc.counters = {
+      begin: 3,
+      timeLeft: gcc.config.timeToPlay
     };
 
     gcc.start = function() {
@@ -38,14 +42,20 @@
     };
 
     function onStarted() {
+      gcc.startCounter('begin');
+    };
+
+    gcc.startCounter = function(name) {
+      var n = gcc.counters[name];
       gcc.state.start();
+
       $interval(function() {
-        if (gcc.reveal.counter != 0) {
-          gcc.reveal.counter--;
+        if (gcc.counters[name] != 0) {
+          gcc.counters[name]--;
         } else {
           gcc.state.success();
-        }
-      }, 1000, 4);
+        };
+      }, 1000, n);
     };
 
     function onGameData(res) {

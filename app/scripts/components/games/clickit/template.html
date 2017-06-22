@@ -1,4 +1,5 @@
 <div id="games-clickit">
+  <h1 class="md-display-3">ClickIt</h1>
   <md-button class="md-fab md-primary md-hue-2" aria-label="click" ng-click="cc.increment()">
     <md-icon>
       <i class="material-icons">donut_small</i>
@@ -6,6 +7,6 @@
   </md-button>
   <p class="text">
     <span ng-if="cc.counter == 0">Click me as fast as you can</span>
-    <span ng-if="cc.counter > 0" ng-bind="cc.counter"></span>
+    <span ng-if="cc.counter > 0"><span ng-bind="cc.counter"></span> Clicks</span>
   </p>
 </div>

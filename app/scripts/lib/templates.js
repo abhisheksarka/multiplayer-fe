@@ -11,17 +11,19 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
     "          {{ player.username }}<br>\n" +
     "          <strong>\n" +
     "            <small>\n" +
-    "              <span ng-bind=\"player.gameData.score\"></span>&nbsp;<span ng-bind=\"player.gameData.unit\"></span>\n" +
+    "              <span ng-bind=\"player.gameData.score || 0\"></span>&nbsp;<span ng-bind=\"gcc.config.unit\"></span>\n" +
     "            </small>\n" +
     "          </strong>\n" +
     "        </p>\n" +
-    "\n" +
     "      </md-list-item>\n" +
     "    </md-list>\n" +
     "    <div layout-padding>\n" +
     "      <md-divider></md-divider>\n" +
     "    </div>\n" +
-    "    <div layout-padding>\n" +
+    "  </div>\n" +
+    "  <div flex=\"80\" class=\"game-board\">\n" +
+    "    <div class=\"curtain\" ng-if=\"gcc.counters.begin != 0\">\n" +
+    "      <h1 class=\"md-display-4\" ng-bind=\"gcc.counters.begin\"></h1>\n" +
     "      <p ng-if=\"gcc.players.length < 2\">Waiting for at least one more player...</p>\n" +
     "      <md-input-container class=\"md-block\" ng-if=\"gcc.players.length >= 2\" ng-init=\"gcc.state.init()\">\n" +
     "        <md-button class=\"md-raised md-primary md-round\" ng-click=\"gcc.start()\" ng-disabled=\"gcc.state.isStart || gcc.state.isSuccess\">\n" +
@@ -31,13 +33,10 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
     "        </md-button>\n" +
     "      </md-input-container>\n" +
     "    </div>\n" +
-    "  </div>\n" +
-    "  <div flex=\"80\" class=\"game-board\">\n" +
-    "    <div class=\"curtain\" ng-if=\"gcc.reveal.counter != 0\">\n" +
-    "      <h1 class=\"md-display-4\" ng-bind=\"gcc.reveal.counter\">\n" +
-    "      </h1>\n" +
-    "    </div>\n" +
-    "    <div class=\"game\" ng-if=\"gcc.reveal.counter == 0\">\n" +
+    "    <div class=\"game\" ng-if=\"gcc.counters.begin == 0\" ng-init=\"gcc.startCounter('timeLeft')\">\n" +
+    "      <p class=\"timer\">\n" +
+    "        <span ng-bind=\"gcc.counters.timeLeft\"></span>\n" +
+    "      </p>\n" +
     "      <games-clickit config=\"gcc.config\"></games-clickit>\n" +
     "    </div>\n" +
     "  </div>\n" +
@@ -47,6 +46,7 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
 
   $templateCache.put('app/scripts/components/games/clickit/template.html',
     "<div id=\"games-clickit\">\n" +
+    "  <h1 class=\"md-display-3\">ClickIt</h1>\n" +
     "  <md-button class=\"md-fab md-primary md-hue-2\" aria-label=\"click\" ng-click=\"cc.increment()\">\n" +
     "    <md-icon>\n" +
     "      <i class=\"material-icons\">donut_small</i>\n" +
@@ -54,7 +54,7 @@ angular.module('app.lib').run(['$templateCache', function($templateCache) {
     "  </md-button>\n" +
     "  <p class=\"text\">\n" +
     "    <span ng-if=\"cc.counter == 0\">Click me as fast as you can</span>\n" +
-    "    <span ng-if=\"cc.counter > 0\" ng-bind=\"cc.counter\"></span>\n" +
+    "    <span ng-if=\"cc.counter > 0\"><span ng-bind=\"cc.counter\"></span> Clicks</span>\n" +
     "  </p>\n" +
     "</div>\n"
   );

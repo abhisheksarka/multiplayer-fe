@@ -7,17 +7,19 @@
           {{ player.username }}<br>
           <strong>
             <small>
-              <span ng-bind="player.gameData.score"></span>&nbsp;<span ng-bind="player.gameData.unit"></span>
+              <span ng-bind="player.gameData.score || 0"></span>&nbsp;<span ng-bind="gcc.config.unit"></span>
             </small>
           </strong>
         </p>
-
       </md-list-item>
     </md-list>
     <div layout-padding>
       <md-divider></md-divider>
     </div>
-    <div layout-padding>
+  </div>
+  <div flex="80" class="game-board">
+    <div class="curtain" ng-if="gcc.counters.begin != 0">
+      <h1 class="md-display-4" ng-bind="gcc.counters.begin"></h1>
       <p ng-if="gcc.players.length < 2">Waiting for at least one more player...</p>
       <md-input-container class="md-block" ng-if="gcc.players.length >= 2" ng-init="gcc.state.init()">
         <md-button class="md-raised md-primary md-round" ng-click="gcc.start()" ng-disabled="gcc.state.isStart || gcc.state.isSuccess">
@@ -27,13 +29,10 @@
         </md-button>
       </md-input-container>
     </div>
-  </div>
-  <div flex="80" class="game-board">
-    <div class="curtain" ng-if="gcc.reveal.counter != 0">
-      <h1 class="md-display-4" ng-bind="gcc.reveal.counter">
-      </h1>
-    </div>
-    <div class="game" ng-if="gcc.reveal.counter == 0">
+    <div class="game" ng-if="gcc.counters.begin == 0" ng-init="gcc.startCounter('timeLeft')">
+      <p class="timer">
+        <span ng-bind="gcc.counters.timeLeft"></span>
+      </p>
       <games-clickit config="gcc.config"></games-clickit>
     </div>
   </div>
