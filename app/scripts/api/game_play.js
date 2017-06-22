@@ -10,11 +10,7 @@
       state.start();
       $http
       .post(ApiUtil.fullPath('/gamePlay/' + GamePlay.current.id + '/start'))
-      .then(function (res) {
-        ApiUtil.handleResponse(res, defer, state);
-      }, function(res) {
-        ApiUtil.handleResponse(res, defer, state);
-      });
+      .then(ApiUtil.handleResponse(defer, state));
       return defer.promise;
     };
 
@@ -23,11 +19,7 @@
       state.start();
       $http
       .post(ApiUtil.fullPath('/gamePlay'), {gameId: gameId})
-      .then(function (res) {
-        ApiUtil.handleResponse(res, defer, state);
-      }, function(res) {
-        ApiUtil.handleResponse(res, defer, state);
-      });
+      .then(ApiUtil.handleResponse(defer, state));
       return defer.promise;
     };
 
@@ -36,11 +28,7 @@
       state.start();
       $http
       .get(ApiUtil.fullPath('/gamePlay/' + gamePlayId + '/players'))
-      .then(function (res) {
-        ApiUtil.handleResponse(res, defer, state);
-      }, function(res) {
-        ApiUtil.handleResponse(res, defer, state);
-      });
+      .then(ApiUtil.handleResponse(defer, state));
       return defer.promise;
     };
 

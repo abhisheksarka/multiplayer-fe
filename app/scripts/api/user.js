@@ -8,11 +8,8 @@
       var defer = $q.defer();
       $http
       .post(ApiUtil.fullPath('/user'), user)
-      .then(function (res) {
-        ApiUtil.handleResponse(res, defer, state);
-      }, function(res) {
-        ApiUtil.handleResponse(res, defer, state);
-      });
+      .then(ApiUtil.handleResponse(defer, state));
+      
       return defer.promise;
     };
 
@@ -20,12 +17,8 @@
       var defer = $q.defer();
       $http
       .post(ApiUtil.fullPath('/auth/login'), user)
-      .then(function (res) {
-        ApiUtil.handleResponse(res, defer, state);
-        User._createSession(res.data.info);
-      }, function(res) {
-        ApiUtil.handleResponse(res, defer, state);
-      });
+      .then(ApiUtil.handleResponse(defer, state));
+
       return defer.promise;
     };
 

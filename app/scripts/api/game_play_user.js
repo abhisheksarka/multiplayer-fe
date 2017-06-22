@@ -11,11 +11,7 @@
       .post(ApiUtil.fullPath('/gamePlayUser'), {
         gamePlayId: gamePlay.id
       })
-      .then(function (res) {
-        ApiUtil.handleResponse(res, defer, state);
-      }, function(res) {
-        ApiUtil.handleResponse(res, defer, state);
-      });
+      .then(ApiUtil.handleResponse(defer, state));
       return defer.promise;
     };
 
